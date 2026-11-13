@@ -1,0 +1,6336 @@
+{
+ "generatedAt": "2026-11-13T23:06:16.915Z",
+ "district": "Sonipat",
+ "state": "Haryana",
+ "attribution": "Location data © OpenStreetMap contributors (ODbL 1.0). Hospital roster: AB-PMJAY / National Health Authority district list. Facility list and beds: Haryana Health Department.",
+ "counts": {
+  "total": 169,
+  "pmjay": 76,
+  "located": 143,
+  "byType": {
+   "hospital": 81,
+   "clinic": 39,
+   "medical_college": 1,
+   "chc": 7,
+   "district_hospital": 1,
+   "dispensary": 2,
+   "phc": 33,
+   "polyclinic": 1,
+   "sub_district_hospital": 2,
+   "uhc": 2
+  }
+ },
+ "unresolved": [
+  "entry 6 PHC Baroda: geocode \"Baroda, Gohana, Sonipat, Haryana\" (village) unresolved",
+  "entry 24 PHC Bhatana Jafrabad: geocode \"Bhatana Jafrabad, Sonipat, Haryana\" (village) unresolved",
+  "entry 26 Primary Health Centre (location unconfirmed): Roster gives a generic name and a personal email only; see data/reports/sonipat_hospital_manual_review_evidence_20261029.json pair entries-23-26.",
+  "entry 28 UHC Mahavir Colony: geocode \"Mahavir Colony, Sonipat, Haryana\" (locality) unresolved",
+  "entry 29 PHC Moi Majri: geocode \"Moi Majri, Sonipat, Haryana\" (village) unresolved",
+  "entry 32 PHC Nahri: geocode \"Nahri, Sonipat, Haryana\" (village) unresolved",
+  "entry 36 PHC Sargathal: geocode \"Sargathal, Sonipat, Haryana\" (village) unresolved",
+  "entry 37 PHC Datoli: geocode \"Datoli, Sonipat, Haryana\" (village) unresolved",
+  "entry 39 Virmani Hospital: geocode \"Virmani Hospital, Sonipat\" (poi) unresolved",
+  "entry 46 Nest Hospital: geocode \"Nest Hospital, Sonipat\" (poi) unresolved",
+  "entry 47 Maharaja Agrasen Charitable Hospital: geocode \"Maharaja Agrasen Hospital, Sonipat\" (poi) unresolved",
+  "entry 49 Aristo Hospital & Trauma Care Centre: geocode \"Aristo Hospital, Sonipat\" (poi) unresolved",
+  "entry 53 Dahiya Eye & Maternity Hospital: geocode \"Dahiya Eye Hospital, Sonipat\" (poi) unresolved",
+  "entry 56 Abhishek Memorial Hospital: geocode \"Abhishek Memorial Hospital, Sonipat\" (poi) unresolved",
+  "entry 57 Bhagwan Das Hospital: geocode \"Bhagwan Das Hospital, Sonipat\" (poi) unresolved",
+  "entry 58 Smt. Jai Devi Memorial Nursing Home: geocode \"Jai Devi Memorial Nursing Home, Sonipat\" (poi) unresolved",
+  "entry 59 Rai Multispeciality Hospital: geocode \"Rai Multispeciality Hospital, Sonipat\" (poi) unresolved",
+  "entry 60 Sushanti Eye Hospital: geocode \"Sushanti Eye Hospital, Sonipat\" (poi) unresolved",
+  "entry 62 Bhatiya Multispeciality Hospital: geocode \"Bhatiya Hospital, Sonipat\" (poi) unresolved",
+  "entry 63 Rana Hospital: geocode \"Rana Hospital, Sonipat\" (poi) unresolved",
+  "entry 64 Swarnprastha Hospital: geocode \"Swarnprastha Hospital, Sonipat\" (poi) unresolved",
+  "entry 65 Sanjog Hospital: geocode \"Sanjog Hospital, Sonipat\" (poi) unresolved",
+  "entry 66 Tulip Multispeciality Hospital: geocode \"Tulip Multispeciality Hospital, Sonipat\" (poi) unresolved",
+  "entry 67 R K Eye Hospital: geocode \"R K Eye Hospital, Sonipat\" (poi) unresolved",
+  "entry 75 Noble Hospital: geocode \"Noble Hospital, Sonipat\" (poi) unresolved",
+  "PHC Bhatgaon: village geocode unresolved"
+ ],
+ "facilities": [
+  {
+   "id": "osm-node-6991569738",
+   "name": "Aarogyadham Charitable Eye Hospital",
+   "sourceName": "Aarogyadham Charitable Eye Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Opp. Atlas Mandir, Atlas Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9777441,
+    "lng": 77.0231456,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6991569738"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "ophthalmology",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p66754",
+   "name": "Abhishek Memorial Hospital",
+   "sourceName": "ABHISHEK MEMORIAL HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P66754",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Varun Gupta",
+     "phone": "9728865055",
+     "email": "abhishekmemorialhospital@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 56)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6997700207",
+   "name": "Aggarwal Hospital, Ganaur",
+   "sourceName": "Aggarwal Hospital, Ganaur",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Railway Road, Near Truck Union, Ganaur",
+   "phone": null,
+   "location": {
+    "lat": 29.1340678,
+    "lng": 77.0180217,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997700207"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516663",
+   "name": "Akash Clinic",
+   "sourceName": "Akash Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Near Dada Bhaiya Mandir, Kundli",
+   "phone": null,
+   "location": {
+    "lat": 28.8714299,
+    "lng": 77.1213348,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516663"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7002954548",
+   "name": "Aneja Hospital and Bhogal Ortho Centre",
+   "sourceName": "Aneja Hospital and Bhogal Ortho Centre",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Sikka Colony, Delhi Road, Opposite Huda Commercial Centre",
+   "phone": null,
+   "location": {
+    "lat": 28.9923102,
+    "lng": 77.0317233,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7002954548"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "orthopaedics",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p02480",
+   "name": "Aristo Hospital & Trauma Care Centre",
+   "sourceName": "ARISTO HOSPITAL AND TRAUMA CARE CENTRE",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P02480",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Sanjeev Jain",
+     "phone": "9466461636",
+     "email": "drsanjeevjain@rediffmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "trauma",
+     "source": "name_inference"
+    },
+    {
+     "key": "emergency",
+     "source": "name_inference"
+    },
+    {
+     "key": "orthopaedics",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 49)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516623",
+   "name": "Arunika Physiotherapy Clinic",
+   "sourceName": "Arunika Physiotherapy Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "15, 443, Sector 23, Main Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9993902,
+    "lng": 77.0373279,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516623"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "physiotherapy",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p02825",
+   "name": "Arya Eye Hospital",
+   "sourceName": "ARYA EYE HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Atlas Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9843919,
+    "lng": 77.0212631,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994526039"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P02825",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Joginder",
+     "phone": "9354951100",
+     "email": "aryaeyehospital@hotmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "ophthalmology",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 50)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516696",
+   "name": "Bangali Clinic",
+   "sourceName": "Bangali Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Sector 37, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.9410153,
+    "lng": 77.0964605,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516696"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7002999786",
+   "name": "Bansal Nursing Home",
+   "sourceName": "Bansal Nursing Home",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "226 - 227, Sector - 14",
+   "phone": null,
+   "location": {
+    "lat": 29.0005458,
+    "lng": 77.0303124,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7002999786"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p99873",
+   "name": "Bhagwan Das Hospital",
+   "sourceName": "BHAGWAN DAS HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P99873",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Naresh Pamnani",
+     "phone": "9899151927",
+     "email": "bdkh2018@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 57)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516721",
+   "name": "Bharat Clinic",
+   "sourceName": "Bharat Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Sector 14",
+   "phone": null,
+   "location": {
+    "lat": 28.9981094,
+    "lng": 77.0334625,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516721"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7003062470",
+   "name": "Bharat Hospital",
+   "sourceName": "Bharat Hospital, Sonepat",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Green Crescent, Opposite Sector - 14",
+   "phone": null,
+   "location": {
+    "lat": 28.99197,
+    "lng": 77.0342633,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7003062470"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p131103",
+   "name": "Bhatiya Multispeciality Hospital",
+   "sourceName": "BHATIYA MULTISPECIALITY HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P131103",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Attar Singh",
+     "phone": "8930757609",
+     "email": "bhatiyahospitalsnp@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 62)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g03825",
+   "name": "BPS Government Medical College for Women, Khanpur Kalan",
+   "sourceName": "BPS GMC for Women",
+   "ownership": "public",
+   "facilityType": "medical_college",
+   "address": "Khanpur Kalan, Sonepat",
+   "phone": null,
+   "location": {
+    "lat": 29.1506762,
+    "lng": 76.8094861,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7007226204"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G03825",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Arvinderpal Singh Batra",
+     "phone": "8950337379",
+     "email": "director-bpsgmc.dmer@hry.gov.in"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "orthopaedics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "ophthalmology",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "ent",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "dental",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "psychiatry",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "dermatology",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "pulmonology",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "trauma",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "icu",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 9)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-12596163663",
+   "name": "Chahal Hospital",
+   "sourceName": "CHAHAL HOSPITAL",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.1416057,
+    "lng": 76.6935365,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12596163663"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p03313",
+   "name": "Chauhan Hospital",
+   "sourceName": "CHAUHAN HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Kath Mandi, Rohtak Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9842252,
+    "lng": 77.0149903,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994327713"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P03313",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Madan Singh Chauhan",
+     "phone": "9991966102",
+     "email": "chauhanhospital1@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 52)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g77966",
+   "name": "CHC Badh Khalsa",
+   "sourceName": "PHC Badkhalsa",
+   "ownership": "public",
+   "facilityType": "chc",
+   "address": "Sector 62, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.9123837,
+    "lng": 77.117211,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803742"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G77966",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Anvita Kaushik",
+     "phone": "9818547666",
+     "email": "smochcbadkhalsa@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 10)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g159077",
+   "name": "CHC Bhainswal Kalan",
+   "sourceName": "COMMUNITY HEALTH CENTRE BHAINSWAL KALAN",
+   "ownership": "public",
+   "facilityType": "chc",
+   "address": "Near Bhainswal Tihar Sonepat",
+   "phone": null,
+   "location": {
+    "lat": 29.0265072,
+    "lng": 76.7887354,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803915"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G159077",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "PARVEEN KUMAR",
+     "phone": "9050909333",
+     "email": "phcbhainswal@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 17)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g81631",
+   "name": "CHC Ferozepur Bangar",
+   "sourceName": "Community Health Center, Ferozepur Bangar",
+   "ownership": "public",
+   "facilityType": "chc",
+   "address": "Ferozpur Bangar Village",
+   "phone": null,
+   "location": {
+    "lat": 28.83005,
+    "lng": 76.982361,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803777"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G81631",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Aditi Garg",
+     "phone": "8586035173",
+     "email": "smochcfbsnp@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 14)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g178755",
+   "name": "CHC Halalpur",
+   "sourceName": "community health centre halalpur",
+   "ownership": "public",
+   "facilityType": "chc",
+   "address": "Old radha krishna mandir",
+   "phone": null,
+   "location": {
+    "lat": 28.862797,
+    "lng": 77.012248,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803808"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G178755",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Chetan",
+     "phone": "8449710018",
+     "email": "phckundli1@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 35)",
+    "OpenStreetMap"
+   ],
+   "notes": "Roster email references Kundli PHC; located at the Halalpur health centre pending confirmation."
+  },
+  {
+   "id": "pmjay-hosp6g78420",
+   "name": "CHC Juan",
+   "sourceName": "communityhealthcenterjuan",
+   "ownership": "public",
+   "facilityType": "chc",
+   "address": "Karewri Road",
+   "phone": null,
+   "location": {
+    "lat": 29.0616888,
+    "lng": 76.9003016,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803714"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G78420",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Kanishk",
+     "phone": "9996263640",
+     "email": "chcjuansonepat@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 11)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g110984",
+   "name": "CHC Kharkhoda",
+   "sourceName": "CHC Kharkhoda",
+   "ownership": "public",
+   "facilityType": "chc",
+   "address": "Charitable Hospital",
+   "phone": null,
+   "location": {
+    "lat": 28.8786515,
+    "lng": 76.9162778,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803712"
+   },
+   "beds": {
+    "count": 50,
+    "source": "20250508834158531.pdf p.3 (2025-05-05)"
+   },
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G110984",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Phool Kanwar",
+     "phone": "9416514153",
+     "email": "satyapalmohar2@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 16)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g78631",
+   "name": "CHC Mundlana",
+   "sourceName": "CHC Mundlana",
+   "ownership": "public",
+   "facilityType": "chc",
+   "address": "Mundlana, Panipat, SH-16, Gohana Panipat Road",
+   "phone": null,
+   "location": {
+    "lat": 29.1962302,
+    "lng": 76.7576946,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168696247"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G78631",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "ASHISH",
+     "phone": "8168838482",
+     "email": "dr.smalik6319@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 12)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994526034",
+   "name": "Chhabra Nursing Home",
+   "sourceName": "Chhabra Nursing Home",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Atlas Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9856546,
+    "lng": 77.0205979,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994526034"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6997714616",
+   "name": "City Hospital",
+   "sourceName": "City Hospital, Sonipat",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Gohana Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9953108,
+    "lng": 77.0105821,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997714616"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p171430",
+   "name": "Crossroads Hospital",
+   "sourceName": "CROSSROADS HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "opposite huda office , sector12",
+   "phone": null,
+   "location": {
+    "lat": 28.9931767,
+    "lng": 77.0400641,
+    "source": "osm",
+    "precision": "building",
+    "ref": "way/1544861248"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P171430",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Saurabh Pengoria",
+     "phone": "8750622635",
+     "email": "care@crossroadshospital.co.in"
+    }
+   },
+   "specialties": [
+    {
+     "key": "orthopaedics",
+     "source": "osm_tag"
+    },
+    {
+     "key": "neurology",
+     "source": "osm_tag"
+    },
+    {
+     "key": "gastroenterology",
+     "source": "osm_tag"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 70)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p01931",
+   "name": "Cygnus JK Hindu Hospital",
+   "sourceName": "CYGNUS JK HINDU HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Industrial Area",
+   "phone": null,
+   "location": {
+    "lat": 28.979251,
+    "lng": 77.0209086,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997688588"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P01931",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Suresh Kalra",
+     "phone": "8818002681",
+     "email": "gmops.sonepat@cygnushospitals.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 43)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p03563",
+   "name": "Dahiya Eye & Maternity Hospital",
+   "sourceName": "DAHIYA EYE AND MATERNITY HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P03563",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Vedpal",
+     "phone": "9416104620",
+     "email": "dr.vedpaldahiya5@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "ophthalmology",
+     "source": "name_inference"
+    },
+    {
+     "key": "maternity",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 53)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994300663",
+   "name": "Dahiya Hospital",
+   "sourceName": "Dahiya Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Old D.C. Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9785312,
+    "lng": 77.0291449,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994300663"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7008878540",
+   "name": "Darya Ram Hospital",
+   "sourceName": "Darya Ram Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Murthal Road",
+   "phone": null,
+   "location": {
+    "lat": 29.0026981,
+    "lng": 77.0264983,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7008878540"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p02475",
+   "name": "Dayanand Hospital & Critical Care Centre",
+   "sourceName": "DAYANAND HOSPITAL AND CRITICAL CARE CENTRE",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Kakroi Road, Prem Nagar, West Ram Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.98773,
+    "lng": 77.006485,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516657"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P02475",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Neeraj Kumar",
+     "phone": "9467575442",
+     "email": "dayanandhospital01@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "icu",
+     "source": "name_inference"
+    },
+    {
+     "key": "emergency",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 48)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516689",
+   "name": "Dev Eyecare Clinic",
+   "sourceName": "Dev Eyecare Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Janti Kalan Road, Janti Kalan",
+   "phone": null,
+   "location": {
+    "lat": 28.8636194,
+    "lng": 77.1252197,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516689"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g03224",
+   "name": "District Civil Hospital, Sonipat",
+   "sourceName": "District Civil Hospital Sonipat",
+   "ownership": "public",
+   "facilityType": "district_hospital",
+   "address": "Rohtak",
+   "phone": null,
+   "location": {
+    "lat": 28.9908108,
+    "lng": 77.0362146,
+    "source": "osm",
+    "precision": "building",
+    "ref": "way/261138791"
+   },
+   "beds": {
+    "count": 200,
+    "source": "20250508834158531.pdf p.3 (2025-05-05)"
+   },
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G03224",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Ginni Lamba",
+     "phone": "9050007668",
+     "email": "dhs.cssnp@hry.nic.in"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "orthopaedics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "ophthalmology",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "ent",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "dental",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "psychiatry",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "dermatology",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "trauma",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "icu",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 8)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-12597560832",
+   "name": "Dr Veer Malik Jeet",
+   "sourceName": "DR VEER MALIK JEET",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.1398694,
+    "lng": 76.6959882,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12597560832"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7010474918",
+   "name": "Dr. Guptas Children Hospital and General Nursing Home",
+   "sourceName": "Dr. Guptas Children Hospital and General Nursing Home",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Opp Civil Hospital,Baroda Road,Gohana",
+   "phone": null,
+   "location": {
+    "lat": 29.1374848,
+    "lng": 76.6930541,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7010474918"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "paediatrics",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516620",
+   "name": "Dr. Jatin Clinic",
+   "sourceName": "Dr. Jatin Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Sector 48, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.8760162,
+    "lng": 77.1148018,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516620"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516650",
+   "name": "Dr. Nagpal's Skin Vd & Allergy Clinic",
+   "sourceName": "Dr. Nagpal's Skin Vd & Allergy Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Shop No. 9 To 11, Saraswati Market, Mama Bhanja Chowk",
+   "phone": null,
+   "location": {
+    "lat": 28.9945338,
+    "lng": 77.0246125,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516650"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "pulmonology",
+     "source": "name_inference"
+    },
+    {
+     "key": "dermatology",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516619",
+   "name": "Dr. S.K Gosain Health Care Clinic",
+   "sourceName": "Dr. S.K Gosain Health Care Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "House Number 93, Sector 14",
+   "phone": null,
+   "location": {
+    "lat": 29.0019734,
+    "lng": 77.0317391,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516619"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p201934",
+   "name": "Dr. Sethi's Amar Hospital, Kharkhoda",
+   "sourceName": "Dr Sethis Amar Hospital",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Ward No. 3, Rohtak Road, Kharkhoda",
+   "phone": null,
+   "location": {
+    "lat": 28.8795874,
+    "lng": 76.9109662,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7001630012"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P201934",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Amit Gupta",
+     "phone": "9017525650",
+     "email": "anisurgupta011@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 74)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994249940",
+   "name": "Dua Nursing Home",
+   "sourceName": "Dua Nursing Home, Sonipat",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Hem Nagar, Delhi Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9947395,
+    "lng": 77.0277965,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994249940"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516617",
+   "name": "Dudeja ENT Clinic",
+   "sourceName": "Dudeja ENT Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "SH 14, Khanna Colony",
+   "phone": null,
+   "location": {
+    "lat": 28.9946535,
+    "lng": 77.0280869,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516617"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "ent",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7168803869",
+   "name": "E.S.I. Dispensary Ashok Nagar",
+   "sourceName": "E.S.I. Dispensary Ashok Nagar",
+   "ownership": "public",
+   "facilityType": "dispensary",
+   "address": "Atlas Road Anand Nagar, Ashok Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.989868,
+    "lng": 77.0225231,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803869"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516639",
+   "name": "Earbeats Speech & Hearing Clinic",
+   "sourceName": "Earbeats Speech & Hearing Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "1459, Hbc Road, Sikka Colony, Sector 14",
+   "phone": null,
+   "location": {
+    "lat": 28.9959073,
+    "lng": 77.0293449,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516639"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "ent",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516680",
+   "name": "Ent Care Clinic - Dr. Vk Gupta",
+   "sourceName": "Ent Care Clinic - Dr. Vk Gupta",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Sector 15, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.996352,
+    "lng": 77.036385,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516680"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "ent",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7168803901",
+   "name": "ESI Dispensary Kundli",
+   "sourceName": "ESI Dispensary Kundli",
+   "ownership": "public",
+   "facilityType": "dispensary",
+   "address": "Sector 48, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.8823229,
+    "lng": 77.11805,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803901"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516655",
+   "name": "Eye and Child Care Centre",
+   "sourceName": "Eye and Child Care Centre",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "B 13, Khanna Colony, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.994825,
+    "lng": 77.0271307,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516655"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "ophthalmology",
+     "source": "name_inference"
+    },
+    {
+     "key": "paediatrics",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p01884",
+   "name": "Eye-Q Super Speciality Eye Hospital",
+   "sourceName": "EYE Q VISION PVT LTD",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "K.Plaza, Atlas Road, Near State Bank of India",
+   "phone": null,
+   "location": {
+    "lat": 28.9824714,
+    "lng": 77.0214075,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997058096"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P01884",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Gourav Kumar",
+     "phone": "9717292625",
+     "email": "cashless@eyeqindia.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "ophthalmology",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 42)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p09286",
+   "name": "Gajraj Hospital, Gohana",
+   "sourceName": "GAJRAJ HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Near Bus Stand , Gohana",
+   "phone": null,
+   "location": {
+    "lat": 29.1321829,
+    "lng": 76.7012563,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994176317"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P09286",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Gajraj Kaushik",
+     "phone": "9416015377",
+     "email": "gajrajhospital2001@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 54)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516664",
+   "name": "Gemini Cardiology Superspeciality Clinic",
+   "sourceName": "Gemini Cardiology Superspeciality Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Jain Bagh Colony",
+   "phone": null,
+   "location": {
+    "lat": 28.995699,
+    "lng": 77.010696,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516664"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "cardiology",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p20873",
+   "name": "Girdhar Hospital",
+   "sourceName": "GIRDHAR HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Bawa Tarana Road, Khanna Colony",
+   "phone": null,
+   "location": {
+    "lat": 28.9960114,
+    "lng": 77.0258666,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7007709885"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P20873",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Atul Girdhar",
+     "phone": "9812040370",
+     "email": "girdharhospital@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 55)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p185347",
+   "name": "Gujaria Hospital",
+   "sourceName": "Gujaria Hospital",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Sikka Colony, Delhi Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9919757,
+    "lng": 77.0319671,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6998114426"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P185347",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Fakir Chand",
+     "phone": "9812310123",
+     "email": "gujariahospital2023@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 73)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516698",
+   "name": "Gupta Clinic",
+   "sourceName": "Gupta Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "6A/22, Baba Colony, Sector 1A, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.976266,
+    "lng": 77.022706,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516698"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994220860",
+   "name": "Gupta Nursing Home",
+   "sourceName": "Gupta Nursing Home, Sonipat",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Opp, Sector-14",
+   "phone": null,
+   "location": {
+    "lat": 28.9920401,
+    "lng": 77.0345368,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994220860"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p169041",
+   "name": "Guruji's Rawal Hospital",
+   "sourceName": "GURUJIS RAWAL HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Sector 14, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.9994757,
+    "lng": 77.0325819,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516651"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P169041",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Ashish Rawal",
+     "phone": "9992013182",
+     "email": "gurujirawalhospital@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 69)",
+    "OpenStreetMap"
+   ],
+   "notes": "Roster nodal officer is Ashish Rawal."
+  },
+  {
+   "id": "pmjay-hosp6p02861",
+   "name": "Handa Hospital & Heart Care Centre",
+   "sourceName": "HANDA HOSPITAL AND HEART CARE CENTRE",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Sarang Road",
+   "phone": null,
+   "location": {
+    "lat": 28.993904,
+    "lng": 77.0161474,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7010747054"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P02861",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Rakesh Handa",
+     "phone": "9812040174",
+     "email": "rakeshhanda2013@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "cardiology",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 51)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994249918",
+   "name": "Haryana Multispeciality Hospital - Sonipat",
+   "sourceName": "Haryana Multispeciality Hospital - Sonipat",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Opposite Bus Stand",
+   "phone": null,
+   "location": {
+    "lat": 28.9913263,
+    "lng": 77.0326418,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994249918"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516665",
+   "name": "Health Care Clinic",
+   "sourceName": "Health Care Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Police Line Road, Gohana Road, Malik Colony",
+   "phone": null,
+   "location": {
+    "lat": 29.0015159,
+    "lng": 77.0034273,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516665"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516715",
+   "name": "Jai Hospital",
+   "sourceName": "Jai Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Malik Colony, Ashok Vihar",
+   "phone": null,
+   "location": {
+    "lat": 29.0015103,
+    "lng": 77.0057415,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516715"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-12597536636",
+   "name": "Jai Hospital",
+   "sourceName": "JAI HOSPITAL",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.1377615,
+    "lng": 76.695805,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12597536636"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-way-261138854",
+   "name": "Jankidas Kapur Memorial Hospital",
+   "sourceName": "Jankidas Kapur Memorial Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Sector- 14",
+   "phone": null,
+   "location": {
+    "lat": 29.0026205,
+    "lng": 77.0285748,
+    "source": "osm",
+    "precision": "building",
+    "ref": "way/261138854"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994232591",
+   "name": "Janta Charitable Hospital",
+   "sourceName": "Janta Charitable Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Near Sonipat Cooperative Bank, Dev Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.9883968,
+    "lng": 77.0152077,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994232591"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p208744",
+   "name": "Kalawati Anand Hospital & Digestive Disease Centre",
+   "sourceName": "KALAWATI ANAND HOSPITAL & DIGESTIVE DISEASE CENTRE",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Near Mission Chowk, Tika Ram Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9921155,
+    "lng": 77.0347635,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6991524158"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P208744",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Anuradha Mittal",
+     "phone": "9215039888",
+     "email": "dranandmittal2007@yahoo.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "gastroenterology",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 76)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-12597544685",
+   "name": "Kanishka",
+   "sourceName": "KANISHKA",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.1403558,
+    "lng": 76.6992372,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12597544685"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p00784",
+   "name": "Krishnawati Hospital",
+   "sourceName": "Krishnawati Hospital",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Gohana Road, Opp Malviya School, Near Nandi Chowk",
+   "phone": null,
+   "location": {
+    "lat": 29.0006056,
+    "lng": 77.0095508,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7010509451"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P00784",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Pankaj Khurana",
+     "phone": "7419193131",
+     "email": "krishnawatihospital@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 40)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7010747049",
+   "name": "Lala Jai Kishan Hindu Charitable Hospital",
+   "sourceName": "Lala Jai Kishan Hindu Charitable Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Industrial Area",
+   "phone": null,
+   "location": {
+    "lat": 28.9813746,
+    "lng": 77.0193224,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7010747049"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516679",
+   "name": "Laxmi Clinic",
+   "sourceName": "Laxmi Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Kundli, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.8729533,
+    "lng": 77.1176134,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516679"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p02470",
+   "name": "Maharaja Agrasen Charitable Hospital",
+   "sourceName": "Maharaja Agrasen Charitable Hospital",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P02470",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Naveen Kumar",
+     "phone": "9728849585",
+     "email": "advocatenaveen997@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 47)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7001382534",
+   "name": "Malik Hospital",
+   "sourceName": "Malik Hospital, Sonipat",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Mahavir Colony, Purkhas Adda",
+   "phone": null,
+   "location": {
+    "lat": 28.9988385,
+    "lng": 77.0143204,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7001382534"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516642",
+   "name": "Mamta Choudhary Clinic",
+   "sourceName": "Mamta Choudhary Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Anand Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.994643,
+    "lng": 77.024751,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516642"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516612",
+   "name": "Manav Clinic",
+   "sourceName": "Manav Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Hospital Market, Mama Banja Chowk, Ashok Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.9935071,
+    "lng": 77.0246024,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516612"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p173574",
+   "name": "Maniktalia E.N.T. Hospital",
+   "sourceName": "MANIKTALIA E.N.T.HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "11-E, Khanna Colony, Opposite Petrol Pump, Bawa Tarana Road",
+   "phone": null,
+   "location": {
+    "lat": 29.0064538,
+    "lng": 77.0330322,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7010503283"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P173574",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Avinash Kumar",
+     "phone": "9812716161",
+     "email": "cashlessmanik@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "ent",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 71)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516635",
+   "name": "Manshi Clinic",
+   "sourceName": "Manshi Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Sector 37, Rai",
+   "phone": null,
+   "location": {
+    "lat": 28.940408,
+    "lng": 77.0960447,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516635"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994232596",
+   "name": "Memorial Hospital",
+   "sourceName": "Memorial Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Delhi Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9945198,
+    "lng": 77.0247543,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994232596"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994309504",
+   "name": "Mittal Nursing Home",
+   "sourceName": "Mittal Nursing Home, Sonipat",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Model Town",
+   "phone": null,
+   "location": {
+    "lat": 28.9884475,
+    "lng": 77.0233335,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994309504"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p01871",
+   "name": "Moolchand Jain Hospital, Ganaur",
+   "sourceName": "MOOLCHAND JAIN HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Namaste Chowk, Ganaur",
+   "phone": null,
+   "location": {
+    "lat": 29.1353451,
+    "lng": 77.0208676,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997701885"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P01871",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Shyam Sunder Jain",
+     "phone": "7015307600",
+     "email": "drshyamsunder@ymail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "orthopaedics",
+     "source": "osm_tag"
+    },
+    {
+     "key": "general_surgery",
+     "source": "osm_tag"
+    },
+    {
+     "key": "general_medicine",
+     "source": "osm_tag"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 41)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6997132004",
+   "name": "Mukhi Hospital and Nursing Home Pvt. Ltd.",
+   "sourceName": "Mukhi Hospital and Nursing Home Pvt. Ltd.",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Ambala Road, Near Bus Stand",
+   "phone": null,
+   "location": {
+    "lat": 28.9998303,
+    "lng": 77.0214772,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997132004"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6993923706",
+   "name": "Navjeevan Hospital",
+   "sourceName": "Navjeevan Hospital, Sonipat",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Near Kalupur Chungi",
+   "phone": null,
+   "location": {
+    "lat": 28.9777681,
+    "lng": 77.0126434,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6993923706"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p180905",
+   "name": "Nawal Hospital & Trauma Centre, Kundli",
+   "sourceName": "Nawal Hospital and Trauma centre",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "362, Grand Trunk Road, Kundli",
+   "phone": null,
+   "location": {
+    "lat": 28.8718637,
+    "lng": 77.1202225,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516718"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P180905",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Dishant Nawal",
+     "phone": "9996074102",
+     "email": "nawalhospital@yahoo.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "trauma",
+     "source": "name_inference"
+    },
+    {
+     "key": "emergency",
+     "source": "name_inference"
+    },
+    {
+     "key": "orthopaedics",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 72)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p02422",
+   "name": "Nest Hospital",
+   "sourceName": "Nest Hospital",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P02422",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Sushil Saroha",
+     "phone": "9812599154",
+     "email": "nesthospitalsonepat@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 46)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516706",
+   "name": "Nirmal Clinic",
+   "sourceName": "Nirmal Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Malik Colony, Ashok Vihar",
+   "phone": null,
+   "location": {
+    "lat": 29.001482,
+    "lng": 77.006333,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516706"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p205422",
+   "name": "Noble Hospital",
+   "sourceName": "NOBLE HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P205422",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Harinder Yant",
+     "phone": "7607443377",
+     "email": "yantharinder@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 75)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516694",
+   "name": "Om Hospital",
+   "sourceName": "Om Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Delhi Road, Khanna Colony",
+   "phone": null,
+   "location": {
+    "lat": 28.9944955,
+    "lng": 77.0286057,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516694"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p130991",
+   "name": "Park Nidaan Hospital",
+   "sourceName": "NIDAAN HOSPITAL A UNIT OF NARSINGH HOSPITAL AND HEART INSTITUTE PRIVATE LIMITED",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "2395+2P Sonipat, Haryana",
+   "phone": "075330 33001",
+   "location": {
+    "lat": 29.0178709,
+    "lng": 77.0596699,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/14098530787"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P130991",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Lokesh Kumar",
+     "phone": "6262929273",
+     "email": "ceo.sonipat@parkhospital.in"
+    }
+   },
+   "specialties": [
+    {
+     "key": "cardiology",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 61)",
+    "OpenStreetMap"
+   ],
+   "notes": "Roster lists 'Nidaan Hospital, a unit of Narsingh Hospital and Heart Institute'; contact email is on the parkhospital.in domain."
+  },
+  {
+   "id": "osm-node-7010548379",
+   "name": "Parnami Ortho and Spine Hospital",
+   "sourceName": "Parnami Ortho and Spine Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "32 Mile Stone G. T. Karnal Road, Kundli",
+   "phone": null,
+   "location": {
+    "lat": 28.8793596,
+    "lng": 77.1211427,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7010548379"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "orthopaedics",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994301473",
+   "name": "Patil Nursing Home",
+   "sourceName": "Patil Nursing Home, Sonipat",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Adarsh Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.9969621,
+    "lng": 77.0279928,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994301473"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516654",
+   "name": "Patliputra Clinic",
+   "sourceName": "Patliputra Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Phase 4, Sector 53, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.8739307,
+    "lng": 77.1226219,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516654"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7168803819",
+   "name": "PHC Ahulana",
+   "sourceName": "PHC Ahulana",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Ahulana - Atail Rd, Ahulana",
+   "phone": null,
+   "location": {
+    "lat": 29.19543,
+    "lng": 76.931821,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803819"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g25147105",
+   "name": "PHC Banwasa",
+   "sourceName": "Phc banwasa",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Opp. GSSS, Banwasa",
+   "phone": null,
+   "location": {
+    "lat": 29.1391145,
+    "lng": 76.5664143,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803902"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G25147105",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Aman Singh",
+     "phone": "9992420825",
+     "email": "phcbanwasa@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 1)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g25280984",
+   "name": "PHC Baroda",
+   "sourceName": "PHC BARODA",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G25280984",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Prem",
+     "phone": "7827526788",
+     "email": "pdpremcooldude3@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 6)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g176695",
+   "name": "PHC Begah",
+   "sourceName": "Primary Health Center, Begah",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Datauli - Begah Road",
+   "phone": null,
+   "location": {
+    "lat": 29.1547271,
+    "lng": 77.1031196,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803932"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G176695",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Jyoti",
+     "phone": "7015743232",
+     "email": "parveenchhikara4444@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 19)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g177329",
+   "name": "PHC Bhatana Jafrabad",
+   "sourceName": "PHC Bhatana Zafrabad",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G177329",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Banita Kumari",
+     "phone": "9518142658",
+     "email": "phcbhatanajafrabad@yahoo.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 24)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "hry-phc-bhatgaon",
+   "name": "PHC Bhatgaon",
+   "sourceName": "Bhatgaon",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "Haryana Health Dept facility list (20250508834158531.pdf, 2025-05-05)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7168803740",
+   "name": "PHC Bidhlan",
+   "sourceName": "PHC Bidhlan",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 28.9534181,
+    "lng": 76.8686493,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803740"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g26277660",
+   "name": "PHC Butana",
+   "sourceName": "PHC Butana",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Butana Road",
+   "phone": null,
+   "location": {
+    "lat": 29.185086,
+    "lng": 76.62855,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803919"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G26277660",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Harish Kumar",
+     "phone": "9992571877",
+     "email": "phcbutana@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 5)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g178978",
+   "name": "PHC Datoli",
+   "sourceName": "PHCDATTOLI",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G178978",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "MOHIT",
+     "phone": "8053846880",
+     "email": "bhardwaj1996sahab@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 37)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g176453",
+   "name": "PHC Dubheta",
+   "sourceName": "PHC DUBHETA",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Ganaur - Gohana Road",
+   "phone": null,
+   "location": {
+    "lat": 29.1259733,
+    "lng": 76.8681032,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803720"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G176453",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Gaurav Kumar",
+     "phone": "9337787449",
+     "email": "phcdubheta@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 18)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g26207182",
+   "name": "PHC Farmana",
+   "sourceName": "PHC FARMANA",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Farmanah Road",
+   "phone": null,
+   "location": {
+    "lat": 28.98309,
+    "lng": 76.813875,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803875"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G26207182",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Geeta Hooda",
+     "phone": "9466076128",
+     "email": "phcfarmana247@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 3)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g178614",
+   "name": "PHC Halalpur",
+   "sourceName": "PHC Halalpur",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Old radha krishna mandir",
+   "phone": null,
+   "location": {
+    "lat": 28.862797,
+    "lng": 77.012248,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803808"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G178614",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Madhu Nandal Vashisth",
+     "phone": "9872804468",
+     "email": "smochchalalpur@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 30)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g25194961",
+   "name": "PHC Jagsi",
+   "sourceName": "PHC JAGSI",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Near Sheetal Siwach Jagsi",
+   "phone": null,
+   "location": {
+    "lat": 29.249816,
+    "lng": 76.667356,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168696224"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G25194961",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Meenu",
+     "phone": "9896710808",
+     "email": "phcjagsi2009@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 2)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g177131",
+   "name": "PHC Jakhauli",
+   "sourceName": "Jakhauli Primary Health Center Sonipat",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Near Post Office Jakhauli",
+   "phone": null,
+   "location": {
+    "lat": 28.932636,
+    "lng": 77.14773,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803923"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G177131",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Anu Attri",
+     "phone": "9729266242",
+     "email": "dranuattri@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 21)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "hry-phc-khanda",
+   "name": "PHC Khanda",
+   "sourceName": "Khanda",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 28.9195289,
+    "lng": 76.8967749,
+    "source": "nominatim",
+    "precision": "village",
+    "ref": "Khanda, Kharkhoda, Sonipat, Haryana, 131402, India"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "Haryana Health Dept facility list (20250508834158531.pdf, 2025-05-05)"
+   ],
+   "notes": "Location is the village centre, not the building."
+  },
+  {
+   "id": "pmjay-hosp6g178752",
+   "name": "PHC Khanpur Kalan",
+   "sourceName": "PHC KHANPUR KALAN",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Patti Kailana Taluka Khanpur Kalan",
+   "phone": null,
+   "location": {
+    "lat": 29.1579004,
+    "lng": 76.79504,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803773"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G178752",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Dixit",
+     "phone": "8168442520",
+     "email": "phckhanpurkalan@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 34)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g178739",
+   "name": "PHC Khewra",
+   "sourceName": "PHC Khewra",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 28.9645084,
+    "lng": 77.1262907,
+    "source": "nominatim",
+    "precision": "village",
+    "ref": "Khewra, Sonipat, Haryana, 131029, India"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G178739",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Kuldeep",
+     "phone": "9416739943",
+     "email": "phckhewra10@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 33)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "hry-phc-kundli",
+   "name": "PHC Kundli",
+   "sourceName": "Kundli",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 28.8696747,
+    "lng": 77.1198167,
+    "source": "nominatim",
+    "precision": "village",
+    "ref": "Kundli, Sonipat, Haryana, 131028, India"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "Haryana Health Dept facility list (20250508834158531.pdf, 2025-05-05)"
+   ],
+   "notes": "Location is the village centre, not the building."
+  },
+  {
+   "id": "pmjay-hosp6g26256331",
+   "name": "PHC Lath",
+   "sourceName": "PHC LATH",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.0633079,
+    "lng": 76.7890109,
+    "source": "nominatim",
+    "precision": "village",
+    "ref": "Lath, Jind - Gohana - Sonipat Expressway, Gohana, Sonipat, Haryana, 131304, India"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G26256331",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Mamta Rani",
+     "phone": "9729153060",
+     "email": "phclath@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 4)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g177317",
+   "name": "PHC Madina",
+   "sourceName": "Primary Health center",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Govt. Girls Sr. Sec. School, Madina",
+   "phone": null,
+   "location": {
+    "lat": 29.094451,
+    "lng": 76.633178,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803803"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G177317",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Jagdeep",
+     "phone": "9215020010",
+     "email": "phcmadina@yahoo.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 23)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7168803892",
+   "name": "PHC Mahra",
+   "sourceName": "Government Hospital Mahra",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Near Shiva Temple",
+   "phone": null,
+   "location": {
+    "lat": 29.0972541,
+    "lng": 76.6889536,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803892"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "ent",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g177361",
+   "name": "PHC Mohana",
+   "sourceName": "PHC Mohana",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Government hospita ,Mohana Sonepat",
+   "phone": null,
+   "location": {
+    "lat": 29.0388721,
+    "lng": 76.8632823,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803864"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G177361",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Swati Malik",
+     "phone": "8569942700",
+     "email": "phcmohanasnp@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 25)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g178553",
+   "name": "PHC Moi Majri",
+   "sourceName": "PHC MOI MAJRI",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G178553",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Pankaj",
+     "phone": "7206068606",
+     "email": "pankjmehra9@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 29)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g177398",
+   "name": "PHC Murthal",
+   "sourceName": "Primary Health Center, Murthal",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Near BDO Office",
+   "phone": null,
+   "location": {
+    "lat": 29.022609,
+    "lng": 77.062652,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803790"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G177398",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Sanjiv Kumar Garg",
+     "phone": "9813764067",
+     "email": "phcmurthal@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 27)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g178726",
+   "name": "PHC Nahri",
+   "sourceName": "PHC Nahri",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G178726",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "dr bindu",
+     "phone": "9068772554",
+     "email": "phcnahri@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 32)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g176719",
+   "name": "PHC Purkhas",
+   "sourceName": "PHC PURKHAS",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Near Vaid Mukesh Rathi Ayurvedic Dr",
+   "phone": null,
+   "location": {
+    "lat": 29.103949,
+    "lng": 76.948799,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803779"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G176719",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Hawa Singh",
+     "phone": "9996895869",
+     "email": "sudkumar1489@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 20)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g178724",
+   "name": "PHC Rajlu Garhi",
+   "sourceName": "PHC RAjlu garhi",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.0907857,
+    "lng": 77.0121466,
+    "source": "nominatim",
+    "precision": "village",
+    "ref": "Rajlu Garhi, Bhigan - Ganaur Rd, Rajpur, Ganaur, Sonipat, Haryana, 131100, India"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G178724",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Manita Gill",
+     "phone": "8529740978",
+     "email": "phcrajlugarhi@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 31)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g177181",
+   "name": "PHC Rohat",
+   "sourceName": "PHC Rohat",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Rohat, State Highway 20, Rohtak - Sonipat Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9319347,
+    "lng": 76.9758323,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803841"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G177181",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Sandeep Kumar",
+     "phone": "9812995333",
+     "email": "morohat@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 22)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7168803826",
+   "name": "PHC Rukhi",
+   "sourceName": "Government Hospital Rukhi",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Near Gohana-Rohtak Road",
+   "phone": null,
+   "location": {
+    "lat": 29.052231,
+    "lng": 76.6734015,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803826"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "ent",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g178805",
+   "name": "PHC Sargathal",
+   "sourceName": "PHC Saragthal",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G178805",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Nagender Kumar Bhanwala",
+     "phone": "9115511804",
+     "email": "phcsaragthal@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 36)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7168696208",
+   "name": "PHC Shamri",
+   "sourceName": "PHC Shamri",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Chidana-Shamri Road",
+   "phone": null,
+   "location": {
+    "lat": 29.196477,
+    "lng": 76.82097,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168696208"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7168803916",
+   "name": "PHC Sisana",
+   "sourceName": "Civil Hospital Sisana",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": "Near Ideal Village Memorial Gate, Sisana",
+   "phone": null,
+   "location": {
+    "lat": 28.897556,
+    "lng": 76.8540451,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803916"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g82906",
+   "name": "Polyclinic, Sector 7",
+   "sourceName": "Polyclinic",
+   "ownership": "public",
+   "facilityType": "polyclinic",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 28.9865749,
+    "lng": 77.0788364,
+    "source": "nominatim",
+    "precision": "locality",
+    "ref": "Sector 7, Sonipat, Haryana, 131001, India"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G82906",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Neelam Pandey",
+     "phone": "7419283304",
+     "email": "policlinicsec7sonipat@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 15)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516669",
+   "name": "Preet Hospital",
+   "sourceName": "Preet Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Ashok Vihar",
+   "phone": null,
+   "location": {
+    "lat": 28.9953104,
+    "lng": 77.007667,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516669"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g177370",
+   "name": "Primary Health Centre (location unconfirmed)",
+   "sourceName": "Primary healthcare center",
+   "ownership": "public",
+   "facilityType": "phc",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G177370",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Richa",
+     "phone": "9050489866",
+     "email": "richadahiya55@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 26)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p149743",
+   "name": "R K Eye Hospital",
+   "sourceName": "R K EYE Hospital",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P149743",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Sumit",
+     "phone": "8950453611",
+     "email": "rkeyehospital1@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "ophthalmology",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 67)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p101722",
+   "name": "Rai Multispeciality Hospital",
+   "sourceName": "Rai MULTISPECIALITY HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P101722",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Dr. Manoj Kumar Rai",
+     "phone": "9410507200",
+     "email": "raihospital@yahoo.in"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 59)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994286418",
+   "name": "Raj Child Health Care and Immunization Centre",
+   "sourceName": "Raj Child Health Care and Immunization Centre",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "1007 Sector 14",
+   "phone": null,
+   "location": {
+    "lat": 28.998655,
+    "lng": 77.0304943,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994286418"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "paediatrics",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-12597603811",
+   "name": "Raj Clinic",
+   "sourceName": "RAJ CLINIC",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.1271407,
+    "lng": 76.6982974,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12597603811"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516641",
+   "name": "Raj Hospital",
+   "sourceName": "Raj Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Malviya Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.994199,
+    "lng": 77.006111,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516641"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516672",
+   "name": "Ram Clinic",
+   "sourceName": "Ram Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Sector 24",
+   "phone": null,
+   "location": {
+    "lat": 28.9843101,
+    "lng": 77.004404,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516672"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p02024",
+   "name": "Rama Hospital",
+   "sourceName": "RAMA HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "Bahalgarh, Road , Bahalgarh, Near -Nh-1",
+   "phone": null,
+   "location": {
+    "lat": 28.9634997,
+    "lng": 77.0876889,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6991500505"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P02024",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Vijay Kumar Gupta",
+     "phone": "9050159810",
+     "email": "rramahospital@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 44)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p131336",
+   "name": "Rana Hospital",
+   "sourceName": "RANA HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P131336",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Ramniwas Rana",
+     "phone": "9306802903",
+     "email": "malikdahiya671@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 63)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516684",
+   "name": "Rathee Physiotherapy Clinic",
+   "sourceName": "Rathee Physiotherapy Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Prem Nagar, Dev Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.9859269,
+    "lng": 77.0043683,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516684"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "physiotherapy",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516670",
+   "name": "Rawal Dental Clinic",
+   "sourceName": "Rawal Dental Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Delhi Road, SH 14, Janta Colony",
+   "phone": null,
+   "location": {
+    "lat": 28.9937558,
+    "lng": 77.0301699,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516670"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "dental",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6997688593",
+   "name": "Rawal Multi Speciality Hospital",
+   "sourceName": "Rawal Multi Speciality Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Ind. Area, Rohtak Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9760235,
+    "lng": 77.0068927,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997688593"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6997325092",
+   "name": "S.M. Hospital Dental and Chest Care Centre",
+   "sourceName": "S.M. Hospital Dental and Chest Care Centre",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "209-L, Model Town, Atlas Road, Near Bulbul Restaurant",
+   "phone": null,
+   "location": {
+    "lat": 28.9872261,
+    "lng": 77.0208375,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997325092"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "dental",
+     "source": "name_inference"
+    },
+    {
+     "key": "pulmonology",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516662",
+   "name": "Saini Clinic",
+   "sourceName": "Saini Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Malik Colony, Ashok Vihar",
+   "phone": null,
+   "location": {
+    "lat": 29.0014877,
+    "lng": 77.0028639,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516662"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7001646670",
+   "name": "Sajni Nursing Home",
+   "sourceName": "Sajni Nursing Home",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Gohana",
+   "phone": null,
+   "location": {
+    "lat": 29.1394023,
+    "lng": 76.6962178,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7001646670"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516682",
+   "name": "Sanjeevani Hospital",
+   "sourceName": "Sanjeevani Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Mehlana Road, Malviya Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.9953384,
+    "lng": 77.0077726,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516682"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516717",
+   "name": "Sanjivani Clinic",
+   "sourceName": "Sanjivani Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Narender Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.9759287,
+    "lng": 77.0258445,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516717"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p143073",
+   "name": "Sanjog Hospital",
+   "sourceName": "SANJOG HOSPITAL PRIVATE LIMITED",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P143073",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Sachin Joon",
+     "phone": "8607799300",
+     "email": "sachinjoon4u@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 65)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6994051370",
+   "name": "Sarita Jain Hospital",
+   "sourceName": "Sarita Jain Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "OppositeD.C. Jain High School,Near Sec - 23,Malhana Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9946272,
+    "lng": 77.0049938,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6994051370"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7008806739",
+   "name": "Satya-Om Eye and Maternity Hospital",
+   "sourceName": "Satya-Om Eye and Maternity Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "1138, Sector -14 Main Road Between Sector-14-15",
+   "phone": null,
+   "location": {
+    "lat": 28.9967418,
+    "lng": 77.0357144,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7008806739"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "ophthalmology",
+     "source": "name_inference"
+    },
+    {
+     "key": "maternity",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6997306781",
+   "name": "Saxena Multispeciality Hospital Pvt Ltd",
+   "sourceName": "Saxena Multispeciality Hospital Pvt Ltd",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "112-113, T.P Scheme, Delhi Road,Near Hero Honda Showroom",
+   "phone": null,
+   "location": {
+    "lat": 28.9943043,
+    "lng": 77.0270468,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997306781"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g81063",
+   "name": "SDH Ganaur",
+   "sourceName": "SDH Ganaur",
+   "ownership": "public",
+   "facilityType": "sub_district_hospital",
+   "address": "Aadharshila financial services agency",
+   "phone": null,
+   "location": {
+    "lat": 29.130657,
+    "lng": 77.01581,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803825"
+   },
+   "beds": {
+    "count": 50,
+    "source": "20250508834158531.pdf p.3 (2025-05-05)"
+   },
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G81063",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Tina Anand",
+     "phone": "9416084115",
+     "email": "smo.chcgannaur@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "orthopaedics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "ophthalmology",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "dental",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 13)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g02452",
+   "name": "SDH Gohana (Civil Hospital)",
+   "sourceName": "sdhgohana",
+   "ownership": "public",
+   "facilityType": "sub_district_hospital",
+   "address": "Devi Nagar, Gohana",
+   "phone": null,
+   "location": {
+    "lat": 29.1381755,
+    "lng": 76.693045,
+    "source": "osm",
+    "precision": "building",
+    "ref": "way/427399370"
+   },
+   "beds": {
+    "count": 100,
+    "source": "20250508834158531.pdf p.3 (2025-05-05)"
+   },
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G02452",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Rajesh Kumar",
+     "phone": "9555301331",
+     "email": "smochcgohana@yahoo.in"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_surgery",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "maternity",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "paediatrics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "emergency",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "orthopaedics",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "ophthalmology",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "dental",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 7)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6997312343",
+   "name": "Sehrawat Hospital",
+   "sourceName": "Sehrawat Hospital, Sonipat",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Rathandhana Road , Rathandhana Road",
+   "phone": null,
+   "location": {
+    "lat": 28.977219,
+    "lng": 77.0303714,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997312343"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7010026474",
+   "name": "Setiya Nursing Home",
+   "sourceName": "Setiya Nursing Home",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Old Bus Stand Gohana",
+   "phone": null,
+   "location": {
+    "lat": 29.1390708,
+    "lng": 76.6983005,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7010026474"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p163333",
+   "name": "Shanti Hospital, Gohana",
+   "sourceName": "SHANTI HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.1368616,
+    "lng": 76.6998148,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12597561962"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P163333",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Chaitanya Dev Sharma",
+     "phone": "9042577777",
+     "email": "shantihospitalgohana@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 68)",
+    "OpenStreetMap"
+   ],
+   "notes": "Roster email is shantihospitalgohana@; OSM feature 'SHANTI' is in Gohana."
+  },
+  {
+   "id": "osm-node-6997324385",
+   "name": "Sharma Eye Hospital",
+   "sourceName": "Sharma Eye Hospital, Sonipat",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "D/8, Khanna Colony, Bawa Tarana Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9964087,
+    "lng": 77.025868,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6997324385"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "ophthalmology",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7001287193",
+   "name": "Sharma Hospital",
+   "sourceName": "Sharma Hospital, Sonipat",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Railway Road, Near Vishwakarma Mandir Ganaur",
+   "phone": null,
+   "location": {
+    "lat": 28.999852,
+    "lng": 77.0297304,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7001287193"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6993943679",
+   "name": "Shiv Sanjivani Nursing Home",
+   "sourceName": "Shiv Sanjivani Nursing Home",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Patel Basti, Anaj Mandi Gohana",
+   "phone": null,
+   "location": {
+    "lat": 29.1378257,
+    "lng": 76.6895767,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6993943679"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7010518503",
+   "name": "Shiva Hospital",
+   "sourceName": "Shiva Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "Dev Nagar",
+   "phone": null,
+   "location": {
+    "lat": 28.9909651,
+    "lng": 77.0130943,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7010518503"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516632",
+   "name": "Shri Krishan Health Care Clinic",
+   "sourceName": "Shri Krishan Health Care Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Hbc Road, Near Kusth Ashram, Sector 15",
+   "phone": null,
+   "location": {
+    "lat": 28.9975209,
+    "lng": 77.0391117,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516632"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-12597572910",
+   "name": "Sidhi Vinayak Hospital",
+   "sourceName": "SIDHI VINAYAK HOSPITAL",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.1296055,
+    "lng": 76.7019053,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12597572910"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516658",
+   "name": "Singhal Health Clinic",
+   "sourceName": "Singhal Health Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Sector 53, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.8632895,
+    "lng": 77.124445,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516658"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p02398",
+   "name": "Sita Hospital, Ganaur",
+   "sourceName": "SITA HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": "453- B, Ward No.9, Railway Road, Ganaur, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 29.1340935,
+    "lng": 77.0175263,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7010929357"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P02398",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Rahul",
+     "phone": "9416014147",
+     "email": "drsanjay847@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 45)",
+    "OpenStreetMap"
+   ],
+   "notes": "OSM name says Gurgaon but the feature and its address are in Ganaur, Sonipat."
+  },
+  {
+   "id": "pmjay-hosp6p101267",
+   "name": "Smt. Jai Devi Memorial Nursing Home",
+   "sourceName": "SMT JAI DEVI MEMORIAL NURSING HOME",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P101267",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Lokesh Charaya",
+     "phone": "9254004000",
+     "email": "sjmtpa@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 58)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516714",
+   "name": "Sparsh Clinic",
+   "sourceName": "Sparsh Clinic",
+   "ownership": "unknown",
+   "facilityType": "clinic",
+   "address": "Old DC Road, SS Park Extn, Bhagat Pura",
+   "phone": null,
+   "location": {
+    "lat": 28.9777687,
+    "lng": 77.0294158,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516714"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-12597573993",
+   "name": "Spes Hospital",
+   "sourceName": "SPES HOSPITAL",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.1287825,
+    "lng": 76.7018424,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12597573993"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-12597220969",
+   "name": "Staya Jyoti Bhawan",
+   "sourceName": "STAYA JYOTI BHAWAN",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.1363647,
+    "lng": 76.7003791,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12597220969"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-12597558558",
+   "name": "Suncare",
+   "sourceName": "SUNCARE",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.1376891,
+    "lng": 76.6993366,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12597558558"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-12596207564",
+   "name": "Sunderlal Hospital",
+   "sourceName": "SUNDERLAL HOSPITAL",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": {
+    "lat": 29.191991,
+    "lng": 76.6220057,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/12596207564"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p124177",
+   "name": "Sushanti Eye Hospital",
+   "sourceName": "SUSHANTI EYE HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P124177",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Vinod Sharma",
+     "phone": "9810155159",
+     "email": "sushantieyehospital@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "ophthalmology",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 60)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p139201",
+   "name": "Swarnprastha Hospital",
+   "sourceName": "SWARNPRASTHA HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P139201",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Santosh Kumar",
+     "phone": "8199001097",
+     "email": "swarnprasthahospital@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 64)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p146389",
+   "name": "Tulip Multispeciality Hospital",
+   "sourceName": "TULIP MULTISPECIALITY HOSPITAL PVT. LTD .",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P146389",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Anurag Arora",
+     "phone": "7404321021",
+     "email": "hospitaltulip@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 66)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-7622516622",
+   "name": "Tulip Women Hospital",
+   "sourceName": "Tulip Women Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "T. P. Scheme No 15, Vivekanand Chowk, Delhi Road",
+   "phone": null,
+   "location": {
+    "lat": 28.9943382,
+    "lng": 77.0270378,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7622516622"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "maternity",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g179572",
+   "name": "UHC Kalupur",
+   "sourceName": "URBAN HEALTH CENTRE KALUPUR",
+   "ownership": "public",
+   "facilityType": "uhc",
+   "address": "Santa Kabir Nagar,Sector 24, Sonipat",
+   "phone": null,
+   "location": {
+    "lat": 28.977758,
+    "lng": 77.003445,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/7168803791"
+   },
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G179572",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Sanjay Phogat",
+     "phone": "8368713124",
+     "email": "urbanhealthcentrekalupur@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 38)",
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6g177567",
+   "name": "UHC Mahavir Colony",
+   "sourceName": "UHC MAHAVIR COLONY",
+   "ownership": "public",
+   "facilityType": "uhc",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6G177567",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Rohit Vats",
+     "phone": "9468443368",
+     "email": "smomahavircolony@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "primary_care",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "general_medicine",
+     "source": "facility_level_norm"
+    },
+    {
+     "key": "vaccination",
+     "source": "facility_level_norm"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 28)"
+   ],
+   "notes": null
+  },
+  {
+   "id": "osm-node-6993994145",
+   "name": "Vardhman General Hospital",
+   "sourceName": "Vardhman General Hospital",
+   "ownership": "unknown",
+   "facilityType": "hospital",
+   "address": "145-46, T.P. Scheme No. 15, Delhi Road, Near Civil Hospital",
+   "phone": null,
+   "location": {
+    "lat": 28.9946005,
+    "lng": 77.0268074,
+    "source": "osm",
+    "precision": "building",
+    "ref": "node/6993994145"
+   },
+   "beds": null,
+   "pmjay": null,
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "OpenStreetMap"
+   ],
+   "notes": null
+  },
+  {
+   "id": "pmjay-hosp6p25186115",
+   "name": "Virmani Hospital",
+   "sourceName": "VIRMANI HOSPITAL",
+   "ownership": "private",
+   "facilityType": "hospital",
+   "address": null,
+   "phone": null,
+   "location": null,
+   "beds": null,
+   "pmjay": {
+    "empanelled": true,
+    "hospitalId": "HOSP6P25186115",
+    "asOf": "2026-08-03",
+    "desk": {
+     "officer": "Deepti Arya",
+     "phone": "8447781763",
+     "email": "rohithot87@gmail.com"
+    }
+   },
+   "specialties": [
+    {
+     "key": "general_medicine",
+     "source": "name_inference"
+    },
+    {
+     "key": "general_surgery",
+     "source": "name_inference"
+    }
+   ],
+   "sources": [
+    "AB-PMJAY empanelled hospitals, District Sonipat (as on 2026-08-03, entry 39)"
+   ],
+   "notes": null
+  }
+ ]
+}

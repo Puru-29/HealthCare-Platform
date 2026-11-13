@@ -1,0 +1,31 @@
+{
+  "name": "carepath-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "tsx watch --env-file-if-exists=.env src/index.ts",
+    "start": "node --env-file-if-exists=.env --import tsx src/index.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "seed": "tsx --env-file-if-exists=.env scripts/seed.ts",
+    "console:create-user": "tsx --env-file-if-exists=.env scripts/create-console-user.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "express": "^5.1.0",
+    "tsx": "^4.20.6",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.0",
+    "@types/supertest": "^6.0.3",
+    "supertest": "^7.1.4",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.0"
+  }
+}

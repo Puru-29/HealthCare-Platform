@@ -1,0 +1,96 @@
+{
+ "village|Lath, Gohana, Sonipat, Haryana": [
+  {
+   "lat": 29.0633079,
+   "lng": 76.7890109,
+   "category": "railway",
+   "type": "halt",
+   "name": "Lath",
+   "display": "Lath, Jind - Gohana - Sonipat Expressway, Gohana, Sonipat, Haryana, 131304, India"
+  }
+ ],
+ "village|Baroda, Gohana, Sonipat, Haryana": [
+  {
+   "lat": 29.1368346,
+   "lng": 76.6815135,
+   "category": "highway",
+   "type": "tertiary",
+   "name": "Gohana - Baroda Rd",
+   "display": "Gohana - Baroda Rd, Gohana, Sonipat, Haryana, 124300, India"
+  }
+ ],
+ "locality|Sector 7, Sonipat, Haryana": [
+  {
+   "lat": 28.9865749,
+   "lng": 77.0788364,
+   "category": "landuse",
+   "type": "residential",
+   "name": "Sector 7",
+   "display": "Sector 7, Sonipat, Haryana, 131001, India"
+  }
+ ],
+ "village|Bhatana Jafrabad, Sonipat, Haryana": [],
+ "locality|Mahavir Colony, Sonipat, Haryana": [],
+ "village|Moi Majri, Sonipat, Haryana": [],
+ "village|Rajlu Garhi, Sonipat, Haryana": [
+  {
+   "lat": 29.0907857,
+   "lng": 77.0121466,
+   "category": "railway",
+   "type": "halt",
+   "name": "Rajlu Garhi",
+   "display": "Rajlu Garhi, Bhigan - Ganaur Rd, Rajpur, Ganaur, Sonipat, Haryana, 131100, India"
+  }
+ ],
+ "village|Nahri, Sonipat, Haryana": [],
+ "village|Khewra, Sonipat, Haryana": [
+  {
+   "lat": 28.9645084,
+   "lng": 77.1262907,
+   "category": "place",
+   "type": "village",
+   "name": "Khewra",
+   "display": "Khewra, Sonipat, Haryana, 131029, India"
+  }
+ ],
+ "village|Sargathal, Sonipat, Haryana": [],
+ "village|Datoli, Sonipat, Haryana": [],
+ "poi|Virmani Hospital, Sonipat": [],
+ "poi|Nest Hospital, Sonipat": [],
+ "poi|Maharaja Agrasen Hospital, Sonipat": [],
+ "poi|Aristo Hospital, Sonipat": [],
+ "poi|Dahiya Eye Hospital, Sonipat": [],
+ "poi|Abhishek Memorial Hospital, Sonipat": [],
+ "poi|Bhagwan Das Hospital, Sonipat": [],
+ "poi|Jai Devi Memorial Nursing Home, Sonipat": [],
+ "poi|Rai Multispeciality Hospital, Sonipat": [],
+ "poi|Sushanti Eye Hospital, Sonipat": [],
+ "poi|Bhatiya Hospital, Sonipat": [],
+ "poi|Rana Hospital, Sonipat": [],
+ "poi|Swarnprastha Hospital, Sonipat": [],
+ "poi|Sanjog Hospital, Sonipat": [],
+ "poi|Tulip Multispeciality Hospital, Sonipat": [],
+ "poi|R K Eye Hospital, Sonipat": [],
+ "poi|Noble Hospital, Sonipat": [],
+ "village|Khanda, Sonipat, Haryana": [
+  {
+   "lat": 28.9195289,
+   "lng": 76.8967749,
+   "category": "place",
+   "type": "village",
+   "name": "Khanda",
+   "display": "Khanda, Kharkhoda, Sonipat, Haryana, 131402, India"
+  }
+ ],
+ "village|Bhatgaon, Sonipat, Haryana": [],
+ "village|Kundli, Sonipat, Haryana": [
+  {
+   "lat": 28.8696747,
+   "lng": 77.1198167,
+   "category": "place",
+   "type": "village",
+   "name": "Kundli",
+   "display": "Kundli, Sonipat, Haryana, 131028, India"
+  }
+ ]
+}
