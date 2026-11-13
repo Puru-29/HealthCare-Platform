@@ -1,0 +1,9 @@
+{
+  "name": "CarePath Sonipat",
+  "short_name": "CarePath",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f5f1",
+  "theme_color": "#0f5c4d",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

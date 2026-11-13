@@ -1,0 +1,84 @@
+@import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
+
+@theme {
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+
+  --color-canvas: #f6f5f1;
+  --color-surface: #ffffff;
+  --color-line: #e4e2da;
+  --color-ink: #17201d;
+  --color-ink-2: #4b5551;
+  --color-ink-3: #7b8480;
+
+  --color-brand: #0f5c4d;
+  --color-brand-2: #137a66;
+  --color-brand-soft: #e3f1ec;
+
+  --color-sos: #d92d20;
+  --color-sos-dark: #b42318;
+  --color-sos-soft: #fdecea;
+
+  --color-amber: #b54708;
+  --color-amber-soft: #fef4e6;
+  --color-sky: #175cd3;
+  --color-sky-soft: #eaf2ff;
+}
+
+html { -webkit-tap-highlight-color: transparent; }
+body {
+  @apply bg-canvas text-ink antialiased;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+@layer components {
+  .card { @apply rounded-2xl border border-line bg-surface; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition
+      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary { @apply btn bg-brand text-white hover:bg-brand-2; }
+  .btn-secondary { @apply btn border border-line bg-surface text-ink hover:bg-canvas; }
+  .btn-danger { @apply btn bg-sos text-white hover:bg-sos-dark; }
+  .btn-ghost { @apply btn text-ink-2 hover:bg-black/5; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium; }
+  .input {
+    @apply w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-sm text-ink placeholder:text-ink-3
+      focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20;
+  }
+  .label { @apply mb-1 block text-sm font-medium text-ink-2; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-wider text-ink-3; }
+}
+
+/* Map markers (Leaflet divIcons) */
+.pin {
+  display: grid; place-items: center;
+  width: 30px; height: 30px; border-radius: 999px;
+  border: 3px solid #fff; box-shadow: 0 2px 6px rgb(0 0 0 / .3);
+  font: 700 12px/1 var(--font-sans); color: #fff;
+}
+.pin-hospital { background: var(--color-brand); }
+.pin-hospital.is-best { background: #6941c6; }
+.pin-you { background: var(--color-sky); width: 20px; height: 20px; }
+.pin-you::after {
+  content: ''; position: absolute; width: 20px; height: 20px; border-radius: 999px;
+  background: var(--color-sky); opacity: .35; animation: pulse 2s ease-out infinite;
+}
+.pin-ambulance { background: var(--color-sos); width: 36px; height: 36px; font-size: 18px; }
+@keyframes pulse { from { transform: scale(1); opacity: .45 } to { transform: scale(3.2); opacity: 0 } }
+
+.leaflet-container { font-family: var(--font-sans); background: #e8e6df; }
+
+/* SOS hold ring */
+.sos-ring { transition: stroke-dashoffset 60ms linear; }
+
+@keyframes radar { from { transform: scale(.4); opacity: .6 } to { transform: scale(1.6); opacity: 0 } }
+.radar::before, .radar::after {
+  content: ''; position: absolute; inset: 0; border-radius: 999px; border: 2px solid var(--color-sos);
+  animation: radar 2.4s ease-out infinite;
+}
+.radar::after { animation-delay: 1.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .radar::before, .radar::after, .pin-you::after { animation: none; }
+}
