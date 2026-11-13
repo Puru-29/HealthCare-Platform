@@ -213,6 +213,8 @@ export function importFacilities(db: DB, file = config.facilitiesFile): number {
       beds = excluded.beds, beds_source = excluded.beds_source,
       pmjay_json = excluded.pmjay_json, sources_json = excluded.sources_json, notes = excluded.notes
   `)
+  // Once a hospital has confirmed its own specialty list, inferred ones never come back.
+  const isVerified = db.prepare(`SELECT verified FROM hospitals WHERE id = ?`)
   const clearInferred = db.prepare(`DELETE FROM hospital_specialties WHERE hospital_id = ? AND source <> 'hospital_verified'`)
   const addSpecialty = db.prepare(`INSERT OR IGNORE INTO hospital_specialties (hospital_id, key, source) VALUES (?, ?, ?)`)
   tx(db, () => {
@@ -223,6 +225,7 @@ export function importFacilities(db: DB, file = config.facilitiesFile): number {
         f.beds?.count ?? null, f.beds?.source ?? null,
         f.pmjay ? JSON.stringify(f.pmjay) : null, JSON.stringify(f.sources), f.notes,
       )
+      if ((isVerified.get(f.id) as { verified: number }).verified) continue
       clearInferred.run(f.id)
       for (const s of f.specialties) addSpecialty.run(f.id, s.key, s.source)
     }
