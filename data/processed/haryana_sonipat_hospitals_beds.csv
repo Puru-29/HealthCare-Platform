@@ -1,0 +1,5 @@
+﻿source_document,source_date,source_page,district,record_type,hospital_name,bed_capacity,verification_status,extraction_review_status,extraction_notes
+20250508834158531.pdf,2025-05-05,3,Sonipat,district_hospital_bed_capacity,DCH Sonepat,200,unverified,extracted,Source district label is spelled Sonepat.
+20250508834158531.pdf,2025-05-05,3,Sonipat,district_hospital_bed_capacity,SDCH Gohana,100,unverified,extracted,Source district label is spelled Sonepat.
+20250508834158531.pdf,2025-05-05,3,Sonipat,district_hospital_bed_capacity,CH Kharkhoda,50,unverified,extracted,Source district label is spelled Sonepat.
+20250508834158531.pdf,2025-05-05,3,Sonipat,district_hospital_bed_capacity,SDCH Ganaur,50,unverified,extracted,Source district label is spelled Sonepat.

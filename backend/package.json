@@ -1,0 +1,46 @@
+{
+  "name": "healthcare-platform-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "admin:hash": "node scripts/create-admin-password-hash.mjs",
+    "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:import": "node --test scripts/import-sonipat-hospitals.test.mjs",
+    "test:hospital-master-import": "node --test scripts/hospital-master-import.test.mjs",
+    "test:source-migration": "node --test scripts/hospital-source-observations.test.mjs",
+    "import:sonipat:dry-run": "node scripts/import-sonipat-hospitals.mjs --dry-run",
+    "import:sonipat:write": "node scripts/import-sonipat-hospitals.mjs",
+    "hospital-master:dry-run": "node scripts/hospital-master-import.mjs --dry-run",
+    "hospital-master:write": "node scripts/hospital-master-import.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.7.1",
+    "google-auth-library": "^11.3.3",
+    "helmet": "^8.1.0",
+    "pg": "^8.16.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.10.0",
+    "@types/pg": "^8.15.5",
+    "@types/supertest": "^6.0.3",
+    "supertest": "^7.1.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  }
+}

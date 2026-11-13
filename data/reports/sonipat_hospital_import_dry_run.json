@@ -1,0 +1,2471 @@
+{
+  "generatedAt": "2026-10-29T13:39:13.284Z",
+  "mode": "dry-run",
+  "operation": "read-only-review-only",
+  "database": {
+    "targetName": "healthcare_platform_test",
+    "endpointVerified": true,
+    "endpoint": {
+      "database": "healthcare_platform_test",
+      "address": "127.0.0.1/32",
+      "port": 5432
+    },
+    "transactionMode": "READ ONLY",
+    "databaseWritesPerformed": false,
+    "existingHospitalCount": 0,
+    "existingSourceObservationCount": 0
+  },
+  "source": {
+    "file": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\sonipat_pmjay_empanelled_hospitals.csv",
+    "rowCount": 76,
+    "requiredColumns": [
+      "source_document",
+      "source_date",
+      "source_page",
+      "pdf_entry_number",
+      "hospital_id",
+      "hospital_name",
+      "hospital_type",
+      "email",
+      "contact_number",
+      "verification_status"
+    ],
+    "preservedSourceColumns": [
+      "source_document",
+      "source_date",
+      "source_page",
+      "record_type",
+      "pdf_entry_number",
+      "hospital_id",
+      "hospital_name",
+      "hospital_name_source",
+      "hospital_type",
+      "email",
+      "email_source",
+      "nodal_officer_name",
+      "contact_number",
+      "contact_number_source",
+      "verification_status",
+      "extraction_review_status",
+      "extraction_notes"
+    ],
+    "missingColumns": [],
+    "parsingErrors": []
+  },
+  "summary": {
+    "totalRows": 76,
+    "rowsWithoutReviewFlags": 70,
+    "rowsRequiringReview": 6,
+    "invalidRows": 0,
+    "duplicateSourceIdGroups": 0,
+    "duplicateNameGroups": 0,
+    "similarNamePairs": 3,
+    "possibleDatabaseMatchRows": 0,
+    "importExecuted": false
+  },
+  "readiness": {
+    "writeModeAvailable": false,
+    "importAvailable": false,
+    "eligibleRowsDefinition": "Rows are shown for review only. No hospital or source-observation records are proposed or imported.",
+    "blockers": [
+      "This utility is strictly read-only; a separate reviewed implementation would be required to write source observations."
+    ]
+  },
+  "schema": {
+    "inspectedFromLiveDatabase": true,
+    "columns": [
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "id",
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "hospital_id",
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_system",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_hospital_id",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_document",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_document_sha256",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_date",
+        "data_type": "date",
+        "udt_name": "date",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_page",
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_hospital_name",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_ownership_type",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_email",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_contact_phone",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_nodal_officer_name",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "column_name": "source_row_payload",
+        "data_type": "jsonb",
+        "udt_name": "jsonb",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "id",
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "hospital_id",
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "status",
+        "data_type": "USER-DEFINED",
+        "udt_name": "hospital_verification_status",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "source_type",
+        "data_type": "USER-DEFINED",
+        "udt_name": "data_source_type",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "source_name",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "source_reference",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "verified_name",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "verified_address",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "verified_city",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "verified_region",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "verified_postal_code",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "verified_phone",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "verified_website",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "verified_facility_type",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "verified_location",
+        "data_type": "USER-DEFINED",
+        "udt_name": "geography",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "last_verified_at",
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "expires_at",
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "verified_by_user_id",
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "is_current",
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "id",
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_name",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_address",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_city",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_region",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_postal_code",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_phone",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_website",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_description",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_facility_type",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_location",
+        "data_type": "USER-DEFINED",
+        "udt_name": "geography",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_listing_status",
+        "data_type": "USER-DEFINED",
+        "udt_name": "hospital_listing_status",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_source_name",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "public_source_reference",
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "hospitals",
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "NO"
+      }
+    ],
+    "constraints": [
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_created_at_not_null",
+        "type": "n",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_document_hash_valid",
+        "type": "c",
+        "definition": "CHECK ((source_document_sha256 ~ '^[0-9a-f]{64}$'::text))"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_document_not_blank",
+        "type": "c",
+        "definition": "CHECK ((length(btrim(source_document)) > 0))"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_hospital_id_fkey",
+        "type": "f",
+        "definition": "FOREIGN KEY (hospital_id) REFERENCES hospitals(id) ON DELETE RESTRICT"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_id_not_blank",
+        "type": "c",
+        "definition": "CHECK ((source_hospital_id ~ '^[a-z0-9][a-z0-9._:-]*$'::text))"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_id_not_null",
+        "type": "n",
+        "definition": "NOT NULL id"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_name_not_blank",
+        "type": "c",
+        "definition": "CHECK ((length(btrim(source_hospital_name)) > 0))"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_optional_text_not_blank",
+        "type": "c",
+        "definition": "CHECK ((((source_email IS NULL) OR (length(btrim(source_email)) > 0)) AND ((source_contact_phone IS NULL) OR (length(btrim(source_contact_phone)) > 0)) AND ((source_nodal_officer_name IS NULL) OR (length(btrim(source_nodal_officer_name)) > 0))))"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_ownership_valid",
+        "type": "c",
+        "definition": "CHECK (((source_ownership_type IS NULL) OR (source_ownership_type = ANY (ARRAY['Public'::text, 'Private'::text]))))"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_page_positive",
+        "type": "c",
+        "definition": "CHECK (((source_page IS NULL) OR (source_page > 0)))"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_pkey",
+        "type": "p",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_source_date_not_null",
+        "type": "n",
+        "definition": "NOT NULL source_date"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_source_document_not_null",
+        "type": "n",
+        "definition": "NOT NULL source_document"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_source_document_sha256_not_null",
+        "type": "n",
+        "definition": "NOT NULL source_document_sha256"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_source_hospital_id_not_null",
+        "type": "n",
+        "definition": "NOT NULL source_hospital_id"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_source_hospital_name_not_null",
+        "type": "n",
+        "definition": "NOT NULL source_hospital_name"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_source_row_payload_valid",
+        "type": "c",
+        "definition": "CHECK (((source_row_payload IS NULL) OR ((jsonb_typeof(source_row_payload) = 'object'::text) AND (source_row_payload ?& ARRAY['source_document'::text, 'source_date'::text, 'source_page'::text, 'record_type'::text, 'pdf_entry_number'::text, 'hospital_id'::text, 'hospital_name'::text, 'hospital_name_source'::text, 'hospital_type'::text, 'email'::text, 'email_source'::text, 'nodal_officer_name'::text, 'contact_number'::text, 'contact_number_source'::text, 'verification_status'::text, 'extraction_review_status'::text, 'extraction_notes'::text]) AND (jsonb_typeof((source_row_payload -> 'source_document'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'source_date'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'source_page'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'record_type'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'pdf_entry_number'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'hospital_id'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'hospital_name'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'hospital_name_source'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'hospital_type'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'email'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'email_source'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'nodal_officer_name'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'contact_number'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'contact_number_source'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'verification_status'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'extraction_review_status'::text)) = 'string'::text) AND (jsonb_typeof((source_row_payload -> 'extraction_notes'::text)) = 'string'::text))))"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_source_system_not_null",
+        "type": "n",
+        "definition": "NOT NULL source_system"
+      },
+      {
+        "table_name": "hospital_source_observations",
+        "constraint_name": "hospital_source_observations_system_not_blank",
+        "type": "c",
+        "definition": "CHECK ((source_system ~ '^[a-z0-9][a-z0-9._:-]*$'::text))"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_current_verified_has_timestamp",
+        "type": "c",
+        "definition": "CHECK (((status <> 'verified'::hospital_verification_status) OR (last_verified_at IS NOT NULL)))"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_expiry_after_verification",
+        "type": "c",
+        "definition": "CHECK (((expires_at IS NULL) OR (last_verified_at IS NULL) OR (expires_at >= last_verified_at)))"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_records_created_at_not_null",
+        "type": "n",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_records_hospital_id_fkey",
+        "type": "f",
+        "definition": "FOREIGN KEY (hospital_id) REFERENCES hospitals(id) ON DELETE RESTRICT"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_records_hospital_id_not_null",
+        "type": "n",
+        "definition": "NOT NULL hospital_id"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_records_id_not_null",
+        "type": "n",
+        "definition": "NOT NULL id"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_records_is_current_not_null",
+        "type": "n",
+        "definition": "NOT NULL is_current"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_records_pkey",
+        "type": "p",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_records_source_name_not_null",
+        "type": "n",
+        "definition": "NOT NULL source_name"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_records_source_type_not_null",
+        "type": "n",
+        "definition": "NOT NULL source_type"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_records_status_not_null",
+        "type": "n",
+        "definition": "NOT NULL status"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_records_verified_by_user_id_fkey",
+        "type": "f",
+        "definition": "FOREIGN KEY (verified_by_user_id) REFERENCES users(id) ON DELETE SET NULL"
+      },
+      {
+        "table_name": "hospital_verification_records",
+        "constraint_name": "hospital_verification_source_not_blank",
+        "type": "c",
+        "definition": "CHECK ((length(btrim(source_name)) > 0))"
+      },
+      {
+        "table_name": "hospitals",
+        "constraint_name": "hospitals_created_at_not_null",
+        "type": "n",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "table_name": "hospitals",
+        "constraint_name": "hospitals_id_not_null",
+        "type": "n",
+        "definition": "NOT NULL id"
+      },
+      {
+        "table_name": "hospitals",
+        "constraint_name": "hospitals_pkey",
+        "type": "p",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "table_name": "hospitals",
+        "constraint_name": "hospitals_public_city_not_blank",
+        "type": "c",
+        "definition": "CHECK (((public_city IS NULL) OR (length(btrim(public_city)) > 0)))"
+      },
+      {
+        "table_name": "hospitals",
+        "constraint_name": "hospitals_public_listing_status_not_null",
+        "type": "n",
+        "definition": "NOT NULL public_listing_status"
+      },
+      {
+        "table_name": "hospitals",
+        "constraint_name": "hospitals_public_name_not_blank",
+        "type": "c",
+        "definition": "CHECK ((length(btrim(public_name)) > 0))"
+      },
+      {
+        "table_name": "hospitals",
+        "constraint_name": "hospitals_public_name_not_null",
+        "type": "n",
+        "definition": "NOT NULL public_name"
+      },
+      {
+        "table_name": "hospitals",
+        "constraint_name": "hospitals_updated_at_not_null",
+        "type": "n",
+        "definition": "NOT NULL updated_at"
+      }
+    ],
+    "indexes": [
+      {
+        "tablename": "hospital_source_observations",
+        "indexname": "hospital_source_observations_document_hash_idx",
+        "indexdef": "CREATE INDEX hospital_source_observations_document_hash_idx ON public.hospital_source_observations USING btree (source_document_sha256)"
+      },
+      {
+        "tablename": "hospital_source_observations",
+        "indexname": "hospital_source_observations_hospital_history_idx",
+        "indexdef": "CREATE INDEX hospital_source_observations_hospital_history_idx ON public.hospital_source_observations USING btree (hospital_id, source_date DESC) WHERE (hospital_id IS NOT NULL)"
+      },
+      {
+        "tablename": "hospital_source_observations",
+        "indexname": "hospital_source_observations_identity_unique_idx",
+        "indexdef": "CREATE UNIQUE INDEX hospital_source_observations_identity_unique_idx ON public.hospital_source_observations USING btree (source_system COLLATE \"C\", source_hospital_id COLLATE \"C\", source_document_sha256 COLLATE \"C\")"
+      },
+      {
+        "tablename": "hospital_source_observations",
+        "indexname": "hospital_source_observations_pkey",
+        "indexdef": "CREATE UNIQUE INDEX hospital_source_observations_pkey ON public.hospital_source_observations USING btree (id)"
+      },
+      {
+        "tablename": "hospital_source_observations",
+        "indexname": "hospital_source_observations_unlinked_review_idx",
+        "indexdef": "CREATE INDEX hospital_source_observations_unlinked_review_idx ON public.hospital_source_observations USING btree (source_date DESC, source_system) WHERE (hospital_id IS NULL)"
+      },
+      {
+        "tablename": "hospital_verification_records",
+        "indexname": "hospital_verification_records_hospital_history_idx",
+        "indexdef": "CREATE INDEX hospital_verification_records_hospital_history_idx ON public.hospital_verification_records USING btree (hospital_id, created_at DESC)"
+      },
+      {
+        "tablename": "hospital_verification_records",
+        "indexname": "hospital_verification_records_one_current_idx",
+        "indexdef": "CREATE UNIQUE INDEX hospital_verification_records_one_current_idx ON public.hospital_verification_records USING btree (hospital_id) WHERE is_current"
+      },
+      {
+        "tablename": "hospital_verification_records",
+        "indexname": "hospital_verification_records_pkey",
+        "indexdef": "CREATE UNIQUE INDEX hospital_verification_records_pkey ON public.hospital_verification_records USING btree (id)"
+      },
+      {
+        "tablename": "hospital_verification_records",
+        "indexname": "hospital_verification_records_status_idx",
+        "indexdef": "CREATE INDEX hospital_verification_records_status_idx ON public.hospital_verification_records USING btree (status, last_verified_at DESC)"
+      },
+      {
+        "tablename": "hospital_verification_records",
+        "indexname": "hospital_verification_records_verified_location_gix",
+        "indexdef": "CREATE INDEX hospital_verification_records_verified_location_gix ON public.hospital_verification_records USING gist (verified_location)"
+      },
+      {
+        "tablename": "hospitals",
+        "indexname": "hospitals_pkey",
+        "indexdef": "CREATE UNIQUE INDEX hospitals_pkey ON public.hospitals USING btree (id)"
+      },
+      {
+        "tablename": "hospitals",
+        "indexname": "hospitals_public_city_listing_idx",
+        "indexdef": "CREATE INDEX hospitals_public_city_listing_idx ON public.hospitals USING btree (lower(public_city), public_listing_status) WHERE (public_city IS NOT NULL)"
+      },
+      {
+        "tablename": "hospitals",
+        "indexname": "hospitals_public_listing_name_idx",
+        "indexdef": "CREATE INDEX hospitals_public_listing_name_idx ON public.hospitals USING btree (lower(public_name)) WHERE (public_listing_status = 'published'::hospital_listing_status)"
+      },
+      {
+        "tablename": "hospitals",
+        "indexname": "hospitals_public_location_gix",
+        "indexdef": "CREATE INDEX hospitals_public_location_gix ON public.hospitals USING gist (public_location)"
+      }
+    ],
+    "triggers": [
+      {
+        "table_name": "hospitals",
+        "trigger_name": "hospitals_set_updated_at",
+        "action_timing": "BEFORE",
+        "event_manipulation": "UPDATE"
+      }
+    ],
+    "enums": [
+      {
+        "enum_name": "data_source_type",
+        "enum_value": "provider"
+      },
+      {
+        "enum_name": "data_source_type",
+        "enum_value": "government_registry"
+      },
+      {
+        "enum_name": "data_source_type",
+        "enum_value": "public_directory"
+      },
+      {
+        "enum_name": "data_source_type",
+        "enum_value": "insurer"
+      },
+      {
+        "enum_name": "data_source_type",
+        "enum_value": "manual_review"
+      },
+      {
+        "enum_name": "data_source_type",
+        "enum_value": "other"
+      },
+      {
+        "enum_name": "hospital_listing_status",
+        "enum_value": "draft"
+      },
+      {
+        "enum_name": "hospital_listing_status",
+        "enum_value": "published"
+      },
+      {
+        "enum_name": "hospital_listing_status",
+        "enum_value": "hidden"
+      },
+      {
+        "enum_name": "hospital_verification_status",
+        "enum_value": "pending"
+      },
+      {
+        "enum_name": "hospital_verification_status",
+        "enum_value": "verified"
+      },
+      {
+        "enum_name": "hospital_verification_status",
+        "enum_value": "rejected"
+      },
+      {
+        "enum_name": "hospital_verification_status",
+        "enum_value": "expired"
+      },
+      {
+        "enum_name": "hospital_verification_status",
+        "enum_value": "disputed"
+      }
+    ],
+    "sourceIdentifier": {
+      "field": "hospital_source_observations.source_hospital_id",
+      "dedicatedFieldExists": true,
+      "uniqueConstraintExists": true,
+      "recommendation": "Identity includes canonical source system, source hospital ID, and the exact PDF SHA-256."
+    }
+  },
+  "fieldMappings": [
+    {
+      "csvField": "all 17 CSV columns",
+      "table": "hospital_source_observations",
+      "column": "source_row_payload",
+      "mapping": "source-observation storage shape only; this read-only report never writes the payload"
+    }
+  ],
+  "unmappedFields": [
+    {
+      "csvField": "hospital_type",
+      "reason": "Preserved in source_row_payload and source_ownership_type; it is not a verified facility type.",
+      "doNotMapTo": "hospitals.public_facility_type"
+    },
+    {
+      "csvField": "email",
+      "reason": "Preserved as source-only email; do not copy it to a public hospital field."
+    },
+    {
+      "csvField": "nodal_officer_name",
+      "reason": "Preserved as source-only metadata; do not copy it to a public hospital field."
+    }
+  ],
+  "fieldLimitations": [
+    {
+      "csvField": "all 17 CSV columns",
+      "reason": "The source schema has source_row_payload from migration 005; this utility remains read-only and does not persist rows."
+    },
+    {
+      "csvField": "hospital_id",
+      "reason": "Preserve as text in source_hospital_id; uniqueness is source system + source ID + exact document hash."
+    }
+  ],
+  "validation": {
+    "invalidRows": [],
+    "sourceObservationRepeats": [],
+    "duplicateSourceIds": [],
+    "duplicateNames": [],
+    "similarNameCandidates": [
+      {
+        "rowNumbers": [
+          24,
+          27
+        ],
+        "pdfEntryNumbers": [
+          "23",
+          "26"
+        ],
+        "hospitalIds": [
+          "HOSP6G177317",
+          "HOSP6G177370"
+        ],
+        "hospitalNames": [
+          "Primary Health center",
+          "Primary healthcare center"
+        ],
+        "similarity": 0.913
+      },
+      {
+        "rowNumbers": [
+          45,
+          64
+        ],
+        "pdfEntryNumbers": [
+          "44",
+          "63"
+        ],
+        "hospitalIds": [
+          "HOSP6P02024",
+          "HOSP6P131336"
+        ],
+        "hospitalNames": [
+          "RAMA HOSPITAL",
+          "RANA HOSPITAL"
+        ],
+        "similarity": 0.923
+      },
+      {
+        "rowNumbers": [
+          60,
+          63
+        ],
+        "pdfEntryNumbers": [
+          "59",
+          "62"
+        ],
+        "hospitalIds": [
+          "HOSP6P101722",
+          "HOSP6P131103"
+        ],
+        "hospitalNames": [
+          "Rai MULTISPECIALITY HOSPITAL",
+          "BHATIYA MULTISPECIALITY HOSPITAL"
+        ],
+        "similarity": 0.9
+      }
+    ],
+    "possibleDatabaseMatches": []
+  },
+  "rowsWithoutReviewFlags": [
+    {
+      "rowNumber": 2,
+      "pdfEntryNumber": "1",
+      "hospitalId": "HOSP6G25147105",
+      "hospitalName": "Phc banwasa",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 3,
+      "pdfEntryNumber": "2",
+      "hospitalId": "HOSP6G25194961",
+      "hospitalName": "PHC JAGSI",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 4,
+      "pdfEntryNumber": "3",
+      "hospitalId": "HOSP6G26207182",
+      "hospitalName": "PHC FARMANA",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 5,
+      "pdfEntryNumber": "4",
+      "hospitalId": "HOSP6G26256331",
+      "hospitalName": "PHC LATH",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 6,
+      "pdfEntryNumber": "5",
+      "hospitalId": "HOSP6G26277660",
+      "hospitalName": "PHC Butana",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 7,
+      "pdfEntryNumber": "6",
+      "hospitalId": "HOSP6G25280984",
+      "hospitalName": "PHC BARODA",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 8,
+      "pdfEntryNumber": "7",
+      "hospitalId": "HOSP6G02452",
+      "hospitalName": "sdhgohana",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 9,
+      "pdfEntryNumber": "8",
+      "hospitalId": "HOSP6G03224",
+      "hospitalName": "District Civil Hospital Sonipat",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 10,
+      "pdfEntryNumber": "9",
+      "hospitalId": "HOSP6G03825",
+      "hospitalName": "BPS GMC for Women",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 11,
+      "pdfEntryNumber": "10",
+      "hospitalId": "HOSP6G77966",
+      "hospitalName": "PHC Badkhalsa",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 12,
+      "pdfEntryNumber": "11",
+      "hospitalId": "HOSP6G78420",
+      "hospitalName": "communityhealthcenterjuan",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 13,
+      "pdfEntryNumber": "12",
+      "hospitalId": "HOSP6G78631",
+      "hospitalName": "CHC Mundlana",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 14,
+      "pdfEntryNumber": "13",
+      "hospitalId": "HOSP6G81063",
+      "hospitalName": "SDH Ganaur",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 15,
+      "pdfEntryNumber": "14",
+      "hospitalId": "HOSP6G81631",
+      "hospitalName": "Community Health Center, Ferozepur Bangar",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 16,
+      "pdfEntryNumber": "15",
+      "hospitalId": "HOSP6G82906",
+      "hospitalName": "Polyclinic",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 17,
+      "pdfEntryNumber": "16",
+      "hospitalId": "HOSP6G110984",
+      "hospitalName": "CHC Kharkhoda",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 18,
+      "pdfEntryNumber": "17",
+      "hospitalId": "HOSP6G159077",
+      "hospitalName": "COMMUNITY HEALTH CENTRE BHAINSWAL KALAN",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 19,
+      "pdfEntryNumber": "18",
+      "hospitalId": "HOSP6G176453",
+      "hospitalName": "PHC DUBHETA",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 20,
+      "pdfEntryNumber": "19",
+      "hospitalId": "HOSP6G176695",
+      "hospitalName": "Primary Health Center, Begah",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 21,
+      "pdfEntryNumber": "20",
+      "hospitalId": "HOSP6G176719",
+      "hospitalName": "PHC PURKHAS",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 22,
+      "pdfEntryNumber": "21",
+      "hospitalId": "HOSP6G177131",
+      "hospitalName": "Jakhauli Primary Health Center Sonipat",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 23,
+      "pdfEntryNumber": "22",
+      "hospitalId": "HOSP6G177181",
+      "hospitalName": "PHC Rohat",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 25,
+      "pdfEntryNumber": "24",
+      "hospitalId": "HOSP6G177329",
+      "hospitalName": "PHC Bhatana Zafrabad",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 26,
+      "pdfEntryNumber": "25",
+      "hospitalId": "HOSP6G177361",
+      "hospitalName": "PHC Mohana",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 28,
+      "pdfEntryNumber": "27",
+      "hospitalId": "HOSP6G177398",
+      "hospitalName": "Primary Health Center, Murthal",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 29,
+      "pdfEntryNumber": "28",
+      "hospitalId": "HOSP6G177567",
+      "hospitalName": "UHC MAHAVIR COLONY",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 30,
+      "pdfEntryNumber": "29",
+      "hospitalId": "HOSP6G178553",
+      "hospitalName": "PHC MOI MAJRI",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 31,
+      "pdfEntryNumber": "30",
+      "hospitalId": "HOSP6G178614",
+      "hospitalName": "PHC Halalpur",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 32,
+      "pdfEntryNumber": "31",
+      "hospitalId": "HOSP6G178724",
+      "hospitalName": "PHC RAjlu garhi",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 33,
+      "pdfEntryNumber": "32",
+      "hospitalId": "HOSP6G178726",
+      "hospitalName": "PHC Nahri",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 34,
+      "pdfEntryNumber": "33",
+      "hospitalId": "HOSP6G178739",
+      "hospitalName": "PHC Khewra",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 35,
+      "pdfEntryNumber": "34",
+      "hospitalId": "HOSP6G178752",
+      "hospitalName": "PHC KHANPUR KALAN",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 36,
+      "pdfEntryNumber": "35",
+      "hospitalId": "HOSP6G178755",
+      "hospitalName": "community health centre halalpur",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 37,
+      "pdfEntryNumber": "36",
+      "hospitalId": "HOSP6G178805",
+      "hospitalName": "PHC Saragthal",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 38,
+      "pdfEntryNumber": "37",
+      "hospitalId": "HOSP6G178978",
+      "hospitalName": "PHCDATTOLI",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 39,
+      "pdfEntryNumber": "38",
+      "hospitalId": "HOSP6G179572",
+      "hospitalName": "URBAN HEALTH CENTRE KALUPUR",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 40,
+      "pdfEntryNumber": "39",
+      "hospitalId": "HOSP6P25186115",
+      "hospitalName": "VIRMANI HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 41,
+      "pdfEntryNumber": "40",
+      "hospitalId": "HOSP6P00784",
+      "hospitalName": "Krishnawati Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 42,
+      "pdfEntryNumber": "41",
+      "hospitalId": "HOSP6P01871",
+      "hospitalName": "MOOLCHAND JAIN HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 43,
+      "pdfEntryNumber": "42",
+      "hospitalId": "HOSP6P01884",
+      "hospitalName": "EYE Q VISION PVT LTD",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 44,
+      "pdfEntryNumber": "43",
+      "hospitalId": "HOSP6P01931",
+      "hospitalName": "CYGNUS JK HINDU HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 46,
+      "pdfEntryNumber": "45",
+      "hospitalId": "HOSP6P02398",
+      "hospitalName": "SITA HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 47,
+      "pdfEntryNumber": "46",
+      "hospitalId": "HOSP6P02422",
+      "hospitalName": "Nest Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 48,
+      "pdfEntryNumber": "47",
+      "hospitalId": "HOSP6P02470",
+      "hospitalName": "Maharaja Agrasen Charitable Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 49,
+      "pdfEntryNumber": "48",
+      "hospitalId": "HOSP6P02475",
+      "hospitalName": "DAYANAND HOSPITAL AND CRITICAL CARE CENTRE",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 50,
+      "pdfEntryNumber": "49",
+      "hospitalId": "HOSP6P02480",
+      "hospitalName": "ARISTO HOSPITAL AND TRAUMA CARE CENTRE",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 51,
+      "pdfEntryNumber": "50",
+      "hospitalId": "HOSP6P02825",
+      "hospitalName": "ARYA EYE HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 52,
+      "pdfEntryNumber": "51",
+      "hospitalId": "HOSP6P02861",
+      "hospitalName": "HANDA HOSPITAL AND HEART CARE CENTRE",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 53,
+      "pdfEntryNumber": "52",
+      "hospitalId": "HOSP6P03313",
+      "hospitalName": "CHAUHAN HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 54,
+      "pdfEntryNumber": "53",
+      "hospitalId": "HOSP6P03563",
+      "hospitalName": "DAHIYA EYE AND MATERNITY HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 55,
+      "pdfEntryNumber": "54",
+      "hospitalId": "HOSP6P09286",
+      "hospitalName": "GAJRAJ HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 56,
+      "pdfEntryNumber": "55",
+      "hospitalId": "HOSP6P20873",
+      "hospitalName": "GIRDHAR HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 57,
+      "pdfEntryNumber": "56",
+      "hospitalId": "HOSP6P66754",
+      "hospitalName": "ABHISHEK MEMORIAL HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 58,
+      "pdfEntryNumber": "57",
+      "hospitalId": "HOSP6P99873",
+      "hospitalName": "BHAGWAN DAS HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 59,
+      "pdfEntryNumber": "58",
+      "hospitalId": "HOSP6P101267",
+      "hospitalName": "SMT JAI DEVI MEMORIAL NURSING HOME",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 61,
+      "pdfEntryNumber": "60",
+      "hospitalId": "HOSP6P124177",
+      "hospitalName": "SUSHANTI EYE HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 62,
+      "pdfEntryNumber": "61",
+      "hospitalId": "HOSP6P130991",
+      "hospitalName": "NIDAAN HOSPITAL A UNIT OF NARSINGH HOSPITAL AND HEART INSTITUTE PRIVATE LIMITED",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 65,
+      "pdfEntryNumber": "64",
+      "hospitalId": "HOSP6P139201",
+      "hospitalName": "SWARNPRASTHA HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 66,
+      "pdfEntryNumber": "65",
+      "hospitalId": "HOSP6P143073",
+      "hospitalName": "SANJOG HOSPITAL PRIVATE LIMITED",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 67,
+      "pdfEntryNumber": "66",
+      "hospitalId": "HOSP6P146389",
+      "hospitalName": "TULIP MULTISPECIALITY HOSPITAL PVT. LTD .",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 68,
+      "pdfEntryNumber": "67",
+      "hospitalId": "HOSP6P149743",
+      "hospitalName": "R K EYE Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 69,
+      "pdfEntryNumber": "68",
+      "hospitalId": "HOSP6P163333",
+      "hospitalName": "SHANTI HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 70,
+      "pdfEntryNumber": "69",
+      "hospitalId": "HOSP6P169041",
+      "hospitalName": "GURUJIS RAWAL HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 71,
+      "pdfEntryNumber": "70",
+      "hospitalId": "HOSP6P171430",
+      "hospitalName": "CROSSROADS HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 72,
+      "pdfEntryNumber": "71",
+      "hospitalId": "HOSP6P173574",
+      "hospitalName": "MANIKTALIA E.N.T.HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 73,
+      "pdfEntryNumber": "72",
+      "hospitalId": "HOSP6P180905",
+      "hospitalName": "Nawal Hospital and Trauma centre",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 74,
+      "pdfEntryNumber": "73",
+      "hospitalId": "HOSP6P185347",
+      "hospitalName": "Gujaria Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 75,
+      "pdfEntryNumber": "74",
+      "hospitalId": "HOSP6P201934",
+      "hospitalName": "Dr Sethis Amar Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 76,
+      "pdfEntryNumber": "75",
+      "hospitalId": "HOSP6P205422",
+      "hospitalName": "NOBLE HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 77,
+      "pdfEntryNumber": "76",
+      "hospitalId": "HOSP6P208744",
+      "hospitalName": "KALAWATI ANAND HOSPITAL & DIGESTIVE DISEASE CENTRE",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    }
+  ],
+  "rowsRequiringReview": [
+    {
+      "rowNumber": 24,
+      "pdfEntryNumber": "23",
+      "hospitalId": "HOSP6G177317",
+      "hospitalName": "Primary Health center",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 27,
+      "pdfEntryNumber": "26",
+      "hospitalId": "HOSP6G177370",
+      "hospitalName": "Primary healthcare center",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 45,
+      "pdfEntryNumber": "44",
+      "hospitalId": "HOSP6P02024",
+      "hospitalName": "RAMA HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 60,
+      "pdfEntryNumber": "59",
+      "hospitalId": "HOSP6P101722",
+      "hospitalName": "Rai MULTISPECIALITY HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 63,
+      "pdfEntryNumber": "62",
+      "hospitalId": "HOSP6P131103",
+      "hospitalName": "BHATIYA MULTISPECIALITY HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 64,
+      "pdfEntryNumber": "63",
+      "hospitalId": "HOSP6P131336",
+      "hospitalName": "RANA HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    }
+  ],
+  "allRows": [
+    {
+      "rowNumber": 2,
+      "pdfEntryNumber": "1",
+      "hospitalId": "HOSP6G25147105",
+      "hospitalName": "Phc banwasa",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 3,
+      "pdfEntryNumber": "2",
+      "hospitalId": "HOSP6G25194961",
+      "hospitalName": "PHC JAGSI",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 4,
+      "pdfEntryNumber": "3",
+      "hospitalId": "HOSP6G26207182",
+      "hospitalName": "PHC FARMANA",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 5,
+      "pdfEntryNumber": "4",
+      "hospitalId": "HOSP6G26256331",
+      "hospitalName": "PHC LATH",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 6,
+      "pdfEntryNumber": "5",
+      "hospitalId": "HOSP6G26277660",
+      "hospitalName": "PHC Butana",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 7,
+      "pdfEntryNumber": "6",
+      "hospitalId": "HOSP6G25280984",
+      "hospitalName": "PHC BARODA",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 8,
+      "pdfEntryNumber": "7",
+      "hospitalId": "HOSP6G02452",
+      "hospitalName": "sdhgohana",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 9,
+      "pdfEntryNumber": "8",
+      "hospitalId": "HOSP6G03224",
+      "hospitalName": "District Civil Hospital Sonipat",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 10,
+      "pdfEntryNumber": "9",
+      "hospitalId": "HOSP6G03825",
+      "hospitalName": "BPS GMC for Women",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 11,
+      "pdfEntryNumber": "10",
+      "hospitalId": "HOSP6G77966",
+      "hospitalName": "PHC Badkhalsa",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 12,
+      "pdfEntryNumber": "11",
+      "hospitalId": "HOSP6G78420",
+      "hospitalName": "communityhealthcenterjuan",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 13,
+      "pdfEntryNumber": "12",
+      "hospitalId": "HOSP6G78631",
+      "hospitalName": "CHC Mundlana",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 14,
+      "pdfEntryNumber": "13",
+      "hospitalId": "HOSP6G81063",
+      "hospitalName": "SDH Ganaur",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 15,
+      "pdfEntryNumber": "14",
+      "hospitalId": "HOSP6G81631",
+      "hospitalName": "Community Health Center, Ferozepur Bangar",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 16,
+      "pdfEntryNumber": "15",
+      "hospitalId": "HOSP6G82906",
+      "hospitalName": "Polyclinic",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 17,
+      "pdfEntryNumber": "16",
+      "hospitalId": "HOSP6G110984",
+      "hospitalName": "CHC Kharkhoda",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 18,
+      "pdfEntryNumber": "17",
+      "hospitalId": "HOSP6G159077",
+      "hospitalName": "COMMUNITY HEALTH CENTRE BHAINSWAL KALAN",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 19,
+      "pdfEntryNumber": "18",
+      "hospitalId": "HOSP6G176453",
+      "hospitalName": "PHC DUBHETA",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 20,
+      "pdfEntryNumber": "19",
+      "hospitalId": "HOSP6G176695",
+      "hospitalName": "Primary Health Center, Begah",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 21,
+      "pdfEntryNumber": "20",
+      "hospitalId": "HOSP6G176719",
+      "hospitalName": "PHC PURKHAS",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 22,
+      "pdfEntryNumber": "21",
+      "hospitalId": "HOSP6G177131",
+      "hospitalName": "Jakhauli Primary Health Center Sonipat",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 23,
+      "pdfEntryNumber": "22",
+      "hospitalId": "HOSP6G177181",
+      "hospitalName": "PHC Rohat",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 24,
+      "pdfEntryNumber": "23",
+      "hospitalId": "HOSP6G177317",
+      "hospitalName": "Primary Health center",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 25,
+      "pdfEntryNumber": "24",
+      "hospitalId": "HOSP6G177329",
+      "hospitalName": "PHC Bhatana Zafrabad",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 26,
+      "pdfEntryNumber": "25",
+      "hospitalId": "HOSP6G177361",
+      "hospitalName": "PHC Mohana",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 27,
+      "pdfEntryNumber": "26",
+      "hospitalId": "HOSP6G177370",
+      "hospitalName": "Primary healthcare center",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 28,
+      "pdfEntryNumber": "27",
+      "hospitalId": "HOSP6G177398",
+      "hospitalName": "Primary Health Center, Murthal",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 29,
+      "pdfEntryNumber": "28",
+      "hospitalId": "HOSP6G177567",
+      "hospitalName": "UHC MAHAVIR COLONY",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 30,
+      "pdfEntryNumber": "29",
+      "hospitalId": "HOSP6G178553",
+      "hospitalName": "PHC MOI MAJRI",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "1",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 31,
+      "pdfEntryNumber": "30",
+      "hospitalId": "HOSP6G178614",
+      "hospitalName": "PHC Halalpur",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 32,
+      "pdfEntryNumber": "31",
+      "hospitalId": "HOSP6G178724",
+      "hospitalName": "PHC RAjlu garhi",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 33,
+      "pdfEntryNumber": "32",
+      "hospitalId": "HOSP6G178726",
+      "hospitalName": "PHC Nahri",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 34,
+      "pdfEntryNumber": "33",
+      "hospitalId": "HOSP6G178739",
+      "hospitalName": "PHC Khewra",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 35,
+      "pdfEntryNumber": "34",
+      "hospitalId": "HOSP6G178752",
+      "hospitalName": "PHC KHANPUR KALAN",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 36,
+      "pdfEntryNumber": "35",
+      "hospitalId": "HOSP6G178755",
+      "hospitalName": "community health centre halalpur",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 37,
+      "pdfEntryNumber": "36",
+      "hospitalId": "HOSP6G178805",
+      "hospitalName": "PHC Saragthal",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 38,
+      "pdfEntryNumber": "37",
+      "hospitalId": "HOSP6G178978",
+      "hospitalName": "PHCDATTOLI",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 39,
+      "pdfEntryNumber": "38",
+      "hospitalId": "HOSP6G179572",
+      "hospitalName": "URBAN HEALTH CENTRE KALUPUR",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 40,
+      "pdfEntryNumber": "39",
+      "hospitalId": "HOSP6P25186115",
+      "hospitalName": "VIRMANI HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 41,
+      "pdfEntryNumber": "40",
+      "hospitalId": "HOSP6P00784",
+      "hospitalName": "Krishnawati Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 42,
+      "pdfEntryNumber": "41",
+      "hospitalId": "HOSP6P01871",
+      "hospitalName": "MOOLCHAND JAIN HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 43,
+      "pdfEntryNumber": "42",
+      "hospitalId": "HOSP6P01884",
+      "hospitalName": "EYE Q VISION PVT LTD",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 44,
+      "pdfEntryNumber": "43",
+      "hospitalId": "HOSP6P01931",
+      "hospitalName": "CYGNUS JK HINDU HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 45,
+      "pdfEntryNumber": "44",
+      "hospitalId": "HOSP6P02024",
+      "hospitalName": "RAMA HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 46,
+      "pdfEntryNumber": "45",
+      "hospitalId": "HOSP6P02398",
+      "hospitalName": "SITA HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 47,
+      "pdfEntryNumber": "46",
+      "hospitalId": "HOSP6P02422",
+      "hospitalName": "Nest Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 48,
+      "pdfEntryNumber": "47",
+      "hospitalId": "HOSP6P02470",
+      "hospitalName": "Maharaja Agrasen Charitable Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 49,
+      "pdfEntryNumber": "48",
+      "hospitalId": "HOSP6P02475",
+      "hospitalName": "DAYANAND HOSPITAL AND CRITICAL CARE CENTRE",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 50,
+      "pdfEntryNumber": "49",
+      "hospitalId": "HOSP6P02480",
+      "hospitalName": "ARISTO HOSPITAL AND TRAUMA CARE CENTRE",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 51,
+      "pdfEntryNumber": "50",
+      "hospitalId": "HOSP6P02825",
+      "hospitalName": "ARYA EYE HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 52,
+      "pdfEntryNumber": "51",
+      "hospitalId": "HOSP6P02861",
+      "hospitalName": "HANDA HOSPITAL AND HEART CARE CENTRE",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 53,
+      "pdfEntryNumber": "52",
+      "hospitalId": "HOSP6P03313",
+      "hospitalName": "CHAUHAN HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 54,
+      "pdfEntryNumber": "53",
+      "hospitalId": "HOSP6P03563",
+      "hospitalName": "DAHIYA EYE AND MATERNITY HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 55,
+      "pdfEntryNumber": "54",
+      "hospitalId": "HOSP6P09286",
+      "hospitalName": "GAJRAJ HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 56,
+      "pdfEntryNumber": "55",
+      "hospitalId": "HOSP6P20873",
+      "hospitalName": "GIRDHAR HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 57,
+      "pdfEntryNumber": "56",
+      "hospitalId": "HOSP6P66754",
+      "hospitalName": "ABHISHEK MEMORIAL HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 58,
+      "pdfEntryNumber": "57",
+      "hospitalId": "HOSP6P99873",
+      "hospitalName": "BHAGWAN DAS HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "2",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 59,
+      "pdfEntryNumber": "58",
+      "hospitalId": "HOSP6P101267",
+      "hospitalName": "SMT JAI DEVI MEMORIAL NURSING HOME",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 60,
+      "pdfEntryNumber": "59",
+      "hospitalId": "HOSP6P101722",
+      "hospitalName": "Rai MULTISPECIALITY HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 61,
+      "pdfEntryNumber": "60",
+      "hospitalId": "HOSP6P124177",
+      "hospitalName": "SUSHANTI EYE HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 62,
+      "pdfEntryNumber": "61",
+      "hospitalId": "HOSP6P130991",
+      "hospitalName": "NIDAAN HOSPITAL A UNIT OF NARSINGH HOSPITAL AND HEART INSTITUTE PRIVATE LIMITED",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 63,
+      "pdfEntryNumber": "62",
+      "hospitalId": "HOSP6P131103",
+      "hospitalName": "BHATIYA MULTISPECIALITY HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 64,
+      "pdfEntryNumber": "63",
+      "hospitalId": "HOSP6P131336",
+      "hospitalName": "RANA HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "requires_review",
+      "reasons": [
+        "similar_name_in_csv_review"
+      ]
+    },
+    {
+      "rowNumber": 65,
+      "pdfEntryNumber": "64",
+      "hospitalId": "HOSP6P139201",
+      "hospitalName": "SWARNPRASTHA HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 66,
+      "pdfEntryNumber": "65",
+      "hospitalId": "HOSP6P143073",
+      "hospitalName": "SANJOG HOSPITAL PRIVATE LIMITED",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 67,
+      "pdfEntryNumber": "66",
+      "hospitalId": "HOSP6P146389",
+      "hospitalName": "TULIP MULTISPECIALITY HOSPITAL PVT. LTD .",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 68,
+      "pdfEntryNumber": "67",
+      "hospitalId": "HOSP6P149743",
+      "hospitalName": "R K EYE Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 69,
+      "pdfEntryNumber": "68",
+      "hospitalId": "HOSP6P163333",
+      "hospitalName": "SHANTI HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 70,
+      "pdfEntryNumber": "69",
+      "hospitalId": "HOSP6P169041",
+      "hospitalName": "GURUJIS RAWAL HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 71,
+      "pdfEntryNumber": "70",
+      "hospitalId": "HOSP6P171430",
+      "hospitalName": "CROSSROADS HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 72,
+      "pdfEntryNumber": "71",
+      "hospitalId": "HOSP6P173574",
+      "hospitalName": "MANIKTALIA E.N.T.HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 73,
+      "pdfEntryNumber": "72",
+      "hospitalId": "HOSP6P180905",
+      "hospitalName": "Nawal Hospital and Trauma centre",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 74,
+      "pdfEntryNumber": "73",
+      "hospitalId": "HOSP6P185347",
+      "hospitalName": "Gujaria Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 75,
+      "pdfEntryNumber": "74",
+      "hospitalId": "HOSP6P201934",
+      "hospitalName": "Dr Sethis Amar Hospital",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 76,
+      "pdfEntryNumber": "75",
+      "hospitalId": "HOSP6P205422",
+      "hospitalName": "NOBLE HOSPITAL",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    },
+    {
+      "rowNumber": 77,
+      "pdfEntryNumber": "76",
+      "hospitalId": "HOSP6P208744",
+      "hospitalName": "KALAWATI ANAND HOSPITAL & DIGESTIVE DISEASE CENTRE",
+      "sourceDocument": "202608041074356704.pdf",
+      "sourcePage": "3",
+      "status": "review_only_no_flags",
+      "reasons": []
+    }
+  ]
+}

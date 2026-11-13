@@ -1,0 +1,228 @@
+{
+  "reportType": "source-evidence-manual-review",
+  "generatedAt": "2026-10-29T20:06:52.483+05:30",
+  "sourceDocument": {
+    "filename": "202608041074356704.pdf",
+    "csvFile": "data/processed/sonipat_pmjay_empanelled_hospitals.csv",
+    "pdfPages": 3,
+    "documentTitle": "List of empanelled Hospitals of District Sonipat (Haryana) under AB-PMJAY as on 03/08/2026",
+    "csvSourceDate": "2026-08-03",
+    "inspection": {
+      "method": "PDF text extraction and visual inspection of pages 1-3",
+      "observedCoverage": "The PDF lists entry number, hospital ID, hospital name, type, email, nodal officer name, and contact number. It does not show facility street addresses, registration numbers, or explicit links between similar entries.",
+      "limitations": "Separate roster entries and different source IDs establish that the source lists separate records; they do not by themselves establish whether the records refer to one or multiple real-world facilities."
+    }
+  },
+  "decisionVocabulary": {
+    "status": "proposed-review-options-not-importer-input",
+    "possibleCodes": [
+      "same_hospital",
+      "different_hospitals",
+      "needs_more_evidence"
+    ],
+    "selectedDecision": null,
+    "recordedStatus": "unresolved",
+    "note": "The options below are evidence-review outcomes, not approved actions. No option is selected for any pair."
+  },
+  "pairs": [
+    {
+      "reviewId": "202608041074356704.pdf#entries-23-26",
+      "recordedStatus": "unresolved",
+      "selectedDecision": null,
+      "recommendedTriageCode": "needs_more_evidence",
+      "reason": "The roster gives two separate public entries with different source IDs and distinct contact details, but no address, registration identifier, or explicit relationship. The generic names alone cannot determine whether these are one facility or two.",
+      "evidenceReferences": [
+        "202608041074356704.pdf#page=1&entry=23",
+        "202608041074356704.pdf#page=1&entry=26",
+        "data/processed/sonipat_pmjay_empanelled_hospitals.csv#csv-row=24",
+        "data/processed/sonipat_pmjay_empanelled_hospitals.csv#csv-row=27"
+      ],
+      "candidates": [
+        {
+          "csvRowNumber": 24,
+          "sourceDocument": "202608041074356704.pdf",
+          "sourcePage": "1",
+          "pdfEntryNumber": "23",
+          "hospitalId": "HOSP6G177317",
+          "hospitalName": "Primary Health center",
+          "hospitalType": "Public",
+          "email": "phcmadina@yahoo.com",
+          "contactNumber": "9215020010"
+        },
+        {
+          "csvRowNumber": 27,
+          "sourceDocument": "202608041074356704.pdf",
+          "sourcePage": "1",
+          "pdfEntryNumber": "26",
+          "hospitalId": "HOSP6G177370",
+          "hospitalName": "Primary healthcare center",
+          "hospitalType": "Public",
+          "email": "richadahiya55@gmail.com",
+          "contactNumber": "9050489866"
+        }
+      ],
+      "decisionOptions": [
+        {
+          "code": "same_hospital",
+          "reason": "Not established: similar generic names are insufficient, and the source provides no shared address or cross-reference.",
+          "evidenceReferences": [
+            "202608041074356704.pdf#page=1&entry=23",
+            "202608041074356704.pdf#page=1&entry=26"
+          ]
+        },
+        {
+          "code": "different_hospitals",
+          "reason": "Not established: separate source records and IDs do not prove separate physical facilities without facility-level evidence.",
+          "evidenceReferences": [
+            "202608041074356704.pdf#page=1&entry=23",
+            "202608041074356704.pdf#page=1&entry=26"
+          ]
+        },
+        {
+          "code": "needs_more_evidence",
+          "reason": "Appropriate pending outcome until an authoritative facility address, registration identifier, or documented official confirmation can be compared.",
+          "evidenceReferences": [
+            "202608041074356704.pdf#page=1",
+            "data/processed/sonipat_pmjay_empanelled_hospitals.csv#csv-rows=24,27"
+          ]
+        }
+      ]
+    },
+    {
+      "reviewId": "202608041074356704.pdf#entries-44-63",
+      "recordedStatus": "unresolved",
+      "selectedDecision": null,
+      "recommendedTriageCode": "needs_more_evidence",
+      "reason": "The roster lists RAMA HOSPITAL and RANA HOSPITAL as separate private entries with different source IDs and contact details. The pages contain no address, registration identifier, or other evidence sufficient to determine whether the facilities are the same or distinct.",
+      "evidenceReferences": [
+        "202608041074356704.pdf#page=2&entry=44",
+        "202608041074356704.pdf#page=3&entry=63",
+        "data/processed/sonipat_pmjay_empanelled_hospitals.csv#csv-row=45",
+        "data/processed/sonipat_pmjay_empanelled_hospitals.csv#csv-row=64"
+      ],
+      "candidates": [
+        {
+          "csvRowNumber": 45,
+          "sourceDocument": "202608041074356704.pdf",
+          "sourcePage": "2",
+          "pdfEntryNumber": "44",
+          "hospitalId": "HOSP6P02024",
+          "hospitalName": "RAMA HOSPITAL",
+          "hospitalType": "Private",
+          "email": "rramahospital@gmail.com",
+          "contactNumber": "9050159810"
+        },
+        {
+          "csvRowNumber": 64,
+          "sourceDocument": "202608041074356704.pdf",
+          "sourcePage": "3",
+          "pdfEntryNumber": "63",
+          "hospitalId": "HOSP6P131336",
+          "hospitalName": "RANA HOSPITAL",
+          "hospitalType": "Private",
+          "email": "malikdahiya671@gmail.com",
+          "contactNumber": "9306802903"
+        }
+      ],
+      "decisionOptions": [
+        {
+          "code": "same_hospital",
+          "reason": "Not established: the names are similar, but the roster contains no shared address, facility identifier, or explicit cross-reference.",
+          "evidenceReferences": [
+            "202608041074356704.pdf#page=2&entry=44",
+            "202608041074356704.pdf#page=3&entry=63"
+          ]
+        },
+        {
+          "code": "different_hospitals",
+          "reason": "Not established: different names, source IDs, and contacts indicate separate source records but do not alone prove distinct physical facilities.",
+          "evidenceReferences": [
+            "202608041074356704.pdf#page=2&entry=44",
+            "202608041074356704.pdf#page=3&entry=63"
+          ]
+        },
+        {
+          "code": "needs_more_evidence",
+          "reason": "Appropriate pending outcome until authoritative facility addresses, registration details, or documented official confirmation are obtained.",
+          "evidenceReferences": [
+            "202608041074356704.pdf#page=2",
+            "202608041074356704.pdf#page=3",
+            "data/processed/sonipat_pmjay_empanelled_hospitals.csv#csv-rows=45,64"
+          ]
+        }
+      ]
+    },
+    {
+      "reviewId": "202608041074356704.pdf#entries-59-62",
+      "recordedStatus": "unresolved",
+      "selectedDecision": null,
+      "recommendedTriageCode": "needs_more_evidence",
+      "reason": "The page lists Rai MULTISPECIALITY HOSPITAL and BHATIYA MULTISPECIALITY HOSPITAL as separate private entries, with different source IDs, names, and contact details. The roster has no address or registration details to establish the physical-facility relationship.",
+      "evidenceReferences": [
+        "202608041074356704.pdf#page=3&entry=59",
+        "202608041074356704.pdf#page=3&entry=62",
+        "data/processed/sonipat_pmjay_empanelled_hospitals.csv#csv-row=60",
+        "data/processed/sonipat_pmjay_empanelled_hospitals.csv#csv-row=63"
+      ],
+      "candidates": [
+        {
+          "csvRowNumber": 60,
+          "sourceDocument": "202608041074356704.pdf",
+          "sourcePage": "3",
+          "pdfEntryNumber": "59",
+          "hospitalId": "HOSP6P101722",
+          "hospitalName": "Rai MULTISPECIALITY HOSPITAL",
+          "hospitalType": "Private",
+          "email": "raihospital@yahoo.in",
+          "contactNumber": "9410507200"
+        },
+        {
+          "csvRowNumber": 63,
+          "sourceDocument": "202608041074356704.pdf",
+          "sourcePage": "3",
+          "pdfEntryNumber": "62",
+          "hospitalId": "HOSP6P131103",
+          "hospitalName": "BHATIYA MULTISPECIALITY HOSPITAL",
+          "hospitalType": "Private",
+          "email": "bhatiyahospitalsnp@gmail.com",
+          "contactNumber": "8930757609"
+        }
+      ],
+      "decisionOptions": [
+        {
+          "code": "same_hospital",
+          "reason": "Not established: the source supplies no shared address or cross-reference, and the different names cannot be reconciled from this roster alone.",
+          "evidenceReferences": [
+            "202608041074356704.pdf#page=3&entry=59",
+            "202608041074356704.pdf#page=3&entry=62"
+          ]
+        },
+        {
+          "code": "different_hospitals",
+          "reason": "Not established: separate names, source IDs, and contacts are evidence of separate source records, not conclusive proof of distinct physical facilities.",
+          "evidenceReferences": [
+            "202608041074356704.pdf#page=3&entry=59",
+            "202608041074356704.pdf#page=3&entry=62"
+          ]
+        },
+        {
+          "code": "needs_more_evidence",
+          "reason": "Appropriate pending outcome until authoritative facility addresses, registration details, or documented official confirmation are obtained.",
+          "evidenceReferences": [
+            "202608041074356704.pdf#page=3",
+            "data/processed/sonipat_pmjay_empanelled_hospitals.csv#csv-rows=60,63"
+          ]
+        }
+      ]
+    }
+  ],
+  "safety": {
+    "sourceValuesChanged": false,
+    "databaseAccessed": false,
+    "databaseWritten": false,
+    "hospitalRecordsCreated": false,
+    "recordsMergedVerifiedOrPublished": false,
+    "contactDataNote": "Email addresses and phone numbers are included because this evidence packet was explicitly requested to preserve the source contacts. Handle this file as restricted source data.",
+    "reviewInputWarning": "This evidence packet is not an importer --review-decisions file. No decisions in it authorize a database write, hospital creation, merge, verification, or publication."
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "generated_at": "2026-10-29",
+  "input_directory": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\raw",
+  "outputs": {
+    "haryana_facilities_csv": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\haryana_sonipat_primary_facilities.csv",
+    "haryana_hospital_beds_csv": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\haryana_sonipat_hospitals_beds.csv",
+    "pmjay_hospitals_csv": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\sonipat_pmjay_empanelled_hospitals.csv",
+    "validation_json": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\pdf_extraction_validation.json",
+    "validation_markdown": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\pdf_extraction_validation.md"
+  },
+  "sources": {
+    "20250508834158531.pdf": {
+      "source_date": "2025-05-05",
+      "page_count": 4,
+      "sonipat_named_facilities": {
+        "extracted_rows": 37,
+        "counts_by_type": {
+          "CHC": 7,
+          "PHC": 30
+        },
+        "printed_counts": {
+          "CHC": 7,
+          "PHC": 30,
+          "Sub-centre": 177
+        },
+        "name_counts_match_printed_counts": {
+          "CHC": true,
+          "PHC": true
+        },
+        "sub_centre_names_in_source": false,
+        "sub_centre_count": 177,
+        "district_hospital_rows": 4,
+        "district_hospital_bed_capacities": [
+          {
+            "hospital_name": "DCH Sonepat",
+            "bed_capacity": 200,
+            "source_page": 3
+          },
+          {
+            "hospital_name": "SDCH Gohana",
+            "bed_capacity": 100,
+            "source_page": 3
+          },
+          {
+            "hospital_name": "CH Kharkhoda",
+            "bed_capacity": 50,
+            "source_page": 3
+          },
+          {
+            "hospital_name": "SDCH Ganaur",
+            "bed_capacity": 50,
+            "source_page": 3
+          }
+        ],
+        "possible_duplicates": [],
+        "manual_review_required": [
+          {
+            "facility_type": "PHC",
+            "facility_name": "Sargathal",
+            "source_page": 2,
+            "note": "Name split inferred from the column layout and printed count; confirm visually."
+          },
+          {
+            "facility_type": "PHC",
+            "facility_name": "Shamri",
+            "source_page": 2,
+            "note": "Name split inferred from the column layout and printed count; confirm visually."
+          }
+        ],
+        "parsing_errors": [
+          "Page 2 PHC list has no comma between 'Sargathal' and 'Shamri'; split into two names to reconcile the printed PHC count of 30. Confirm visually."
+        ]
+      }
+    },
+    "202608041074356704.pdf": {
+      "source_date": "2026-08-03",
+      "page_count": 3,
+      "expected_numbered_entries": 76,
+      "extracted_rows": 76,
+      "numbered_entry_count_matches": true,
+      "numbers_present": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76
+      ],
+      "missing_entry_numbers": [],
+      "duplicate_entry_numbers": [],
+      "unexpected_entry_numbers": [],
+      "missing_fields": {},
+      "possible_duplicates": {
+        "hospital_id": [],
+        "hospital_name_exact_after_normalization": [],
+        "similar_hospital_names_review_candidates": [
+          {
+            "pdf_entry_numbers": [
+              "23",
+              "26"
+            ],
+            "source_names": [
+              "Primary Health center",
+              "Primary healthcare center"
+            ],
+            "similarity": 0.905
+          },
+          {
+            "pdf_entry_numbers": [
+              "44",
+              "63"
+            ],
+            "source_names": [
+              "RAMA HOSPITAL",
+              "RANA HOSPITAL"
+            ],
+            "similarity": 0.917
+          }
+        ]
+      },
+      "parsing_errors": []
+    }
+  },
+  "verification_policy": "Every extracted row is marked unverified; no operational status is asserted."
+}

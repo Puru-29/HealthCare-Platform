@@ -1,0 +1,16 @@
+import { Router } from 'express';
+import { healthRouter } from './health.routes.js';
+import { hospitalRouter } from './hospital.routes.js';
+import { adminRouter } from './admin.routes.js';
+import { authRouter } from './auth.routes.js';
+import { doctorRouter } from './doctor.routes.js';
+import { insuranceRouter } from './insurance.routes.js';
+import { appointmentRouter } from './appointment.routes.js';
+export const apiRouter = Router();
+apiRouter.use('/health', healthRouter);
+apiRouter.use('/auth', authRouter);
+apiRouter.use('/hospitals', hospitalRouter);
+apiRouter.use('/doctors', doctorRouter);
+apiRouter.use('/insurance', insuranceRouter);
+apiRouter.use('/appointments', appointmentRouter);
+apiRouter.use('/admin', adminRouter);
