@@ -41,5 +41,5 @@ if (process.argv.includes('--demo')) {
     console.log(`  ${p.username.padEnd(16)} -> ${h.name}`)
   }
   console.log(`Demo console password for all of the above: ${password}`)
-  if (!config.demoMode) console.log('Note: set DEMO_MODE=true in server/.env so demo ambulances move on their own.')
+  if (!config.demoMode) console.log('Note: set DEMO_MODE=true in backend/.env so demo ambulances move on their own.')
 }

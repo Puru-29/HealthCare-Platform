@@ -1,7 +1,7 @@
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const serverRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const backendRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
 function flag(value: string | undefined, fallback: boolean): boolean {
   if (value === undefined || value === '') return fallback
@@ -14,8 +14,8 @@ export const config = {
   production: process.env.NODE_ENV === 'production',
   databasePath: process.env.DATABASE_PATH === ':memory:'
     ? ':memory:'
-    : resolve(serverRoot, process.env.DATABASE_PATH ?? './carepath.db'),
-  facilitiesFile: resolve(serverRoot, '../data/processed/sonipat_facilities.json'),
+    : resolve(backendRoot, process.env.DATABASE_PATH ?? './carepath.db'),
+  facilitiesFile: resolve(backendRoot, '../data/processed/sonipat_facilities.json'),
   routing: {
     mode: (process.env.ROUTING_MODE ?? 'osrm') as 'osrm' | 'off',
     url: process.env.ROUTING_URL ?? 'https://router.project-osrm.org',
@@ -35,5 +35,5 @@ export const config = {
     model: 'claude-opus-5-5',
     maxTurns: 6,
   },
-  serverRoot,
+  backendRoot,
 }

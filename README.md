@@ -15,7 +15,7 @@ One app for the moments when getting care goes wrong:
 Requires Node.js 22.13+. No database server — data lives in a SQLite file.
 
 ```powershell
-npm run setup     # installs, creates server/.env, loads hospitals + demo partners
+npm run setup     # installs, creates backend/.env, loads hospitals + demo partners
 npm run dev       # API on :3001, web on http://127.0.0.1:5173
 ```
 
@@ -23,23 +23,32 @@ Demo hospital console: <http://127.0.0.1:5173/console> — usernames `civil-soni
 
 To try SOS on a laptop, open the console in one window, then press SOS in another (allow location, or use your browser's dev-tools sensors to set a Sonipat location such as 28.996, 77.022).
 
-**AI care guide:** put `ANTHROPIC_API_KEY=...` in `server/.env` (model `claude-opus-5-5`). Without it the guide falls back to keyword matching and says so.
+**AI care guide:** put `ANTHROPIC_API_KEY=...` in `backend/.env` (model `claude-opus-5-5`). Without it the guide falls back to keyword matching and says so.
 
 ```powershell
-npm test          # 44 server tests: triage, ranking, claim maths, dispatch races, API security
+npm test          # 44 backend tests: triage, ranking, claim maths, dispatch races, API security
 npm run typecheck
 ```
 
 ## How it is built
 
 ```
-data/        source PDFs/CSVs, OSM extracts, manual review → processed/sonipat_facilities.json
-scripts/     build-hospital-dataset.mjs (merges + geocodes), PDF extractor, dev runner
-server/      Express 5 + TypeScript + node:sqlite
-  domain/      pure logic: specialties, triage red flags, ranking, insurance maths, geo
-  services/    dispatch engine (waves, atomic first-accept, live ETA, simulator), assistant, hospitals
-  routes/      public, patient, console, driver
-web/         React 19 + Vite + Tailwind 4 + Leaflet/OpenStreetMap, mobile-first PWA
+frontend/        what people see — React 19 + Vite + Tailwind 4 + Leaflet/OpenStreetMap, mobile-first PWA (port 5173)
+  src/pages/       one file per screen: home/SOS, care guide, hospitals, insurance, console, driver
+  src/components/  shared pieces: SOS button, map, hospital card
+  src/lib/         API client, hooks, formatting
+backend/         the API — Express 5 + TypeScript + node:sqlite (port 3001)
+  src/domain/      pure logic: specialties, triage red flags, ranking, insurance maths, geo
+  src/services/    dispatch engine (waves, atomic first-accept, live ETA, simulator), assistant, hospitals
+  src/routes/      public, patient, console, driver
+  scripts/         seed the database, create hospital console logins
+  tests/           automated tests
+data/            hospital data and the tools that build it (see data/README.md)
+  raw/             government PDFs, OpenStreetMap extracts
+  manual/          hand-reviewed hospital ↔ location links
+  processed/       cleaned CSVs + sonipat_facilities.json (what the backend loads)
+  pipeline/        PDF extractor (Python) and dataset builder
+scripts/         dev.mjs — starts backend + frontend together
 ```
 
 The previous version of the app was removed in Nov 2026; it is still in git history (first commit `16257ac`).
@@ -49,7 +58,7 @@ Key decisions:
 - **No login before SOS.** Patients are a device cookie; the phone number is asked once and remembered. Hospitals see only a ~1 km area and distance until they accept; the exact pickup point and phone go only to the hospital that accepts.
 - **"First to pick up" means first to *accept*.** A ringing phone answered by a receptionist is not a committed ambulance. Acceptance is an atomic conditional update; a second accept gets "another hospital already accepted". `NOTIFY_MODE=webhook` posts each alert as JSON so an IVR (Exotel/Twilio: "press 1 to accept") can call the accept API.
 - **Honest data.** Every specialty carries its source — *confirmed by hospital*, *OpenStreetMap*, *from facility name*, or *expected for this facility level* (IPHS norms). The UI says which, and tells people to call ahead when it isn't confirmed. Ranking uses facility level, specialty evidence, beds, 24×7 emergency, PM-JAY and distance — there are no public outcome or quality ratings, so the app does not pretend to have them.
-- **Traffic.** OSRM gives road distance and ETA but has no live traffic. The server compares the ambulance's actual progress with the route and warns "moving slowly — likely traffic". For traffic-aware ETAs, swap in Mappls or Google Routes behind `server/src/lib/routing.ts`.
+- **Traffic.** OSRM gives road distance and ETA but has no live traffic. The backend compares the ambulance's actual progress with the route and warns "moving slowly — likely traffic". For traffic-aware ETAs, swap in Mappls or Google Routes behind `backend/src/lib/routing.ts`.
 
 ## Where the data comes from
 
@@ -64,13 +73,13 @@ Key decisions:
 
 ## Before real patients use it
 
-1. **Hospital agreements** — onboard real hospitals (`npm run console:create-user --prefix server -- <hospital-id> <username>`) and agree response expectations. SOS only reaches hospitals with an *available* ambulance on CarePath.
+1. **Hospital agreements** — onboard real hospitals (`npm run console:create-user --prefix backend -- <hospital-id> <username>`) and agree response expectations. SOS only reaches hospitals with an *available* ambulance on CarePath.
 2. **Phone OTP** for patients, so a callback number is verified.
 3. **Telephony** — IVR alert to each hospital's emergency desk in addition to the console.
 4. **Routing/traffic provider** with a commercial licence (the public OSRM server is for development).
-5. **Hosting** — one Node process behind HTTPS (`npm run build && npm start` serves the web app too). For several instances, move SSE pub/sub to Redis and the database to Postgres/PostGIS.
+5. **Hosting** — one Node process behind HTTPS (`npm run build && npm start` serves the frontend too). For several instances, move SSE pub/sub to Redis and the database to Postgres/PostGIS.
 6. **Legal/clinical review** of the assistant prompt and the DPDP Act 2023 privacy notice.
 
 ## Expanding to NCR
 
-The app is not tied to Sonipat except through data. For each new district: add its PM-JAY list and OSM extract to `data/`, extend the match file, and widen the bounds in `build-hospital-dataset.mjs` and the profile-pin bounds in `routes/console.ts`. Ranking already looks 100 km out, so Delhi and Rohtak tertiary hospitals will appear as "best if you can travel" for Sonipat users once their data is loaded.
+The app is not tied to Sonipat except through data. For each new district: add its PM-JAY list and OSM extract to `data/`, extend the match file, and widen the bounds in `data/pipeline/build-hospital-dataset.mjs` and the profile-pin bounds in `backend/src/routes/console.ts`. Ranking already looks 100 km out, so Delhi and Rohtak tertiary hospitals will appear as "best if you can travel" for Sonipat users once their data is loaded.

@@ -1,4 +1,4 @@
-// Shared vocabulary for what a facility treats. Keys match scripts/build-hospital-dataset.mjs.
+// Shared vocabulary for what a facility treats. Keys match data/pipeline/build-hospital-dataset.mjs.
 
 export const SPECIALTIES = {
   emergency: { label: 'Emergency / casualty', keywords: ['emergency', 'casualty', 'accident'] },

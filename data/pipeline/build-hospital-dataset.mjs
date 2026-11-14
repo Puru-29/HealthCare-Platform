@@ -9,14 +9,14 @@
 //   data/manual/pmjay_location_matches.json                  hand-reviewed roster -> location links
 //   data/raw/osm/nominatim_cache.json                        cached geocodes (created/extended by this script)
 //
-// Usage: node scripts/build-hospital-dataset.mjs [--offline]
+// Usage: node data/pipeline/build-hospital-dataset.mjs [--offline]   (or: npm run data:build)
 //   --offline  never call Nominatim; uncached geocodes stay unresolved.
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const root = join(dirname(fileURLToPath(import.meta.url)), '..')
+const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 const p = (...parts) => join(root, ...parts)
 const OFFLINE = process.argv.includes('--offline')
 
@@ -51,7 +51,7 @@ function parseCsv(text) {
 const readCsv = (rel) => parseCsv(readFileSync(p(rel), 'utf8'))
 
 // ---------- Specialty inference ----------
-// Keys are shared with server/src/domain/specialties.ts
+// Keys are shared with backend/src/domain/specialties.ts
 const LEVEL_SPECIALTIES = {
   phc: ['primary_care', 'general_medicine', 'vaccination'],
   uhc: ['primary_care', 'general_medicine', 'vaccination'],

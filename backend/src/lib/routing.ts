@@ -22,7 +22,7 @@ export async function getRoute(from: LatLng, to: LatLng): Promise<Route> {
   if (config.routing.mode !== 'osrm') return straightLine(from, to)
   const url = `${config.routing.url}/route/v1/driving/${from.lng},${from.lat};${to.lng},${to.lat}?overview=simplified&geometries=geojson`
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(4000), headers: { 'user-agent': 'carepath-server/0.1' } })
+    const res = await fetch(url, { signal: AbortSignal.timeout(4000), headers: { 'user-agent': 'carepath-backend/0.1' } })
     if (!res.ok) return straightLine(from, to)
     const body = (await res.json()) as { code: string; routes?: Array<{ distance: number; duration: number; geometry: { coordinates: [number, number][] } }> }
     const route = body.routes?.[0]

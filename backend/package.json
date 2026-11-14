@@ -1,5 +1,5 @@
 {
-  "name": "carepath-server",
+  "name": "carepath-backend",
   "version": "0.1.0",
   "private": true,
   "type": "module",

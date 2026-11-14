@@ -34,11 +34,11 @@ export function createApp(db: DB, dispatcher: Dispatcher) {
   api.use(() => { throw notFound('No such API route') })
   app.use('/api', api)
 
-  // In production, serve the built web app from the same origin.
-  const webDist = resolve(config.serverRoot, '../web/dist')
-  if (existsSync(webDist)) {
-    app.use(express.static(webDist, { index: false, maxAge: '1h' }))
-    app.get(/^(?!\/api\/).*/, (_req, res) => res.sendFile(resolve(webDist, 'index.html')))
+  // In production, serve the built frontend from the same origin.
+  const frontendDist = resolve(config.backendRoot, '../frontend/dist')
+  if (existsSync(frontendDist)) {
+    app.use(express.static(frontendDist, { index: false, maxAge: '1h' }))
+    app.get(/^(?!\/api\/).*/, (_req, res) => res.sendFile(resolve(frontendDist, 'index.html')))
   }
 
   app.use(errorHandler)

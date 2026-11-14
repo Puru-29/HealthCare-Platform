@@ -18,7 +18,7 @@ from typing import Any
 import fitz
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_RAW_DIR = ROOT / "data" / "raw"
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "processed"
 

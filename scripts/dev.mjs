@@ -1,12 +1,12 @@
-// Runs the API (port 3001) and the web app (port 5173) together. Ctrl+C stops both.
+// Runs the backend (port 3001) and the frontend (port 5173) together. Ctrl+C stops both.
 import { spawn } from 'node:child_process'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const procs = [
-  { name: 'api', color: '\x1b[36m', cwd: join(root, 'server') },
-  { name: 'web', color: '\x1b[35m', cwd: join(root, 'web') },
+  { name: 'backend', color: '\x1b[36m', cwd: join(root, 'backend') },
+  { name: 'frontend', color: '\x1b[35m', cwd: join(root, 'frontend') },
 ].map(({ name, color, cwd }) => {
   const child = spawn('npm', ['run', 'dev'], { cwd, shell: true, env: { ...process.env, FORCE_COLOR: '1' } })
   const prefix = `${color}[${name}]\x1b[0m `

@@ -3,7 +3,7 @@
 How the government PDFs in `data/raw/` become the hospital directory the app serves.
 
 ```
-data/raw/*.pdf ──(1) extract──▶ data/processed/*.csv ──(2) build──▶ sonipat_facilities.json ──(3) import──▶ server/carepath.db
+data/raw/*.pdf ──(1) extract──▶ data/processed/*.csv ──(2) build──▶ sonipat_facilities.json ──(3) import──▶ backend/carepath.db
                                        ▲                       ▲
               data/raw/osm/*.json (locations)    data/manual/pmjay_location_matches.json (hand-reviewed links)
 ```
@@ -13,12 +13,12 @@ data/raw/*.pdf ──(1) extract──▶ data/processed/*.csv ──(2) build�
 Run this when Haryana or the NHA publish a new list, for example an updated PM-JAY empanelment roster.
 
 ```powershell
-python -m pip install -r scripts\requirements-pdf.txt     # once, ideally inside .venv
-python scripts\extract_healthcare_pdfs.py
-python -m unittest discover -s scripts -p test_extract_healthcare_pdfs.py
+python -m pip install -r data\pipeline\requirements-pdf.txt     # once, ideally inside .venv
+python data\pipeline\extract_healthcare_pdfs.py
+python -m unittest discover -s data\pipeline -p test_extract_healthcare_pdfs.py
 ```
 
-Outputs, all marked `unverified`:
+Outputs go to `data/processed/`, all marked `unverified`:
 
 - `sonipat_pmjay_empanelled_hospitals.csv`: PM-JAY hospital IDs, names, type, Ayushman desk officer and contact.
 - `haryana_sonipat_primary_facilities.csv`: CHC/PHC names and district counts.
