@@ -24,6 +24,10 @@ export const config = {
     mode: (process.env.NOTIFY_MODE ?? 'console') as 'console' | 'webhook',
     webhookUrl: process.env.NOTIFY_WEBHOOK_URL ?? '',
   },
+  sms: {
+    mode: (process.env.SMS_MODE ?? 'console') as 'console' | 'webhook',
+    webhookUrl: process.env.SMS_WEBHOOK_URL ?? '',
+  },
   demoMode: flag(process.env.DEMO_MODE, false),
   dispatch: {
     /** Search radius per wave, km. A wave ends when every offer is answered or the timer runs out. */

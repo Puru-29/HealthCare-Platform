@@ -467,8 +467,16 @@ export class Dispatcher {
       ORDER BY i.accepted_at DESC
     `).all(hospitalId) as unknown as IncidentRow[]).map((inc) => {
       const v = this.view(inc.id)
-      return { ...v, patient: { name: inc.patient_name, phone: inc.patient_phone, note: inc.note } }
+      return { ...v, patient: this.patientInfo(inc) }
     })
+  }
+
+  /** Shown only to the accepting hospital and its driver. */
+  private patientInfo(inc: IncidentRow) {
+    const medical = inc.patient_id
+      ? (this.db.prepare('SELECT blood_group, allergies FROM patients WHERE id = ?').get(inc.patient_id) as { blood_group: string | null; allergies: string | null } | undefined)
+      : undefined
+    return { name: inc.patient_name, phone: inc.patient_phone, note: inc.note, bloodGroup: medical?.blood_group ?? null, allergies: medical?.allergies ?? null }
   }
 
   /** Driver link → incident. */
@@ -480,7 +488,7 @@ export class Dispatcher {
 
   driverView(incidentId: string) {
     const inc = this.incident(incidentId)
-    return { ...this.view(incidentId), patient: { name: inc.patient_name, phone: inc.patient_phone, note: inc.note } }
+    return { ...this.view(incidentId), patient: this.patientInfo(inc) }
   }
 
   regenerateDriverLink(incidentId: string, hospitalId: string): { driverToken: string } {

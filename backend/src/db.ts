@@ -148,9 +148,48 @@ CREATE TABLE IF NOT EXISTS appointments (
 
 let instance: DB | null = null
 
+/**
+ * Additive changes for databases created by an earlier version. Each step is
+ * idempotent, so it is safe to run on every start.
+ */
+function migrate(db: DB) {
+  const columns = (table: string) =>
+    new Set((db.prepare(`PRAGMA table_info(${table})`).all() as Array<{ name: string }>).map((c) => c.name))
+  const addColumn = (table: string, column: string, definition: string) => {
+    if (!columns(table).has(column)) db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`)
+  }
+
+  // Patient profile: medical basics the ambulance crew needs, and Ayushman usage.
+  addColumn('patients', 'blood_group', 'TEXT')
+  addColumn('patients', 'allergies', 'TEXT')
+  addColumn('patients', 'pmjay_used', 'INTEGER')
+  addColumn('patients', 'phone_verified_at', 'TEXT')
+
+  // One account can be signed in on several devices.
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS patient_sessions (
+      token_hash TEXT PRIMARY KEY,
+      patient_id TEXT NOT NULL REFERENCES patients(id) ON DELETE CASCADE,
+      created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+    CREATE INDEX IF NOT EXISTS patient_sessions_patient ON patient_sessions(patient_id);
+    INSERT OR IGNORE INTO patient_sessions (token_hash, patient_id) SELECT session_hash, id FROM patients;
+
+    CREATE TABLE IF NOT EXISTS otp_codes (
+      phone TEXT PRIMARY KEY,
+      code_hash TEXT NOT NULL,
+      expires_at TEXT NOT NULL,
+      attempts INTEGER NOT NULL DEFAULT 0,
+      sent_count INTEGER NOT NULL DEFAULT 1,
+      window_started_at TEXT NOT NULL
+    );
+  `)
+}
+
 export function openDb(path = config.databasePath): DB {
   const db = new DatabaseSync(path)
   db.exec(SCHEMA)
+  migrate(db)
   return db
 }
 

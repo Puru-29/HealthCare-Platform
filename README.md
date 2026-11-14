@@ -19,14 +19,18 @@ npm run setup     # installs, creates backend/.env, loads hospitals + demo partn
 npm run dev       # API on :3001, web on http://127.0.0.1:5173
 ```
 
-Demo hospital console: <http://127.0.0.1:5173/console> — usernames `civil-sonipat`, `park-nidaan`, `sdh-gohana`, `sdh-ganaur`, `nawal-kundli`, `chc-kharkhoda`; password `demo-sonipat`. Demo ambulances are labelled `DEMO-xx`, have non-dialable phone numbers, and drive the real road route by themselves once accepted.
+Pages: landing page <http://127.0.0.1:5173/>, the app (no sign-in needed) at `/app`, sign-in at `/login`.
+
+**Patient sign-in** is optional — mobile number + 6-digit SMS code. With `SMS_MODE=console` (the default) no SMS is sent: the code is printed in the backend log and shown on the sign-in screen. For real SMS set `SMS_MODE=webhook` and `SMS_WEBHOOK_URL` in `backend/.env` (an adapter for MSG91, Twilio, Exotel… with a DLT-approved template).
+
+**Hospital console:** <http://127.0.0.1:5173/login?tab=staff> — usernames `civil-sonipat`, `park-nidaan`, `sdh-gohana`, `sdh-ganaur`, `nawal-kundli`, `chc-kharkhoda`; password `demo-sonipat`. Demo ambulances are labelled `DEMO-xx`, have non-dialable phone numbers, and drive the real road route by themselves once accepted.
 
 To try SOS on a laptop, open the console in one window, then press SOS in another (allow location, or use your browser's dev-tools sensors to set a Sonipat location such as 28.996, 77.022).
 
 **AI care guide:** put `ANTHROPIC_API_KEY=...` in `backend/.env` (model `claude-opus-5-5`). Without it the guide falls back to keyword matching and says so.
 
 ```powershell
-npm test          # 44 backend tests: triage, ranking, claim maths, dispatch races, API security
+npm test          # 54 backend tests: triage, ranking, claim maths, dispatch races, OTP sign-in, API security
 npm run typecheck
 ```
 
@@ -74,7 +78,7 @@ Key decisions:
 ## Before real patients use it
 
 1. **Hospital agreements** — onboard real hospitals (`npm run console:create-user --prefix backend -- <hospital-id> <username>`) and agree response expectations. SOS only reaches hospitals with an *available* ambulance on CarePath.
-2. **Phone OTP** for patients, so a callback number is verified.
+2. **SMS provider** for sign-in codes (`SMS_MODE=webhook`). Sign-in itself is built; only the SMS gateway needs connecting.
 3. **Telephony** — IVR alert to each hospital's emergency desk in addition to the console.
 4. **Routing/traffic provider** with a commercial licence (the public OSRM server is for development).
 5. **Hosting** — one Node process behind HTTPS (`npm run build && npm start` serves the frontend too). For several instances, move SSE pub/sub to Redis and the database to Postgres/PostGIS.

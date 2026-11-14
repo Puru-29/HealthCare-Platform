@@ -1,81 +1,177 @@
 @import 'tailwindcss';
 @import 'leaflet/dist/leaflet.css';
 
+/*
+ * CarePath "light glass" design system
+ * Ground: pale mint-white with soft mint, lavender and peach glows. Surfaces: frosted white glass.
+ * Ink: deep teal. Accent: teal. Emergency: solid coral. Headings: Plus Jakarta Sans. Body: Inter.
+ * Colours are named by role (ink, line, fill…) so a dark theme is a token swap, not a rewrite.
+ */
 @theme {
-  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+  --font-sans: 'Inter', 'Noto Sans Devanagari', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', 'Noto Sans Devanagari', system-ui, sans-serif;
 
-  --color-canvas: #f6f5f1;
-  --color-surface: #ffffff;
-  --color-line: #e4e2da;
-  --color-ink: #17201d;
-  --color-ink-2: #4b5551;
-  --color-ink-3: #7b8480;
+  --color-canvas: #f3f8f7;          /* page ground */
+  --color-ink: #0b2a25;             /* main text */
+  --color-ink-2: rgb(11 42 37 / 0.74);
+  --color-ink-3: rgb(11 42 37 / 0.66);
+  --color-on-mint: #04201b;         /* text on mint buttons and avatars */
+  --color-line: rgb(11 42 37 / 0.11);  /* hairlines and borders */
+  --color-line-2: rgb(11 42 37 / 0.16);
+  --color-fill: rgb(255 255 255 / 0.6);   /* subtle surface inside glass */
+  --color-fill-2: rgb(255 255 255 / 0.9); /* stronger surface / hover */
+  --color-track: rgb(11 42 37 / 0.08);    /* progress-bar tracks */
+  --color-well: rgb(11 42 37 / 0.045);    /* sunken areas (tab lists) */
 
-  --color-brand: #0f5c4d;
-  --color-brand-2: #137a66;
-  --color-brand-soft: #e3f1ec;
+  --color-brand: #0f766e;           /* teal: links, icons, accents */
+  --color-brand-2: #14b8a6;
+  --color-brand-3: #115e59;         /* strong teal text on mint tints */
+  --color-brand-soft: rgb(94 234 212 / 0.16);
 
-  --color-sos: #d92d20;
-  --color-sos-dark: #b42318;
-  --color-sos-soft: #fdecea;
+  --color-sos: #e11d48;
+  --color-sos-dark: #be123c;        /* coral text on light */
+  --color-sos-soft: rgb(255 90 95 / 0.14);
 
-  --color-amber: #b54708;
-  --color-amber-soft: #fef4e6;
-  --color-sky: #175cd3;
-  --color-sky-soft: #eaf2ff;
+  --color-ok: #047857;
+  --color-ok-soft: rgb(16 185 129 / 0.15);
+  --color-amber: #b45309;
+  --color-amber-soft: rgb(251 191 36 / 0.17);
+  --color-sky: #4338ca;
+  --color-sky-soft: rgb(165 180 252 / 0.2);
+  --color-cyan: #0e7490;
+  --color-cyan-soft: rgb(34 211 238 / 0.15);
 }
 
+:root { color-scheme: light; }
 html { -webkit-tap-highlight-color: transparent; }
 body {
-  @apply bg-canvas text-ink antialiased;
-  font-feature-settings: 'cv11', 'ss01';
+  @apply text-ink antialiased;
+  background:
+    radial-gradient(1100px 760px at 0% 0%, #c6f1e7 0%, rgb(198 241 231 / 0) 60%),
+    radial-gradient(900px 700px at 100% 100%, #e2defd 0%, rgb(226 222 253 / 0) 65%),
+    radial-gradient(700px 500px at 70% 10%, #ffe4e1 0%, rgb(255 228 225 / 0) 60%),
+    #f3f8f7;
+  background-attachment: fixed;
+  min-height: 100dvh;
+}
+a { color: inherit; }
+option { background: #fff; color: #0b2a25; }
+::selection { background: rgb(20 184 166 / 0.25); }
+
+/* ---------- surfaces ---------- */
+@utility glass {
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.8), rgb(255 255 255 / 0.44));
+  border: 1px solid rgb(255 255 255 / 0.95);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 14px 44px rgb(15 70 60 / 0.11), 0 2px 6px rgb(15 70 60 / 0.05), inset 0 1px 0 #fff;
+}
+@utility card { @apply glass rounded-3xl; }
+@utility tile { @apply rounded-2xl border border-line bg-fill transition-colors hover:bg-fill-2; }
+/* Solid coral for anything emergency, so white text stays readable on a light page. */
+@utility sos-surface {
+  @apply border border-[rgb(255_138_141/0.45)] text-white;
+  background: linear-gradient(135deg, rgb(222 64 78), rgb(158 55 58));
+  box-shadow: 0 14px 40px rgb(255 90 95 / 0.25);
 }
 
-@utility card { @apply rounded-2xl border border-line bg-surface; }
+/* ---------- controls ---------- */
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition
+  @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-2xl px-4 text-sm font-semibold no-underline transition
     focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:cursor-not-allowed disabled:opacity-50;
 }
-@utility btn-primary { @apply btn bg-brand text-white hover:bg-brand-2; }
-@utility btn-secondary { @apply btn border border-line bg-surface text-ink hover:bg-canvas; }
-@utility btn-danger { @apply btn bg-sos text-white hover:bg-sos-dark; }
-@utility btn-ghost { @apply btn text-ink-2 hover:bg-black/5; }
-@utility chip { @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium; }
+@utility btn-primary {
+  @apply btn font-bold text-on-mint;
+  background: linear-gradient(135deg, #99f6e4, #2dd4bf);
+  box-shadow: 0 10px 30px rgb(45 212 191 / 0.4);
+  &:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 14px 40px rgb(45 212 191 / 0.55); }
+}
+@utility btn-secondary { @apply btn border border-line bg-fill text-ink hover:bg-fill-2; }
+@utility btn-danger {
+  @apply btn sos-surface font-bold;
+  &:hover:not(:disabled) { filter: brightness(1.06); transform: translateY(-1px); }
+}
+@utility btn-ghost { @apply btn text-ink-2 hover:bg-fill-2 hover:text-ink; }
+@utility chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold; }
 @utility input {
-  @apply w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-sm text-ink placeholder:text-ink-3
-    focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20;
+  @apply min-h-12 w-full rounded-2xl border border-[rgb(11_42_37/0.14)] bg-white/72 px-4 py-3 text-[15px] font-medium text-ink placeholder:text-ink/50
+    transition outline-none focus:border-brand-2 focus:bg-white focus:ring-4 focus:ring-brand-2/18;
 }
-@utility label { @apply mb-1 block text-sm font-medium text-ink-2; }
-@utility eyebrow { @apply text-xs font-semibold uppercase tracking-wider text-ink-3; }
-
-/* Map markers (Leaflet divIcons) */
-.pin {
-  display: grid; place-items: center;
-  width: 30px; height: 30px; border-radius: 999px;
-  border: 3px solid #fff; box-shadow: 0 2px 6px rgb(0 0 0 / .3);
-  font: 700 12px/1 var(--font-sans); color: #fff;
+@utility label { @apply mb-2 block text-sm font-semibold text-ink-2; }
+@utility eyebrow { @apply text-xs font-bold tracking-[0.12em] text-brand uppercase; }
+@utility heading { @apply font-display font-extrabold tracking-tight; }
+@utility gradient-text {
+  background: linear-gradient(90deg, #0d9488, #0f766e 40%, #4f46e5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-.pin-hospital { background: var(--color-brand); }
-.pin-you { background: var(--color-sky); width: 20px; height: 20px; }
-.pin-you::after {
-  content: ''; position: absolute; width: 20px; height: 20px; border-radius: 999px;
-  background: var(--color-sky); opacity: .35; animation: pulse 2s ease-out infinite;
+@utility avatar {
+  @apply grid shrink-0 place-items-center rounded-full font-bold text-on-mint;
+  background: linear-gradient(135deg, #a5b4fc, #5eead4);
 }
-.pin-ambulance { background: var(--color-sos); width: 36px; height: 36px; font-size: 18px; }
-@keyframes pulse { from { transform: scale(1); opacity: .45 } to { transform: scale(3.2); opacity: 0 } }
 
-.leaflet-container { font-family: var(--font-sans); background: #e8e6df; }
+/* ---------- motion ---------- */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: none } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-24px) } to { opacity: 1; transform: none } }
+@keyframes drift1 { 0%, 100% { transform: translate(0, 0) scale(1) } 50% { transform: translate(120px, 80px) scale(1.18) } }
+@keyframes drift2 { 0%, 100% { transform: translate(0, 0) scale(1.1) } 50% { transform: translate(-140px, 60px) scale(0.92) } }
+@keyframes drift3 { 0%, 100% { transform: translate(0, 0) } 50% { transform: translate(60px, -110px) scale(1.12) } }
+@keyframes ring { 0% { transform: scale(0.85); opacity: 0.75 } 100% { transform: scale(1.9); opacity: 0 } }
+@keyframes blink { 0%, 100% { opacity: 1 } 50% { opacity: 0.35 } }
+@keyframes float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+@keyframes sheen { 0% { transform: translateX(-120%) skewX(-20deg) } 60%, 100% { transform: translateX(320%) skewX(-20deg) } }
+@keyframes bounceDot { 0%, 80%, 100% { transform: translateY(0); opacity: 0.5 } 40% { transform: translateY(-6px); opacity: 1 } }
+@keyframes orb { 0%, 100% { box-shadow: 0 0 0 0 rgb(94 234 212 / 0.5) } 50% { box-shadow: 0 0 0 10px rgb(94 234 212 / 0) } }
+@keyframes grow { from { width: 0 } }
+@keyframes spin { to { transform: rotate(360deg) } }
+@keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.98) } to { opacity: 1; transform: none } }
 
-/* SOS hold ring */
-.sos-ring { transition: stroke-dashoffset 60ms linear; }
+.fu { animation: fadeUp 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.d1 { animation-delay: 0.08s } .d2 { animation-delay: 0.16s } .d3 { animation-delay: 0.24s }
+.d4 { animation-delay: 0.32s } .d5 { animation-delay: 0.4s } .d6 { animation-delay: 0.48s }
+.si { animation: slideIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.pop { animation: pop 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.live { animation: blink 1.6s ease-in-out infinite; }
+.float { animation: float 6s ease-in-out infinite; }
+.float2 { animation: float 7.5s ease-in-out 1s infinite; }
+.float3 { animation: float 5.5s ease-in-out 2s infinite; }
+.orb { animation: orb 2.4s ease-in-out infinite; }
+.spin-slow { animation: spin 40s linear infinite; }
+.bar { animation: grow 1.4s 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.lift { transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.35s, border-color 0.35s; }
+.lift:hover { transform: translateY(-5px); border-color: rgb(20 184 166 / 0.45); box-shadow: 0 22px 50px rgb(15 70 60 / 0.16); }
 
-@keyframes radar { from { transform: scale(.4); opacity: .6 } to { transform: scale(1.6); opacity: 0 } }
-.radar::before, .radar::after {
-  content: ''; position: absolute; inset: 0; border-radius: 999px; border: 2px solid var(--color-sos);
-  animation: radar 2.4s ease-out infinite;
-}
-.radar::after { animation-delay: 1.2s; }
+.blob { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
+.b1 { animation: drift1 18s ease-in-out infinite; }
+.b2 { animation: drift2 22s ease-in-out infinite; }
+.b3 { animation: drift3 26s ease-in-out infinite; }
+
+.sos-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgb(255 110 110 / 0.7); animation: ring 2.6s ease-out infinite; }
+.sos-ring.r2 { animation-delay: 0.85s; }
+.sos-ring.r3 { animation-delay: 1.7s; }
+.sheen { position: absolute; inset: 0 auto 0 0; width: 40%; background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.55), transparent); animation: sheen 6s ease-in-out infinite; pointer-events: none; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #14b8a6; animation: bounceDot 1.2s ease-in-out infinite; }
+.dot:nth-child(2) { animation-delay: 0.15s; } .dot:nth-child(3) { animation-delay: 0.3s; }
+
+/* SOS hold progress */
+.sos-progress { transition: stroke-dashoffset 60ms linear; }
 
 @media (prefers-reduced-motion: reduce) {
-  .radar::before, .radar::after, .pin-you::after { animation: none; }
+  .fu, .si, .pop, .live, .float, .float2, .float3, .orb, .spin-slow, .bar, .b1, .b2, .b3, .sos-ring, .sheen, .dot { animation: none !important; }
+  .lift:hover { transform: none; }
 }
+
+/* ---------- map (Leaflet) ---------- */
+.leaflet-container { font-family: var(--font-sans); background: #e8efed; }
+.leaflet-tile-pane { filter: saturate(0.8) contrast(0.97); }
+.leaflet-control-attribution { background: rgb(255 255 255 / 0.85) !important; color: rgb(11 42 37 / 0.74) !important; }
+.leaflet-control-attribution a { color: #0f766e !important; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #fff; color: #0b2a25; }
+
+.pin { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 999px; border: 3px solid #fff; box-shadow: 0 4px 14px rgb(15 70 60 / 0.35); font: 800 12px/1 var(--font-sans); color: #fff; }
+.pin-hospital { background: #0f766e; }
+.pin-hospital.is-selected { background: #0b2a25; transform: scale(1.2); }
+.pin-you { position: relative; width: 20px; height: 20px; background: #6366f1; }
+.pin-you::after { content: ''; position: absolute; inset: -3px; border-radius: 999px; background: #6366f1; opacity: 0.3; animation: ring 2.4s ease-out infinite; }
+.pin-ambulance { width: 38px; height: 38px; background: #e11d48; }

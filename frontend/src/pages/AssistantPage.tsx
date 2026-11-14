@@ -1,9 +1,9 @@
-import { Bot, Loader2, RotateCcw, SendHorizontal, Siren } from 'lucide-react'
+import { Bot, SendHorizontal, Siren, Sparkles } from 'lucide-react'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Link } from 'react-router'
 import { HospitalCard } from '../components/HospitalCard'
-import { api, type AssistantReply, type ChatTurn } from '../lib/api'
-import { cx } from '../lib/format'
+import { api, type AssistantReply, type ChatTurn, type RankedHospital } from '../lib/api'
+import { isDialable, tel } from '../lib/format'
 import { useLocation, useMeta } from '../lib/hooks'
 
 interface Message extends ChatTurn {
@@ -17,6 +17,14 @@ const SUGGESTIONS = [
   'Pregnancy check-up near Gohana',
 ]
 const KEY = 'cp:chat'
+
+function BotAvatar() {
+  return (
+    <span className="grid size-9 shrink-0 place-items-center rounded-full border border-brand/40 bg-brand-soft">
+      <Bot className="size-[18px] text-brand-3" aria-hidden />
+    </span>
+  )
+}
 
 export function AssistantPage() {
   const meta = useMeta()
@@ -59,91 +67,107 @@ export function AssistantPage() {
   }
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col">
-      <div className="mb-4 flex items-start justify-between gap-3">
-        <div>
-          <h1 className="text-xl font-bold">Care guide</h1>
-          <p className="text-sm text-ink-2">
-            Tell me what's wrong — in English or Hindi. I'll suggest the right kind of care and the best place to go.
-          </p>
+    <section className="glass fu flex min-h-[calc(100dvh-10rem)] flex-col overflow-hidden rounded-[30px] lg:min-h-[calc(100dvh-3rem)]">
+      <header className="flex flex-wrap items-center justify-between gap-3.5 border-b border-line px-5 py-5 sm:px-7">
+        <div className="flex items-center gap-3.5">
+          <span className="orb grid size-12 place-items-center rounded-full" style={{ background: 'radial-gradient(circle at 30% 25%,#ccfbf1,#2dd4bf 55%,#0f766e)' }}>
+            <Sparkles className="size-[22px] text-on-mint" aria-hidden />
+          </span>
+          <div>
+            <h1 className="heading text-2xl">Care guide</h1>
+            <p className="mt-0.5 text-sm text-ink-2">Tell me what’s wrong — in English or Hindi.</p>
+          </div>
         </div>
-        {messages.length > 0 && (
-          <button className="btn-ghost shrink-0" onClick={() => setMessages([])} aria-label="Start over"><RotateCcw className="size-4" /></button>
+        {messages.length > 0 && <button className="btn-secondary" onClick={() => setMessages([])}>Start over</button>}
+      </header>
+
+      <div className="flex flex-1 flex-col gap-5 overflow-y-auto px-5 py-6 sm:px-7" aria-live="polite">
+        {meta && !meta.assistant.aiAvailable && (
+          <p className="rounded-2xl border border-amber/30 bg-amber-soft px-4 py-2.5 text-[13px] text-amber">AI isn’t switched on for this server yet, so answers use simple keyword matching.</p>
         )}
-      </div>
-
-      {meta && !meta.assistant.aiAvailable && (
-        <p className="mb-3 rounded-xl bg-amber-soft px-3 py-2 text-xs text-amber">AI is not configured on this server — using basic keyword matching.</p>
-      )}
-
-      <div className="space-y-4" aria-live="polite">
         {messages.length === 0 && (
-          <div className="card p-4">
-            <p className="text-sm font-medium">Try asking:</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {SUGGESTIONS.map((s) => (
-                <button key={s} onClick={() => void send(s)} className="rounded-full border border-line px-3 py-1.5 text-sm text-ink-2 hover:border-brand hover:text-brand">{s}</button>
-              ))}
-            </div>
-            <p className="mt-4 text-xs text-ink-3">Not a doctor and not a diagnosis. In an emergency use SOS or call 112.</p>
+          <div className="fu d1 flex gap-3">
+            <BotAvatar />
+            <p className="max-w-[680px] rounded-[6px_22px_22px_22px] border border-line bg-fill px-4.5 py-4 text-[15px] leading-relaxed">
+              Namaste! Describe the problem — who it’s for, how long it’s been going on, and anything that worries you. I’ll suggest the right kind of care, the <b>nearest</b> suitable place and the <b>best option within 100 km</b>. I’m not a doctor, and I’ll tell you if something needs SOS.
+            </p>
           </div>
         )}
 
-        {messages.map((m, i) => (
-          <div key={i} className={cx('flex', m.role === 'user' ? 'justify-end' : 'justify-start')}>
-            {m.role === 'user' ? (
-              <p className="max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-br-md bg-brand px-4 py-2.5 text-sm text-white">{m.content}</p>
-            ) : (
-              <div className="w-full space-y-3">
-                <div className="flex gap-2.5">
-                  <span className="grid size-8 shrink-0 place-items-center rounded-full bg-brand-soft text-brand"><Bot className="size-4" aria-hidden /></span>
-                  <p className="card whitespace-pre-wrap rounded-tl-md px-4 py-2.5 text-sm leading-relaxed">{m.content}</p>
-                </div>
-                {m.data?.emergency.flagged && (
-                  <Link to="/" className="ml-10 flex items-center gap-3 rounded-2xl bg-sos p-3.5 text-white">
-                    <Siren className="size-6 shrink-0" aria-hidden />
-                    <span className="flex-1 text-sm"><b>This may be an emergency.</b> Tap to open SOS, or call 112 / 108.</span>
-                  </Link>
-                )}
-                {m.data?.recommendation && <RecommendationBlock rec={m.data.recommendation} />}
-              </div>
-            )}
+        {messages.map((m, i) => m.role === 'user' ? (
+          <div key={i} className="pop flex justify-end">
+            <p className="max-w-[80%] rounded-[22px_22px_6px_22px] text-white px-4.5 py-3.5 text-base leading-normal whitespace-pre-wrap shadow-[0_10px_30px_rgb(45_212_191/0.3)]" style={{ background: 'linear-gradient(135deg,#2dd4bf,#0f766e)' }}>{m.content}</p>
+          </div>
+        ) : (
+          <div key={i} className="pop flex items-start gap-3">
+            <BotAvatar />
+            <div className="flex min-w-0 flex-1 flex-col gap-3.5">
+              <p className="max-w-[680px] rounded-[6px_22px_22px_22px] border border-line bg-fill px-4.5 py-4 text-[15px] leading-relaxed whitespace-pre-wrap">{m.content}</p>
+              {m.data?.emergency.flagged && (
+                <Link to="/app/sos" className="sos-surface flex max-w-[680px] items-center gap-3 rounded-[20px] p-4 no-underline">
+                  <Siren className="live size-6 shrink-0" aria-hidden />
+                  <span className="flex-1 text-sm"><b>This may be an emergency.</b> Tap to open SOS, or call 112 / 108.</span>
+                </Link>
+              )}
+              {m.data?.recommendation && <Recommendations rec={m.data.recommendation} />}
+            </div>
           </div>
         ))}
+
         {busy && (
-          <div className="flex items-center gap-2 pl-10 text-sm text-ink-3"><Loader2 className="size-4 animate-spin" aria-hidden /> Thinking…</div>
+          <div className="flex items-center gap-3">
+            <BotAvatar />
+            <span aria-label="Thinking" className="inline-flex gap-1.5 rounded-[6px_22px_22px_22px] border border-line bg-fill px-4.5 py-4"><span className="dot" /><span className="dot" /><span className="dot" /></span>
+          </div>
         )}
-        {error && <p className="rounded-xl bg-sos-soft p-3 text-sm text-sos-dark" role="alert">{error}</p>}
+        {error && <p className="rounded-2xl bg-sos-soft p-3 text-sm text-sos-dark" role="alert">{error}</p>}
         <div ref={endRef} />
       </div>
 
-      <form onSubmit={(e) => void send(input, e)} className="sticky bottom-20 mt-5 flex gap-2 rounded-2xl border border-line bg-surface p-2 shadow-sm md:bottom-4">
-        <label htmlFor="chat-input" className="sr-only">Describe your problem</label>
-        <input id="chat-input" className="flex-1 bg-transparent px-2 text-sm focus:outline-none" placeholder="Describe the problem…" autoComplete="off"
-          value={input} onChange={(e) => setInput(e.target.value)} maxLength={2000} />
-        <button className="btn-primary px-3" disabled={busy || !input.trim()} aria-label="Send"><SendHorizontal className="size-4" /></button>
-      </form>
-      {!loc.coords && <p className="mt-2 text-center text-xs text-ink-3">Share your location for distances from where you are. <button className="underline" onClick={() => void loc.locate()}>Share</button></p>}
-    </div>
+      <div className="border-t border-line px-5 pt-4.5 pb-6 sm:px-7">
+        <div className="mb-3.5 flex flex-wrap gap-2">
+          {SUGGESTIONS.map((s) => (
+            <button key={s} onClick={() => void send(s)} disabled={busy}
+              className="min-h-10 rounded-full border border-line bg-fill px-3.5 text-sm font-medium text-ink-2 transition hover:border-brand/50 hover:bg-brand-soft">{s}</button>
+          ))}
+        </div>
+        <form onSubmit={(e) => void send(input, e)} className="flex gap-2.5">
+          <label htmlFor="chat-input" className="sr-only">Describe your problem</label>
+          <input id="chat-input" className="input min-h-14 flex-1 rounded-[18px] text-base" placeholder="Describe the problem… (English / हिन्दी / Hinglish)" autoComplete="off"
+            value={input} onChange={(e) => setInput(e.target.value)} maxLength={2000} />
+          <button className="grid size-14 flex-none place-items-center rounded-[18px] text-on-mint shadow-[0_10px_28px_rgb(45_212_191/0.4)] disabled:opacity-50" style={{ background: 'linear-gradient(135deg,#99f6e4,#2dd4bf)' }}
+            disabled={busy || !input.trim()} aria-label="Send"><SendHorizontal className="size-5" /></button>
+        </form>
+        <p className="mt-3 text-[13px] text-ink-3">
+          Not a doctor and not a diagnosis. In an emergency use SOS or call 112.
+          {!loc.coords && <> Share your location for distances from where you are. <button className="font-semibold text-brand underline" onClick={() => void loc.locate()}>Share</button></>}
+        </p>
+      </div>
+    </section>
   )
 }
 
-function RecommendationBlock({ rec }: { rec: NonNullable<AssistantReply['recommendation']> }) {
-  const bestIds = new Set(rec.nearest.map((h) => h.id))
-  const better = rec.best.filter((h) => !bestIds.has(h.id))
-  if (rec.nearest.length === 0) return <p className="ml-10 text-sm text-ink-2">No listed facility for {rec.specialtyLabel?.toLowerCase()} within {rec.maxKm} km.</p>
+function Recommendations({ rec }: { rec: NonNullable<AssistantReply['recommendation']> }) {
+  const nearest = rec.nearest[0]
+  const best: RankedHospital | undefined = rec.best.find((h) => h.id !== nearest?.id)
+  const others = [...rec.nearest.slice(1), ...rec.best].filter((h, i, all) => h.id !== nearest?.id && h.id !== best?.id && all.findIndex((x) => x.id === h.id) === i)
+  if (!nearest) return <p className="text-sm text-ink-2">No listed facility for {rec.specialtyLabel?.toLowerCase()} within {rec.maxKm} km.</p>
   return (
-    <div className="ml-10 space-y-3">
-      <div className="space-y-2">
-        <p className="eyebrow">Nearest to you{rec.specialtyLabel && ` · ${rec.specialtyLabel}`}</p>
-        {rec.nearest.map((h, i) => <HospitalCard key={h.id} hospital={h} rank={i + 1} highlight="nearest" />)}
+    <div className="flex flex-col gap-3.5">
+      <div className="grid gap-3.5 xl:grid-cols-2">
+        <HospitalCard hospital={nearest} label={`Nearest suitable${rec.specialtyLabel ? ` · ${rec.specialtyLabel}` : ''}`} />
+        {best && <HospitalCard hospital={best} label={`Best within ${rec.maxKm} km — if you can travel`} labelTone="sky" />}
       </div>
-      {better.length > 0 && (
-        <div className="space-y-2">
-          <p className="eyebrow">Best within {rec.maxKm} km — if you can travel</p>
-          {better.map((h, i) => <HospitalCard key={h.id} hospital={h} rank={i + 1} highlight="best" />)}
-        </div>
+      {others.length > 0 && (
+        <details className="text-sm text-ink-2">
+          <summary className="cursor-pointer font-semibold text-brand">{others.length} more option{others.length === 1 ? '' : 's'}</summary>
+          <div className="mt-3 grid gap-3 xl:grid-cols-2">{others.map((h) => <HospitalCard key={h.id} hospital={h} />)}</div>
+        </details>
       )}
+      <div className="flex flex-wrap gap-2.5">
+        <Link to={`/app/appointments?hospital=${encodeURIComponent(nearest.id)}`} className="btn border border-brand/40 bg-brand-soft text-brand-3">Request appointment</Link>
+        {isDialable(nearest.phone) && <a href={tel(nearest.phone)} className="btn-secondary">Call {nearest.name.split(/[,(]/)[0]}</a>}
+      </div>
     </div>
   )
 }

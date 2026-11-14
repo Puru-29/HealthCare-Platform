@@ -14,13 +14,19 @@ const phone = z.string().max(20).transform((v, ctx) => {
 })
 const optionalText = (max: number) => z.string().trim().max(max).transform((v) => v || null).nullable().optional()
 
-function presentPatient(p: PatientRow | null) {
+export const BLOOD_GROUPS = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'] as const
+
+export function presentPatient(p: PatientRow | null) {
   return {
+    signedIn: !!p?.phone_verified_at,
     name: p?.name ?? null,
     phone: p?.phone ?? null,
     emergencyContactName: p?.emergency_contact_name ?? null,
     emergencyContactPhone: p?.emergency_contact_phone ?? null,
+    bloodGroup: p?.blood_group ?? null,
+    allergies: p?.allergies ?? null,
     hasPmjay: !!p?.has_pmjay,
+    pmjayUsed: p?.pmjay_used ?? null,
     insurer: p?.insurer ?? null,
     sumInsured: p?.sum_insured ?? null,
   }
@@ -43,22 +49,34 @@ export function patientRoutes(db: DB, dispatcher: Dispatcher) {
       phone: phone.nullable().optional(),
       emergencyContactName: optionalText(80),
       emergencyContactPhone: phone.nullable().optional(),
+      bloodGroup: z.enum(BLOOD_GROUPS).nullable().optional(),
+      allergies: optionalText(200),
       hasPmjay: z.boolean().optional(),
+      pmjayUsed: z.number().int().min(0).max(500_000).nullable().optional(),
       insurer: optionalText(80),
       sumInsured: z.number().int().min(0).max(100_000_000).nullable().optional(),
     }), req.body)
     const p = getOrCreatePatient(db, req, res)
+    // A verified number is the account's identity and the number crews call; changing it needs a new sign-in.
+    if (p.phone_verified_at && body.phone !== undefined && body.phone !== p.phone) {
+      throw new HttpError(400, 'Your mobile number is verified. To use a different number, sign out and sign in with it.', 'phone_locked')
+    }
+    const pick = <T>(value: T | undefined, current: T) => (value !== undefined ? value : current)
     db.prepare(`
-      UPDATE patients SET name = ?, phone = ?, emergency_contact_name = ?, emergency_contact_phone = ?, has_pmjay = ?, insurer = ?, sum_insured = ?
+      UPDATE patients SET name = ?, phone = ?, emergency_contact_name = ?, emergency_contact_phone = ?, blood_group = ?, allergies = ?,
+        has_pmjay = ?, pmjay_used = ?, insurer = ?, sum_insured = ?
       WHERE id = ?
     `).run(
-      body.name !== undefined ? body.name : p.name,
-      body.phone !== undefined ? body.phone : p.phone,
-      body.emergencyContactName !== undefined ? body.emergencyContactName : p.emergency_contact_name,
-      body.emergencyContactPhone !== undefined ? body.emergencyContactPhone : p.emergency_contact_phone,
+      pick(body.name, p.name),
+      pick(body.phone, p.phone),
+      pick(body.emergencyContactName, p.emergency_contact_name),
+      pick(body.emergencyContactPhone, p.emergency_contact_phone),
+      pick(body.bloodGroup, p.blood_group),
+      pick(body.allergies, p.allergies),
       body.hasPmjay !== undefined ? (body.hasPmjay ? 1 : 0) : p.has_pmjay,
-      body.insurer !== undefined ? body.insurer : p.insurer,
-      body.sumInsured !== undefined ? body.sumInsured : p.sum_insured,
+      pick(body.pmjayUsed, p.pmjay_used),
+      pick(body.insurer, p.insurer),
+      pick(body.sumInsured, p.sum_insured),
       p.id,
     )
     res.json(presentPatient(db.prepare('SELECT * FROM patients WHERE id = ?').get(p.id) as unknown as PatientRow))

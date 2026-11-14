@@ -1,9 +1,9 @@
 import { Bell, BellOff, Check, Copy, LogOut, MapPin, Phone, Plus, Siren, Truck, X } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
 import { useNavigate } from 'react-router'
-import { DemoBanner, Logo } from '../../components/Layout'
+import { DemoBanner } from '../../components/Layout'
 import { MapView } from '../../components/MapView'
-import { ErrorNote, Spinner } from '../../components/ui'
+import { Aurora, ErrorNote, Logo, Spinner } from '../../components/ui'
 import { api, ApiError, type Appointment, type Hospital, type Incident } from '../../lib/api'
 import { cx, date, isDialable, km, minutes, tel, time } from '../../lib/format'
 import { getPosition, useApi, useEventStream, useMeta } from '../../lib/hooks'
@@ -51,7 +51,7 @@ export function ConsoleDashboard() {
   useEventStream<{ incidentId: string }>('/api/console/stream', 'offer', () => { alarm.ring(); navigator.vibrate?.([300, 100, 300]); reload() })
 
   useEffect(() => {
-    if (error && /sign in|session/i.test(error)) navigate('/console/login', { replace: true })
+    if (error && /sign in|session/i.test(error)) navigate('/login?tab=staff', { replace: true })
   }, [error, navigate])
   useEffect(() => {
     document.title = data?.offers.length ? `(${data.offers.length}) SOS — CarePath console` : 'CarePath console'
@@ -69,8 +69,9 @@ export function ConsoleDashboard() {
 
   return (
     <div className="min-h-dvh">
+      <Aurora />
       <DemoBanner />
-      <header className="border-b border-line bg-surface">
+      <header className="glass rounded-none border-x-0 border-t-0">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-4 py-3">
           <Logo />
           <span className="text-ink-3">/</span>
@@ -80,14 +81,14 @@ export function ConsoleDashboard() {
             <button className={cx('btn-secondary py-1.5', !alarm.enabled && 'border-amber text-amber')} onClick={alarm.enable}>
               {alarm.enabled ? <><Bell className="size-4" aria-hidden /> Sound on</> : <><BellOff className="size-4" aria-hidden /> Turn on SOS sound</>}
             </button>
-            <button className="btn-ghost py-1.5" onClick={async () => { await api.post('/console/logout'); navigate('/console/login') }}><LogOut className="size-4" aria-hidden /> Sign out</button>
+            <button className="btn-ghost py-1.5" onClick={async () => { await api.post('/console/logout'); navigate('/login?tab=staff') }}><LogOut className="size-4" aria-hidden /> Sign out</button>
           </div>
         </div>
         <nav className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4" aria-label="Console">
           {tabs.map((t) => (
             <button key={t.key} onClick={() => setTab(t.key)} aria-current={tab === t.key}
               className={cx('whitespace-nowrap border-b-2 px-3 py-2.5 text-sm font-medium', tab === t.key ? 'border-brand text-brand' : 'border-transparent text-ink-2')}>
-              {t.label}{t.count ? <span className="ml-1.5 rounded-full bg-canvas px-1.5 text-xs">{t.count}</span> : null}
+              {t.label}{t.count ? <span className="ml-1.5 rounded-full bg-fill px-1.5 text-xs">{t.count}</span> : null}
             </button>
           ))}
         </nav>
@@ -204,7 +205,7 @@ function DriverLinkCard({ path, onClose }: { path: string; onClose: () => void }
         <button className="btn-ghost p-1.5" onClick={onClose} aria-label="Dismiss"><X className="size-4" /></button>
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
-        <code className="min-w-0 flex-1 truncate rounded-lg bg-surface px-3 py-2 text-xs">{url}</code>
+        <code className="min-w-0 flex-1 truncate rounded-lg bg-fill-2 px-3 py-2 text-xs">{url}</code>
         <button className="btn-secondary" onClick={() => { void navigator.clipboard.writeText(url); setCopied(true) }}><Copy className="size-4" aria-hidden /> {copied ? 'Copied' : 'Copy'}</button>
         <a className="btn-primary" href={`https://wa.me/?text=${encodeURIComponent(`CarePath emergency trip: ${url}`)}`} target="_blank" rel="noreferrer">WhatsApp</a>
       </div>
@@ -226,6 +227,9 @@ function TripCard({ trip, onLink, reload }: { trip: Dashboard['trips'][number]; 
             <p className="font-semibold">{trip.patient.name ?? 'Patient'} <span className="font-normal text-ink-3">· {trip.ambulance?.vehicleNumber}</span></p>
             <p className="text-sm capitalize text-ink-2">{trip.status.replace('_', ' ')}{trip.eta && ` · ${minutes(trip.eta.minutes)} (${km(trip.eta.distanceKm)})`}</p>
             {trip.patient.note && <p className="text-sm">“{trip.patient.note}”</p>}
+            {(trip.patient.bloodGroup || trip.patient.allergies) && (
+              <p className="mt-1 text-sm text-sos-dark">{[trip.patient.bloodGroup && `Blood ${trip.patient.bloodGroup}`, trip.patient.allergies && `Allergies: ${trip.patient.allergies}`].filter(Boolean).join(' · ')}</p>
+            )}
           </div>
           {isDialable(trip.patient.phone) && <a href={tel(trip.patient.phone)} className="btn-secondary"><Phone className="size-4" aria-hidden /> {trip.patient.phone}</a>}
         </div>
@@ -267,7 +271,7 @@ function Fleet({ data, reload }: { data: Dashboard; reload: () => void }) {
               </div>
               {a.status === 'busy'
                 ? <span className="chip bg-sos-soft text-sos-dark">On a trip</span>
-                : <button onClick={() => void toggle(a)} className={cx('chip px-3 py-1', a.status === 'available' ? 'bg-brand-soft text-brand' : 'bg-canvas text-ink-3')}>{a.status === 'available' ? 'Available' : 'Off duty'}</button>}
+                : <button onClick={() => void toggle(a)} className={cx('chip px-3 py-1', a.status === 'available' ? 'bg-brand-soft text-brand' : 'bg-fill text-ink-3')}>{a.status === 'available' ? 'Available' : 'Off duty'}</button>}
             </li>
           ))}
         </ul>

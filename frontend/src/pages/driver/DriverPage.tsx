@@ -73,6 +73,9 @@ export function DriverPage() {
             <p className="eyebrow">{inc.status === 'to_hospital' ? `To ${inc.hospital?.name}` : 'Pick up patient'}</p>
             <p className="mt-1 text-2xl font-bold">{patient?.name ?? 'Patient'}</p>
             {patient?.note && <p className="mt-1 rounded-lg bg-sos-soft p-2 text-sm text-sos-dark">{patient.note}</p>}
+            {(patient?.bloodGroup || patient?.allergies) && (
+              <p className="mt-2 text-sm font-semibold text-sos-dark">{[patient.bloodGroup && `Blood ${patient.bloodGroup}`, patient.allergies && `Allergies: ${patient.allergies}`].filter(Boolean).join(' · ')}</p>
+            )}
             {inc.eta && <p className="mt-2 text-sm text-ink-2">{km(inc.eta.distanceKm)} · about {minutes(inc.eta.minutes)}</p>}
             <div className="mt-4 grid grid-cols-2 gap-2">
               {patient && isDialable(patient.phone) && <a className="btn-secondary py-3" href={tel(patient.phone)}><Phone className="size-5" aria-hidden /> Call patient</a>}

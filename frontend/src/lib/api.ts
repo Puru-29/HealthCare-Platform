@@ -50,16 +50,25 @@ export interface Meta {
   attribution: string
 }
 
+export const BLOOD_GROUPS = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'] as const
+
 export interface Me {
+  /** True once the mobile number is verified by OTP. Guests can still use everything, including SOS. */
+  signedIn: boolean
   name: string | null
   phone: string | null
   emergencyContactName: string | null
   emergencyContactPhone: string | null
+  bloodGroup: (typeof BLOOD_GROUPS)[number] | null
+  allergies: string | null
   hasPmjay: boolean
+  pmjayUsed: number | null
   insurer: string | null
   sumInsured: number | null
   activeSosId?: string | null
 }
+
+export interface OtpSent { sent: true; expiresInSeconds: number; resendAfterSeconds: number; devCode?: string }
 
 export type IncidentStatus = 'searching' | 'assigned' | 'arrived' | 'to_hospital' | 'completed' | 'cancelled' | 'no_response'
 
@@ -76,7 +85,7 @@ export interface Incident {
   timeline: Array<{ at: string; type: string; message: string }>
   acceptedAt: string | null
   arrivedAt: string | null
-  patient?: { name: string | null; phone: string; note: string | null }
+  patient?: { name: string | null; phone: string; note: string | null; bloodGroup?: string | null; allergies?: string | null }
 }
 
 export interface Appointment {

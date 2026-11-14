@@ -5,6 +5,7 @@ import { config } from './config.js'
 import type { DB } from './db.js'
 import { requireJsonForWrites } from './lib/auth.js'
 import { errorHandler, notFound } from './lib/http.js'
+import { authRoutes } from './routes/auth.js'
 import { consoleRoutes } from './routes/console.js'
 import { driverRoutes } from './routes/driver.js'
 import { patientRoutes } from './routes/patient.js'
@@ -29,6 +30,7 @@ export function createApp(db: DB, dispatcher: Dispatcher) {
   api.use(requireJsonForWrites)
   api.use(publicRoutes(db))
   api.use(patientRoutes(db, dispatcher))
+  api.use('/auth', authRoutes(db))
   api.use('/console', consoleRoutes(db, dispatcher))
   api.use('/driver', driverRoutes(dispatcher))
   api.use(() => { throw notFound('No such API route') })

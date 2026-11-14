@@ -15,25 +15,51 @@ export interface PatientRow {
   has_pmjay: number
   insurer: string | null
   sum_insured: number | null
+  blood_group: string | null
+  allergies: string | null
+  pmjay_used: number | null
+  phone_verified_at: string | null
 }
 
 /**
- * Patients are identified by a device cookie — no sign-up stands between a
- * person and the SOS button. (Phone OTP verification is the next step.)
+ * Patients are identified by a device session cookie — no sign-up stands
+ * between a person and the SOS button. Signing in with a mobile OTP links the
+ * device to a verified account, so details follow the person across devices.
  */
 export function findPatient(db: DB, req: Request): PatientRow | null {
   const token = readCookie(req, PATIENT_COOKIE)
   if (!token) return null
-  return (db.prepare('SELECT * FROM patients WHERE session_hash = ?').get(hashToken(token)) as unknown as PatientRow | undefined) ?? null
+  return (db.prepare(`
+    SELECT p.* FROM patient_sessions s JOIN patients p ON p.id = s.patient_id WHERE s.token_hash = ?
+  `).get(hashToken(token)) as unknown as PatientRow | undefined) ?? null
+}
+
+/** Start a session on this device for `patientId` (sets the cookie). */
+export function startPatientSession(db: DB, res: Response, patientId: string) {
+  const token = newToken()
+  db.prepare('INSERT INTO patient_sessions (token_hash, patient_id) VALUES (?, ?)').run(hashToken(token), patientId)
+  setCookie(res, PATIENT_COOKIE, token, 365)
+}
+
+export function endPatientSession(db: DB, req: Request, res: Response) {
+  const token = readCookie(req, PATIENT_COOKIE)
+  if (token) db.prepare('DELETE FROM patient_sessions WHERE token_hash = ?').run(hashToken(token))
+  res.clearCookie(PATIENT_COOKIE, { path: '/' })
+}
+
+export function createPatient(db: DB, fields: { phone?: string; verified?: boolean } = {}): string {
+  const id = newId()
+  // session_hash is a legacy NOT NULL column; sessions now live in patient_sessions.
+  db.prepare('INSERT INTO patients (id, session_hash, phone, phone_verified_at) VALUES (?, ?, ?, ?)')
+    .run(id, hashToken(newToken()), fields.phone ?? null, fields.verified ? new Date().toISOString() : null)
+  return id
 }
 
 export function getOrCreatePatient(db: DB, req: Request, res: Response): PatientRow {
   const existing = findPatient(db, req)
   if (existing) return existing
-  const token = newToken()
-  const id = newId()
-  db.prepare('INSERT INTO patients (id, session_hash) VALUES (?, ?)').run(id, hashToken(token))
-  setCookie(res, PATIENT_COOKIE, token, 365)
+  const id = createPatient(db)
+  startPatientSession(db, res, id)
   return db.prepare('SELECT * FROM patients WHERE id = ?').get(id) as unknown as PatientRow
 }
 

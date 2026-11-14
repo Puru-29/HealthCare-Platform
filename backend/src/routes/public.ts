@@ -21,8 +21,8 @@ export function publicRoutes(db: DB) {
   const r = Router()
 
   r.get('/health', (_req, res) => {
-    const row = db.prepare('SELECT COUNT(*) AS n FROM hospitals').get() as { n: number }
-    res.json({ ok: true, hospitals: row.n })
+    const row = db.prepare(`SELECT COUNT(*) AS n, SUM(pmjay_json IS NOT NULL) AS pmjay, SUM(lat IS NOT NULL) AS located FROM hospitals`).get() as { n: number; pmjay: number; located: number }
+    res.json({ ok: true, hospitals: row.n, pmjay: row.pmjay ?? 0, located: row.located ?? 0 })
   })
 
   r.get('/meta', (_req, res) => {

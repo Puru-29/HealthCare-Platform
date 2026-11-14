@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { api, type LatLng, type Me, type Meta } from './api'
+import { api, type LatLng, type Meta } from './api'
 
 // ---------- location ----------
 
@@ -92,10 +92,6 @@ export function useMeta() {
     metaCache.then(setMeta).catch(() => { metaCache = null })
   }, [])
   return meta
-}
-
-export function useMe() {
-  return useApi<Me>('/me')
 }
 
 // ---------- live updates ----------
