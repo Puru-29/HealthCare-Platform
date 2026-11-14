@@ -117,3 +117,14 @@ describe('insurance estimate', () => {
     expect(estimatePmjay(120_000, 0, false)).toMatchObject({ eligible: false, covered: 0, youPay: 120_000 })
   })
 })
+
+describe('hindi / hinglish keyword stems', () => {
+  it.each([
+    ['meri maa ke ghutne me 2 hafte se dard hai', 'orthopaedics'],
+    ['bachche ko khaansi hai', 'paediatrics'],
+    ['ankh lal hai', 'ophthalmology'],
+    ['daat me dard', 'dental'],
+  ])('"%s" -> %s', (text, key) => {
+    expect(matchSpecialties(text)).toContain(key)
+  })
+})

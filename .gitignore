@@ -13,3 +13,13 @@
 *.pfx
 secrets/
 **/secrets/
+
+# Dependencies and build output
+node_modules/
+dist/
+.venv/
+
+# Local databases
+*.db
+*.db-wal
+*.db-shm

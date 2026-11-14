@@ -259,9 +259,8 @@ export class Dispatcher {
     this.event(incidentId, 'assigned', `${hospital.name} accepted. Ambulance ${amb.vehicle_number} (${amb.driver_name}) is on the way.`)
     this.live.set(incidentId, { route: null, routeFrom: null, routeAt: 0, samples: [] })
     this.refreshHospitals(incidentId, 'assigned')
-    void this.refreshRoute(incidentId, true).then(() => {
-      if (amb.simulated && this.opts.simulate) this.simulate(incidentId)
-    })
+    if (amb.simulated && this.opts.simulate) this.simulate(incidentId)
+    else void this.refreshRoute(incidentId, true).then(() => this.publishIncident(incidentId))
     this.publishIncident(incidentId)
     return { driverToken: token }
   }
@@ -386,45 +385,54 @@ export class Dispatcher {
 
   // ---------- demo simulator ----------
 
-  /** Moves a simulated ambulance along the route: pickup in ~90 s, hospital ~60 s later. */
+  /**
+   * Drives a simulated ambulance from whatever stage the trip is in:
+   * to the patient in ~90 s, 15 s on scene, to the hospital in ~60 s.
+   */
   private simulate(incidentId: string) {
-    const live = this.live.get(incidentId)
-    if (!live) return
-    const leg = (durationMs: number, onDone: () => void) => {
-      const route = live.route
-      if (!route) return
-      const path = route.path
+    const status = () => this.incident(incidentId).status
+    const leg = async (durationMs: number, expected: IncidentStatus, onDone: () => void) => {
+      await this.refreshRoute(incidentId, true)
+      const live = this.live.get(incidentId)
+      const path = live?.route?.path
+      if (!live || !path?.length || status() !== expected) return
       const started = Date.now()
       live.simTimer = setInterval(() => {
         const t = Math.min(1, (Date.now() - started) / durationMs)
-        const p = pointAlong(path, t)
-        void this.updateLocation(incidentId, p, true).then(() => {
-          if (t >= 1) { this.stopSimulation(incidentId); onDone() }
+        void this.updateLocation(incidentId, pointAlong(path, t), true).then(() => {
+          if (t >= 1) { this.stopSimulation(incidentId); if (status() === expected) onDone() }
         })
       }, 2000)
     }
-    leg(90_000, () => {
-      const inc = this.incident(incidentId)
-      if (inc.status !== 'assigned') return
-      this.advance(incidentId, 'arrived')
-      setTimeout(() => {
-        if (this.incident(incidentId).status !== 'arrived') return
-        this.advance(incidentId, 'to_hospital')
-        setTimeout(() => leg(60_000, () => {
-          if (this.incident(incidentId).status === 'to_hospital') this.advance(incidentId, 'completed')
-        }), 1500)
-      }, 15_000)
-    })
+    const step = () => {
+      const s = status()
+      if (s === 'assigned') void leg(90_000, 'assigned', () => { this.advance(incidentId, 'arrived'); step() })
+      else if (s === 'arrived') setTimeout(() => { if (status() === 'arrived') { this.advance(incidentId, 'to_hospital'); step() } }, 15_000)
+      else if (s === 'to_hospital') void leg(60_000, 'to_hospital', () => this.advance(incidentId, 'completed'))
+    }
+    step()
   }
 
   // ---------- startup / shutdown ----------
 
-  /** Re-arm timers after a restart. Requests older than 5 minutes are closed. */
+  /**
+   * Re-arm everything held in memory after a restart: search timers for open
+   * requests (closed if older than 5 minutes), and routes/ETAs for active trips.
+   */
   resume() {
     const rows = this.db.prepare(`SELECT id, created_at FROM incidents WHERE status = 'searching'`).all() as Array<{ id: string; created_at: string }>
     for (const r of rows) {
       if (Date.now() - Date.parse(r.created_at) > 5 * 60_000) this.finishNoResponse(r.id)
       else this.nextWave(r.id)
+    }
+    const trips = this.db.prepare(`
+      SELECT i.id, a.simulated FROM incidents i JOIN ambulances a ON a.id = i.ambulance_id
+      WHERE i.status IN ('assigned','arrived','to_hospital')
+    `).all() as Array<{ id: string; simulated: number }>
+    for (const t of trips) {
+      this.live.set(t.id, { route: null, routeFrom: null, routeAt: 0, samples: [] })
+      if (t.simulated && this.opts.simulate) this.simulate(t.id)
+      else void this.refreshRoute(t.id, true)
     }
   }
 

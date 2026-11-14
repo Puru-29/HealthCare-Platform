@@ -1,0 +1,15 @@
+{
+  "name": "carepath",
+  "private": true,
+  "description": "CarePath Sonipat — ambulance SOS, AI care guide, hospital finder and insurance help.",
+  "scripts": {
+    "setup": "npm install --prefix server --legacy-peer-deps && npm install --prefix web --legacy-peer-deps && node -e \"require('fs').existsSync('server/.env')||require('fs').copyFileSync('server/.env.example','server/.env')\" && npm run seed --prefix server -- --demo",
+    "dev": "node scripts/dev.mjs",
+    "test": "npm test --prefix server",
+    "typecheck": "npm run typecheck --prefix server && npm run typecheck --prefix web",
+    "build": "npm run build --prefix web",
+    "start": "npm start --prefix server",
+    "data:build": "node scripts/build-hospital-dataset.mjs",
+    "data:import": "npm run seed --prefix server"
+  }
+}
