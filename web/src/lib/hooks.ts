@@ -81,7 +81,7 @@ export function useApi<T>(path: string | null, deps: unknown[] = []) {
     return () => ctrl.abort()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, tick, ...deps])
-  return { data, error, loading, reload: () => setTick((t) => t + 1), setData }
+  return { data, error, loading, reload: () => setTick((t) => t + 1) }
 }
 
 let metaCache: Promise<Meta> | null = null

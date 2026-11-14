@@ -2,8 +2,8 @@ import { Router } from 'express'
 import { z } from 'zod'
 import { config } from '../config.js'
 import type { DB } from '../db.js'
-import { PMJAY, estimateClaim, estimatePmjay } from '../domain/insurance.js'
-import { EVIDENCE, FACILITY_TYPES, SPECIALTIES, SPECIALTY_KEYS, type FacilityType, type SpecialtyKey } from '../domain/specialties.js'
+import { estimateClaim, estimatePmjay } from '../domain/insurance.js'
+import { FACILITY_TYPES, SPECIALTIES, SPECIALTY_KEYS, type FacilityType, type SpecialtyKey } from '../domain/specialties.js'
 import { findPatient, rateLimit } from '../lib/auth.js'
 import { notFound, param, parse } from '../lib/http.js'
 import { assistantStatus, runAssistant } from '../services/assistant.js'
@@ -28,17 +28,7 @@ export function publicRoutes(db: DB) {
   r.get('/meta', (_req, res) => {
     const attribution = 'Map data © OpenStreetMap contributors. Hospital roster: AB-PMJAY (NHA) district list. Facility list: Haryana Health Department.'
     res.json({
-      region: { name: 'Sonipat', state: 'Haryana', centre: { lat: 28.9931, lng: 77.0151 } },
       specialties: SPECIALTY_KEYS.map((key) => ({ key, label: SPECIALTIES[key].label })),
-      facilityTypes: (Object.keys(FACILITY_TYPES) as FacilityType[]).map((key) => ({ key, label: FACILITY_TYPES[key].label })),
-      evidence: Object.entries(EVIDENCE).map(([key, v]) => ({ key, label: v.label })),
-      emergencyNumbers: [
-        { number: '112', label: 'Emergency (police, fire, ambulance)' },
-        { number: '108', label: 'Government ambulance (free)' },
-        { number: '102', label: 'Mother & child transport (free)' },
-        { number: '14416', label: 'Tele-MANAS mental health (24×7)' },
-      ],
-      pmjay: PMJAY,
       demoMode: config.demoMode,
       assistant: assistantStatus(),
       attribution,

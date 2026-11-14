@@ -38,10 +38,6 @@ export function publish(channel: Channel, event: string, data: unknown) {
   for (const res of subscribers.get(channel) ?? []) send(res, event, data)
 }
 
-export function subscriberCount(channel: Channel): number {
-  return subscribers.get(channel)?.size ?? 0
-}
-
 export const channels = {
   incident: (id: string) => `incident:${id}`,
   hospital: (id: string) => `hospital:${id}`,

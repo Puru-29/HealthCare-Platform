@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T23:06:16.915Z",
+ "generatedAt": "2026-11-14T00:29:19.823Z",
  "district": "Sonipat",
  "state": "Haryana",
  "attribution": "Location data © OpenStreetMap contributors (ODbL 1.0). Hospital roster: AB-PMJAY / National Health Authority district list. Facility list and beds: Haryana Health Department.",
@@ -23,7 +23,7 @@
  "unresolved": [
   "entry 6 PHC Baroda: geocode \"Baroda, Gohana, Sonipat, Haryana\" (village) unresolved",
   "entry 24 PHC Bhatana Jafrabad: geocode \"Bhatana Jafrabad, Sonipat, Haryana\" (village) unresolved",
-  "entry 26 Primary Health Centre (location unconfirmed): Roster gives a generic name and a personal email only; see data/reports/sonipat_hospital_manual_review_evidence_20261029.json pair entries-23-26.",
+  "entry 26 Primary Health Centre (location unconfirmed): Roster entry 26 gives only the generic name 'Primary healthcare center', a personal email and a mobile number — no village, address or registration. (Entry 23, also generic, was resolved to PHC Madina from its phcmadina@ email.) Needs the hospital or district office to confirm which PHC this is.",
   "entry 28 UHC Mahavir Colony: geocode \"Mahavir Colony, Sonipat, Haryana\" (locality) unresolved",
   "entry 29 PHC Moi Majri: geocode \"Moi Majri, Sonipat, Haryana\" (village) unresolved",
   "entry 32 PHC Nahri: geocode \"Nahri, Sonipat, Haryana\" (village) unresolved",

@@ -159,11 +159,6 @@ export function getDb(): DB {
   return instance
 }
 
-/** Replace the default database (tests). */
-export function setDb(db: DB) {
-  instance = db
-}
-
 export function tx<T>(db: DB, fn: () => T): T {
   db.exec('BEGIN IMMEDIATE')
   try {

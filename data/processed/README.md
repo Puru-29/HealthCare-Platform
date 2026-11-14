@@ -1,38 +1,44 @@
-# Source PDF extraction
+# Hospital data pipeline
 
-This folder contains review-only CSVs extracted from the source PDFs in `data/raw/`. The extraction workflow does not connect to PostgreSQL, publish records, or infer current operational status. Every row is marked `unverified`.
+How the government PDFs in `data/raw/` become the hospital directory the app serves.
 
-## Install
-
-From the project root, install the pinned PDF parsing dependency:
-
-```powershell
-python -m pip install -r scripts\requirements-pdf.txt
+```
+data/raw/*.pdf ──(1) extract──▶ data/processed/*.csv ──(2) build──▶ sonipat_facilities.json ──(3) import──▶ server/carepath.db
+                                       ▲                       ▲
+              data/raw/osm/*.json (locations)    data/manual/pmjay_location_matches.json (hand-reviewed links)
 ```
 
-## Run / refresh outputs
+## 1. Extract the PDFs (only when a new PDF is published)
+
+Run this when Haryana or the NHA publish a new list, for example an updated PM-JAY empanelment roster.
 
 ```powershell
+python -m pip install -r scripts\requirements-pdf.txt     # once, ideally inside .venv
 python scripts\extract_healthcare_pdfs.py
-```
-
-The script expects the two named source PDFs in `data/raw/` and overwrites only its own generated files under `data/processed/`. Optional paths:
-
-```powershell
-python scripts\extract_healthcare_pdfs.py --raw-dir data\raw --output-dir data\processed
-```
-
-Run the extraction checks without changing the generated deliverables:
-
-```powershell
 python -m unittest discover -s scripts -p test_extract_healthcare_pdfs.py
 ```
 
-## Generated files
+Outputs, all marked `unverified`:
 
-- `haryana_sonipat_primary_facilities.csv` — individual CHC/PHC names and separate source-count rows, including the reported sub-centre count. The source does not list individual sub-centre names.
-- `haryana_sonipat_hospitals_beds.csv` — Sonipat/Sonepat district hospital names and listed bed capacities.
-- `sonipat_pmjay_empanelled_hospitals.csv` — PM-JAY source IDs (text), names, types, email/contact fields, source date/page, and unverified status.
-- `pdf_extraction_validation.json` and `pdf_extraction_validation.md` — counts, missing fields, duplicate candidates, sequence comparison, and parsing/manual-review notes.
+- `sonipat_pmjay_empanelled_hospitals.csv`: PM-JAY hospital IDs, names, type, Ayushman desk officer and contact.
+- `haryana_sonipat_primary_facilities.csv`: CHC/PHC names and district counts.
+- `haryana_sonipat_hospitals_beds.csv`: government hospital bed capacity.
+- `pdf_extraction_validation.json` / `.md`: counts, missing fields and rows that need a human look. Read these before using a new extract.
 
-Hospital IDs and phone numbers are written as text. Names preserve the source casing and are whitespace-normalized; source name/email/contact columns are retained where normalization is applied. Possible duplicates are reported, never merged. Review the validation report and original PDF before any future import or publication.
+IDs and phone numbers are kept as text. Possible duplicates are reported, never merged.
+
+## 2. Build the directory
+
+```powershell
+npm run data:build
+```
+
+This merges the CSVs with OpenStreetMap locations using `data/manual/pmjay_location_matches.json`, and infers specialties, recording the source of each one. It writes `sonipat_facilities.json`. For a new PDF, add any new PM-JAY entries to the match file first; the build stops if an entry is missing.
+
+## 3. Load it into the app
+
+```powershell
+npm run data:import
+```
+
+This updates the database without overwriting what hospitals have confirmed themselves in the console (verified specialties, phone, location pin).

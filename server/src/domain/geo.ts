@@ -27,11 +27,6 @@ export function estimateMinutes(roadKm: number, speedKmh = ESTIMATE_SPEED_KMH): 
   return (roadKm / speedKmh) * 60
 }
 
-export function isValidLatLng(p: Partial<LatLng> | null | undefined): p is LatLng {
-  return !!p && Number.isFinite(p.lat) && Number.isFinite(p.lng) &&
-    p.lat! >= -90 && p.lat! <= 90 && p.lng! >= -180 && p.lng! <= 180
-}
-
 /** Point a fraction `t` (0..1) of the way along a polyline. */
 export function pointAlong(path: LatLng[], t: number): LatLng {
   if (path.length === 0) throw new Error('empty path')

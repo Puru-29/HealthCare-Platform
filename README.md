@@ -40,8 +40,9 @@ server/      Express 5 + TypeScript + node:sqlite
   services/    dispatch engine (waves, atomic first-accept, live ETA, simulator), assistant, hospitals
   routes/      public, patient, console, driver
 web/         React 19 + Vite + Tailwind 4 + Leaflet/OpenStreetMap, mobile-first PWA
-legacy/      the previous version, kept for reference (also in git history)
 ```
+
+The previous version of the app was removed in Nov 2026; it is still in git history (first commit `16257ac`).
 
 Key decisions:
 

@@ -496,6 +496,3 @@ export function getDispatcher(db: DB): Dispatcher {
   dispatcher ??= new Dispatcher(db)
   return dispatcher
 }
-export function setDispatcher(d: Dispatcher | null) {
-  dispatcher = d
-}

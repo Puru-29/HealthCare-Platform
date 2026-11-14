@@ -1,12 +1,12 @@
 {
   "generated_at": "2026-10-29",
-  "input_directory": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\raw",
+  "input_directory": "data/raw",
   "outputs": {
-    "haryana_facilities_csv": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\haryana_sonipat_primary_facilities.csv",
-    "haryana_hospital_beds_csv": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\haryana_sonipat_hospitals_beds.csv",
-    "pmjay_hospitals_csv": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\sonipat_pmjay_empanelled_hospitals.csv",
-    "validation_json": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\pdf_extraction_validation.json",
-    "validation_markdown": "C:\\Users\\user\\Projects\\HealthCare-Platform\\data\\processed\\pdf_extraction_validation.md"
+    "haryana_facilities_csv": "data/processed/haryana_sonipat_primary_facilities.csv",
+    "haryana_hospital_beds_csv": "data/processed/haryana_sonipat_hospitals_beds.csv",
+    "pmjay_hospitals_csv": "data/processed/sonipat_pmjay_empanelled_hospitals.csv",
+    "validation_json": "data/processed/pdf_extraction_validation.json",
+    "validation_markdown": "data/processed/pdf_extraction_validation.md"
   },
   "sources": {
     "20250508834158531.pdf": {

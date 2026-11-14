@@ -137,7 +137,6 @@ export function present(h: Hospital, origin?: LatLng | null) {
     etaMinutes: roadKm === null ? null : Math.round(estimateMinutes(roadKm)),
   }
 }
-export type PublicHospital = ReturnType<typeof present>
 
 export interface SearchFilters {
   q?: string

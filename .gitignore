@@ -18,6 +18,8 @@ secrets/
 node_modules/
 dist/
 .venv/
+*.tsbuildinfo
+__pycache__/
 
 # Local databases
 *.db

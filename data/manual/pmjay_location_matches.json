@@ -27,7 +27,7 @@
     "23": { "displayName": "PHC Madina", "facilityType": "phc", "osm": "PHC Madina" },
     "24": { "displayName": "PHC Bhatana Jafrabad", "facilityType": "phc", "geocode": "Bhatana Jafrabad, Sonipat, Haryana", "kind": "village" },
     "25": { "displayName": "PHC Mohana", "facilityType": "phc", "osm": "Government hospital, Mohana" },
-    "26": { "displayName": "Primary Health Centre (location unconfirmed)", "facilityType": "phc", "unresolvedReason": "Roster gives a generic name and a personal email only; see data/reports/sonipat_hospital_manual_review_evidence_20261029.json pair entries-23-26." },
+    "26": { "displayName": "Primary Health Centre (location unconfirmed)", "facilityType": "phc", "unresolvedReason": "Roster entry 26 gives only the generic name 'Primary healthcare center', a personal email and a mobile number — no village, address or registration. (Entry 23, also generic, was resolved to PHC Madina from its phcmadina@ email.) Needs the hospital or district office to confirm which PHC this is." },
     "27": { "displayName": "PHC Murthal", "facilityType": "phc", "osm": "PHC Murthal" },
     "28": { "displayName": "UHC Mahavir Colony", "facilityType": "uhc", "geocode": "Mahavir Colony, Sonipat, Haryana", "kind": "locality" },
     "29": { "displayName": "PHC Moi Majri", "facilityType": "phc", "geocode": "Moi Majri, Sonipat, Haryana", "kind": "village" },

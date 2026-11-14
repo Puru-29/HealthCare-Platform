@@ -22,6 +22,14 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RAW_DIR = ROOT / "data" / "raw"
 DEFAULT_OUTPUT_DIR = ROOT / "data" / "processed"
 
+
+def _display_path(path: Path) -> str:
+    """Project-relative path for reports, so committed files hold no local user paths."""
+    try:
+        return Path(path).resolve().relative_to(ROOT).as_posix()
+    except ValueError:
+        return Path(path).name
+
 HARYANA_PDF = "20250508834158531.pdf"
 PMJAY_PDF = "202608041074356704.pdf"
 HARYANA_DATE = "2025-05-05"
@@ -552,8 +560,8 @@ def build_report(
     }
     return {
         "generated_at": date.today().isoformat(),
-        "input_directory": str(raw_dir),
-        "outputs": {name: str(path) for name, path in output_paths.items()},
+        "input_directory": _display_path(raw_dir),
+        "outputs": {name: _display_path(path) for name, path in output_paths.items()},
         "sources": {
             HARYANA_PDF: {
                 "source_date": HARYANA_DATE,

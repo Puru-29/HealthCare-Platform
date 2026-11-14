@@ -1,4 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk'
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 import { z } from 'zod'
 import { config } from '../config.js'
 import type { DB } from '../db.js'
@@ -85,7 +87,20 @@ const TOOLS: Anthropic.Beta.BetaTool[] = [
 // Default origin when the user has not shared location: Sonipat city centre.
 const SONIPAT_CENTRE: LatLng = { lat: 28.9931, lng: 77.0151 }
 
-let aiDisabledReason: string | null = null
+/**
+ * Known up front when no credential source exists at all (no key/token env var and
+ * no `ant auth login` profile directory), so /meta reports it before the first chat.
+ * Otherwise it is set on the first authentication failure.
+ */
+function detectMissingCredentials(): string | null {
+  const env = process.env
+  if (env.ANTHROPIC_API_KEY || env.ANTHROPIC_AUTH_TOKEN || env.ANTHROPIC_PROFILE || env.ANTHROPIC_FEDERATION_RULE_ID) return null
+  const home = env.USERPROFILE ?? env.HOME ?? ''
+  const profileDir = env.XDG_CONFIG_HOME ? join(env.XDG_CONFIG_HOME, 'anthropic') : join(home, '.config', 'anthropic')
+  return home && existsSync(profileDir) ? null : 'No Anthropic credentials configured'
+}
+
+let aiDisabledReason: string | null = detectMissingCredentials()
 
 function compactForModel(rec: Recommendation) {
   const brief = (h: Recommendation['nearest'][number]) => ({

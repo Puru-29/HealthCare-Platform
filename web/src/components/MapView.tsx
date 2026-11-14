@@ -6,7 +6,7 @@ import type { LatLng } from '../lib/api'
 export interface MapMarker {
   id: string
   position: LatLng
-  kind: 'hospital' | 'best' | 'you' | 'ambulance'
+  kind: 'hospital' | 'you' | 'ambulance'
   label?: string
   popup?: React.ReactNode
   onClick?: () => void
@@ -14,7 +14,6 @@ export interface MapMarker {
 
 const icons = {
   hospital: (label = '+') => L.divIcon({ className: '', html: `<div class="pin pin-hospital">${label}</div>`, iconSize: [30, 30], iconAnchor: [15, 15] }),
-  best: (label = '★') => L.divIcon({ className: '', html: `<div class="pin pin-hospital is-best">${label}</div>`, iconSize: [30, 30], iconAnchor: [15, 15] }),
   you: () => L.divIcon({ className: '', html: '<div class="pin pin-you" style="position:relative"></div>', iconSize: [20, 20], iconAnchor: [10, 10] }),
   ambulance: () => L.divIcon({ className: '', html: '<div class="pin pin-ambulance" aria-label="Ambulance">🚑</div>', iconSize: [36, 36], iconAnchor: [18, 18] }),
 }
@@ -61,7 +60,7 @@ export function MapView({
           <Marker
             key={m.id}
             position={[m.position.lat, m.position.lng]}
-            icon={m.kind === 'you' ? icons.you() : m.kind === 'ambulance' ? icons.ambulance() : icons[m.kind](m.label ? escape(m.label) : undefined)}
+            icon={m.kind === 'you' ? icons.you() : m.kind === 'ambulance' ? icons.ambulance() : icons.hospital(m.label ? escape(m.label) : undefined)}
             eventHandlers={m.onClick ? { click: m.onClick } : undefined}
             zIndexOffset={m.kind === 'ambulance' ? 1000 : m.kind === 'you' ? 500 : 0}
           >

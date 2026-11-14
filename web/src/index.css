@@ -56,7 +56,6 @@ body {
   font: 700 12px/1 var(--font-sans); color: #fff;
 }
 .pin-hospital { background: var(--color-brand); }
-.pin-hospital.is-best { background: #6941c6; }
 .pin-you { background: var(--color-sky); width: 20px; height: 20px; }
 .pin-you::after {
   content: ''; position: absolute; width: 20px; height: 20px; border-radius: 999px;

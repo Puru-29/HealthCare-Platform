@@ -66,14 +66,14 @@ export function Section({ title, action, children, className }: { title: string;
   )
 }
 
-export function EmergencyNumbers({ compact = false }: { compact?: boolean }) {
+export function EmergencyNumbers() {
   const numbers = [
     { n: '112', l: 'Emergency' },
     { n: '108', l: 'Ambulance' },
     { n: '102', l: 'Mother & child' },
   ]
   return (
-    <div className={cx('grid gap-2', compact ? 'grid-cols-3' : 'grid-cols-3')}>
+    <div className="grid grid-cols-3 gap-2">
       {numbers.map(({ n, l }) => (
         <a key={n} href={`tel:${n}`} className="card flex flex-col items-center py-2.5 transition hover:border-sos/40 hover:bg-sos-soft">
           <span className="text-lg font-bold text-sos">{n}</span>

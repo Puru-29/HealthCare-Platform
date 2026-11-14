@@ -44,11 +44,7 @@ export interface Recommendation {
 }
 
 export interface Meta {
-  region: { name: string; state: string; centre: LatLng }
   specialties: Array<{ key: string; label: string }>
-  facilityTypes: Array<{ key: string; label: string }>
-  emergencyNumbers: Array<{ number: string; label: string }>
-  pmjay: { coverPerFamilyPerYear: number; helpline: string; checkEligibilityUrl: string }
   demoMode: boolean
   assistant: { aiAvailable: boolean; reason: string | null }
   attribution: string
