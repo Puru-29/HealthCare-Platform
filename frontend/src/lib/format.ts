@@ -16,7 +16,23 @@ export const date = (iso: string) => new Date(iso.length === 10 ? iso + 'T00:00:
 
 export const tel = (phone: string) => `tel:${phone.replace(/[^\d+]/g, '')}`
 
-export const directionsUrl = (p: { lat: number; lng: number }) => `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`
+type Point = { lat: number; lng: number }
+
+/**
+ * Google Maps directions to an exact point.
+ * - The destination is always coordinates. Sending a name is unreliable: many
+ *   facilities share generic names ("Civil Hospital", "Jai Hospital", "PHC"), and
+ *   Google matched "SDH Gohana (Civil Hospital)" to Civil Hospital Sonipat, 50 km away.
+ *   Google may label the spot with a neighbouring business, but the route ends there.
+ * - `origin`: the app's own location. Pass it only when Google may not know where the
+ *   person is (desktop browsers without location permission fall back to an IP guess,
+ *   which can be another city). Leave it out on phones so the Maps app navigates live.
+ */
+export function directionsUrl(dest: Point, opts: { origin?: Point | null } = {}) {
+  const params = new URLSearchParams({ api: '1', destination: `${dest.lat},${dest.lng}`, travelmode: 'driving' })
+  if (opts.origin) params.set('origin', `${opts.origin.lat.toFixed(6)},${opts.origin.lng.toFixed(6)}`)
+  return `https://www.google.com/maps/dir/?${params}`
+}
 
 export const isDialable = (phone: string | null | undefined): phone is string => !!phone && !/^0+$/.test(phone.replace(/\D/g, ''))
 

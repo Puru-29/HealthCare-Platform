@@ -41,4 +41,6 @@ export function publish(channel: Channel, event: string, data: unknown) {
 export const channels = {
   incident: (id: string) => `incident:${id}`,
   hospital: (id: string) => `hospital:${id}`,
+  /** Read-only family tracking view: sanitised, never the patient's full view. */
+  track: (id: string) => `track:${id}`,
 }

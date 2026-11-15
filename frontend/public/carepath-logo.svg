@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 96">
+  <defs>
+    <linearGradient id="brand" x1="12" y1="6" x2="70" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14b8a6"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="wordmark" x1="235" y1="18" x2="350" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14b8a6"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <path d="M40 84S11 57 11 31a29 29 0 1 1 58 0c0 26-29 53-29 53Z" fill="url(#brand)"/>
+  <path d="M20 31h11l5-10 9 20 6-11h13" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <text x="98" y="61" fill="#102c3b" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="750" letter-spacing="-2.5"><tspan>Care</tspan><tspan fill="url(#wordmark)">Path</tspan></text>
+  <path d="M102 79c57-8 112-7 160 0h27l8-10 8 20 8-10h103" fill="none" stroke="url(#brand)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+</svg>

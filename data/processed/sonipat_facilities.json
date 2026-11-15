@@ -1,12 +1,12 @@
 {
- "generatedAt": "2026-11-14T01:15:33.946Z",
+ "generatedAt": "2026-11-14T23:39:17.097Z",
  "district": "Sonipat",
  "state": "Haryana",
  "attribution": "Location data © OpenStreetMap contributors (ODbL 1.0). Hospital roster: AB-PMJAY / National Health Authority district list. Facility list and beds: Haryana Health Department.",
  "counts": {
   "total": 169,
   "pmjay": 76,
-  "located": 143,
+  "located": 142,
   "byType": {
    "hospital": 81,
    "clinic": 39,
@@ -46,7 +46,8 @@
   "entry 66 Tulip Multispeciality Hospital: geocode \"Tulip Multispeciality Hospital, Sonipat\" (poi) unresolved",
   "entry 67 R K Eye Hospital: geocode \"R K Eye Hospital, Sonipat\" (poi) unresolved",
   "entry 75 Noble Hospital: geocode \"Noble Hospital, Sonipat\" (poi) unresolved",
-  "PHC Bhatgaon: village geocode unresolved"
+  "PHC Bhatgaon: village geocode unresolved",
+  "Sharma Hospital: pin removed by manual review — Sharma Hospital: OSM address 'Railway Road, Near Vishwakarma Mandir Ganaur' contradicts its pin in Sonipat city (~15 km apart). We cannot tell which is right, and a wrong pin could send someone to the wrong town."
  ],
  "facilities": [
   {
@@ -1419,7 +1420,7 @@
    "sourceName": "District Civil Hospital Sonipat",
    "ownership": "public",
    "facilityType": "district_hospital",
-   "address": "Rohtak",
+   "address": null,
    "phone": null,
    "location": {
     "lat": 28.9908108,
@@ -5646,13 +5647,7 @@
    "facilityType": "hospital",
    "address": "Railway Road, Near Vishwakarma Mandir Ganaur",
    "phone": null,
-   "location": {
-    "lat": 28.999852,
-    "lng": 77.0297304,
-    "source": "osm",
-    "precision": "building",
-    "ref": "node/7001287193"
-   },
+   "location": null,
    "beds": null,
    "pmjay": null,
    "specialties": [
@@ -5668,7 +5663,7 @@
    "sources": [
     "OpenStreetMap"
    ],
-   "notes": null
+   "notes": "Map location not confirmed: the source address is in Ganaur but the map point was in Sonipat city. Call before travelling."
   },
   {
    "id": "osm-node-6993943679",

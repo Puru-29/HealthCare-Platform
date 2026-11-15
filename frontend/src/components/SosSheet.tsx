@@ -1,7 +1,9 @@
-import { Loader2, Siren, X } from 'lucide-react'
+import { Info, Loader2, Siren, X } from 'lucide-react'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { api, type Incident, type LatLng, type Me } from '../lib/api'
+import { cx } from '../lib/format'
 import { getPosition } from '../lib/hooks'
+import { ROAD_ACCIDENT_ADVISORY, SOS_CATEGORIES, type SosCategoryKey } from '../lib/sos'
 
 /**
  * Last step before an SOS goes out: confirm a callback number (pre-filled after
@@ -16,6 +18,7 @@ export function SosSheet({ me, coords, onClose, onSent }: {
   const [phone, setPhone] = useState(me?.phone ?? '')
   const [name, setName] = useState(me?.name ?? '')
   const [note, setNote] = useState('')
+  const [category, setCategory] = useState<SosCategoryKey | null>(null)
   const [sending, setSending] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const phoneRef = useRef<HTMLInputElement>(null)
@@ -44,7 +47,7 @@ export function SosSheet({ me, coords, onClose, onSent }: {
     try {
       const incident = await api.post<Incident>('/sos', {
         lat: position!.lat, lng: position!.lng, accuracyM: position!.accuracy,
-        phone, name: name || null, note: note || null,
+        phone, name: name || null, note: note || null, category,
       })
       onSent(incident.id)
     } catch (err) {
@@ -72,17 +75,39 @@ export function SosSheet({ me, coords, onClose, onSent }: {
             placeholder="10-digit mobile" value={phone} onChange={(e) => setPhone(e.target.value)} />
         </div>
 
+        <fieldset className="mt-5">
+          <legend className="label">What happened?</legend>
+          <div className="grid grid-cols-3 gap-2">
+            {SOS_CATEGORIES.map((c) => (
+              <button key={c.key} type="button" aria-pressed={category === c.key} onClick={() => setCategory(category === c.key ? null : c.key)}
+                className={cx('min-h-12 rounded-2xl border px-2 text-sm font-semibold transition',
+                  category === c.key ? 'sos-surface' : 'border-line bg-fill text-ink hover:bg-fill-2')}>
+                {c.label}
+              </button>
+            ))}
+          </div>
+          {category && SOS_CATEGORIES.find((c) => c.key === category)?.serious && (
+            <p className="mt-2 text-xs text-ink-3">We’ll alert hospitals with an advanced life-support ambulance first — and any ambulance if none is free.</p>
+          )}
+        </fieldset>
+        {category === 'accident' && (
+          <p className="pop mt-3 flex gap-2.5 rounded-2xl border border-amber/30 bg-amber-soft p-3.5 text-sm font-medium text-amber" role="note">
+            <Info className="mt-0.5 size-4 shrink-0" aria-hidden />{ROAD_ACCIDENT_ADVISORY}
+          </p>
+        )}
+
         <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div>
             <label className="label" htmlFor="sos-name">Name <span className="font-normal text-ink-3">(optional)</span></label>
             <input id="sos-name" className="input" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div>
-            <label className="label" htmlFor="sos-note">What happened? <span className="font-normal text-ink-3">(optional)</span></label>
-            <input id="sos-note" className="input" maxLength={280} placeholder="e.g. chest pain, 60 yrs" value={note} onChange={(e) => setNote(e.target.value)} />
+            <label className="label" htmlFor="sos-note">Anything else? <span className="font-normal text-ink-3">(optional)</span></label>
+            <input id="sos-note" className="input" maxLength={280} placeholder="e.g. 60 yrs, diabetic" value={note} onChange={(e) => setNote(e.target.value)} />
           </div>
         </div>
-        {me?.bloodGroup && <p className="mt-3 text-xs text-ink-3">Your blood group ({me.bloodGroup}){me.allergies ? ' and allergies' : ''} from your profile will be shared with the crew.</p>}
+        {me?.emergencyContactPhone && <p className="mt-3 text-xs text-ink-3">{me.emergencyContactName ?? 'Your emergency contact'} will get an SMS with a live tracking link.</p>}
+        {me?.bloodGroup && <p className="mt-1 text-xs text-ink-3">Your blood group ({me.bloodGroup}){me.allergies ? ' and allergies' : ''} from your profile will be shared with the crew.</p>}
 
         {error && <p className="mt-4 rounded-2xl bg-sos-soft p-3 text-sm text-sos-dark" role="alert">{error}</p>}
 

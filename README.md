@@ -3,6 +3,9 @@
 One app for the moments when getting care goes wrong:
 
 - **SOS** — press and hold. The nearest hospitals with an ambulance on CarePath are alerted in widening rings (8 → 15 → 30 km); the first to accept is assigned. The patient sees the ambulance live on a map with ETA, a slow-traffic warning, and the driver's name, vehicle and phone. If nobody accepts, the app says so and puts **108** one tap away (108/112 are visible on every SOS screen from the first second).
+  - Quick buttons say what happened. For chest pain, breathing, unconscious and accidents, hospitals with an ALS ambulance get a 15-second head start; others are alerted after that, or at once if every ALS hospital declines or none is nearby — preference, never a block. Accidents show the free-treatment notice (₹1.5 lakh, 7 days, no deposit).
+  - If the first 8 km ring goes unanswered, a big “call 108 now, we're still searching” card appears; the search continues through the outer rings.
+  - The patient's emergency contact gets an SMS with a read-only live tracking link (`/track/<token>`): status, hospital, ambulance, ETA and map — no phone numbers or medical details. It stops working 12 hours after the trip ends.
 - **Care guide (AI)** — describe the problem in English, Hindi or Hinglish. Claude picks the kind of care, then shows the **nearest suitable** place and the **best option within 100 km if you can travel**, with reasons. A deterministic red-flag screen runs on every message, before the model, and raises the SOS banner.
 - **Hospital finder** — 169 Sonipat facilities (government and private) with map, filters, Ayushman status and where each fact comes from.
 - **Insurance** — Ayushman (PM-JAY) and private-policy estimator: room-rent capping with proportionate deduction, co-pay, deductible, remaining cover.
@@ -30,7 +33,7 @@ To try SOS on a laptop, open the console in one window, then press SOS in anothe
 **AI care guide:** put `ANTHROPIC_API_KEY=...` in `backend/.env` (model `claude-opus-5-5`). Without it the guide falls back to keyword matching and says so.
 
 ```powershell
-npm test          # 54 backend tests: triage, ranking, claim maths, dispatch races, OTP sign-in, API security
+npm test          # 72 backend + 14 frontend tests: triage, ranking, claim maths, dispatch races, ALS head start, family tracking, OTP sign-in, API security
 npm run typecheck
 ```
 

@@ -165,6 +165,12 @@ function migrate(db: DB) {
   addColumn('patients', 'pmjay_used', 'INTEGER')
   addColumn('patients', 'phone_verified_at', 'TEXT')
 
+  // SOS: what happened (quick buttons), a family tracking link, and when the trip ended (link expiry).
+  addColumn('incidents', 'category', 'TEXT')
+  addColumn('incidents', 'track_token_hash', 'TEXT')
+  addColumn('incidents', 'ended_at', 'TEXT')
+  db.exec('CREATE UNIQUE INDEX IF NOT EXISTS incidents_track_token ON incidents(track_token_hash) WHERE track_token_hash IS NOT NULL')
+
   // One account can be signed in on several devices.
   db.exec(`
     CREATE TABLE IF NOT EXISTS patient_sessions (
@@ -238,7 +244,7 @@ export function importFacilities(db: DB, file = config.facilitiesFile): number {
     ON CONFLICT(id) DO UPDATE SET
       name = excluded.name, source_name = excluded.source_name, ownership = excluded.ownership,
       facility_type = excluded.facility_type,
-      address = COALESCE(hospitals.address, excluded.address),
+      address = excluded.address,
       phone = CASE WHEN hospitals.updated_by_hospital_at IS NULL THEN excluded.phone ELSE hospitals.phone END,
       lat = CASE WHEN hospitals.geo_source = 'hospital' THEN hospitals.lat ELSE excluded.lat END,
       lng = CASE WHEN hospitals.geo_source = 'hospital' THEN hospitals.lng ELSE excluded.lng END,

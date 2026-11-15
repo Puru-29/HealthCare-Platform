@@ -77,7 +77,11 @@ export interface Incident {
   status: IncidentStatus
   createdAt: string
   pickup: LatLng & { accuracyM: number | null }
-  search: { wave: number; totalWaves: number; radiusKm: number | null; contacted: number; contactedThisWave: number; declined: number }
+  search: { wave: number; totalWaves: number; radiusKm: number | null; contacted: number; contactedThisWave: number; declined: number; noAcceptanceYet: boolean; alsPreferred: boolean }
+  category: string | null
+  categoryLabel: string | null
+  advisories: Array<{ id: string; text: string }>
+  familyTracking: boolean
   hospital: { id: string; name: string; phone: string | null; address: string | null; location: LatLng | null } | null
   ambulance: { vehicleNumber: string; kind: string; driverName: string; driverPhone: string; location: LatLng | null; locationAt: string | null; simulated: boolean } | null
   eta: { minutes: number; distanceKm: number; source: 'osrm' | 'estimate'; path: LatLng[] } | null
@@ -85,7 +89,22 @@ export interface Incident {
   timeline: Array<{ at: string; type: string; message: string }>
   acceptedAt: string | null
   arrivedAt: string | null
-  patient?: { name: string | null; phone: string; note: string | null; bloodGroup?: string | null; allergies?: string | null }
+  patient?: { name: string | null; phone: string; note: string | null; categoryLabel?: string | null; bloodGroup?: string | null; allergies?: string | null }
+}
+
+/** Read-only family tracking view (/track/:token). Never contains phones or medical details. */
+export interface TrackView {
+  status: IncidentStatus
+  createdAt: string
+  pickup: LatLng
+  search: { wave: number; totalWaves: number; radiusKm: number | null; contactedThisWave: number; noAcceptanceYet: boolean }
+  hospital: { name: string; location: LatLng | null } | null
+  ambulance: { vehicleNumber: string; kind: string; location: LatLng | null; locationAt: string | null } | null
+  eta: Incident['eta']
+  traffic: Incident['traffic']
+  timeline: Array<{ at: string; type: string; message: string }>
+  endedAt: string | null
+  expiresAt: string | null
 }
 
 export interface Appointment {

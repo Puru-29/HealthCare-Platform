@@ -16,13 +16,10 @@ export function Aurora({ tone = 'teal' }: { tone?: 'teal' | 'sos' }) {
 }
 
 export function Logo({ to = '/', size = 'md' }: { to?: string; size?: 'md' | 'lg' }) {
-  const box = size === 'lg' ? 'size-11 rounded-[14px]' : 'size-10 rounded-[13px]'
+  const width = size === 'lg' ? 'w-[min(54vw,216px)]' : 'w-[min(40vw,176px)]'
   return (
-    <Link to={to} className="inline-flex items-center gap-2.5 text-ink no-underline">
-      <span className={cx('grid place-items-center shadow-[0_6px_22px_rgb(45_212_191/0.5)]', box)} style={{ background: 'linear-gradient(135deg,#2dd4bf,#0f766e)' }}>
-        <svg viewBox="0 0 24 24" className="size-[18px]" fill="#fff" aria-hidden="true"><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z" /></svg>
-      </span>
-      <span className={cx('heading', size === 'lg' ? 'text-xl' : 'text-lg')}>CarePath <span className="font-medium text-ink-3">Sonipat</span></span>
+    <Link to={to} className="inline-flex text-ink no-underline">
+      <img src="/carepath-logo.svg" alt="CarePath Sonipat" className={cx('h-auto object-contain', width)} />
     </Link>
   )
 }

@@ -5,7 +5,7 @@
   "scripts": {
     "setup": "npm install --prefix backend --legacy-peer-deps && npm install --prefix frontend --legacy-peer-deps && node -e \"require('fs').existsSync('backend/.env')||require('fs').copyFileSync('backend/.env.example','backend/.env')\" && npm run seed --prefix backend -- --demo",
     "dev": "node scripts/dev.mjs",
-    "test": "npm test --prefix backend",
+    "test": "npm test --prefix backend && npm test --prefix frontend",
     "typecheck": "npm run typecheck --prefix backend && npm run typecheck --prefix frontend",
     "build": "npm run build --prefix frontend",
     "start": "npm start --prefix backend",

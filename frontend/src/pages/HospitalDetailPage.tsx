@@ -5,7 +5,7 @@ import { MapView } from '../components/MapView'
 import { CallButton, ErrorNote, Panel, Pill, Spinner, type PillTone } from '../components/ui'
 import { qs, type Hospital } from '../lib/api'
 import { directionsUrl, km, minutes } from '../lib/format'
-import { useApi, useLocation } from '../lib/hooks'
+import { directionsOrigin, useApi, useLocation } from '../lib/hooks'
 
 const SOURCE_TONE: Record<string, PillTone> = {
   hospital_verified: 'ok',
@@ -39,10 +39,17 @@ export function HospitalDetailPage() {
             {h.distanceKm !== null && ` · ${km(h.distanceKm)}, ~${minutes(h.etaMinutes)} drive`}
           </p>
           {h.address && <p className="mt-1 text-sm text-ink-3">{h.address}</p>}
+          {h.location && h.locationPrecision === 'building' && (
+            <p className="mt-2 text-xs text-ink-3">Directions go to this hospital’s exact pin. Google may label it with a shop next door — the route still ends here.</p>
+          )}
         </div>
         <div className="flex flex-wrap gap-2.5">
           <CallButton phone={h.phone} label="Call hospital" variant="primary" />
-          {h.location && <a className="btn-secondary" href={directionsUrl(h.location)} target="_blank" rel="noreferrer"><Navigation className="size-4" aria-hidden /> Directions</a>}
+          {h.location && (
+            <a className="btn-secondary" href={directionsUrl(h.location, { origin: directionsOrigin(loc.coords) })} target="_blank" rel="noreferrer">
+              <Navigation className="size-4" aria-hidden /> Directions
+            </a>
+          )}
           <Link className="btn-secondary" to={`/app/appointments?hospital=${encodeURIComponent(h.id)}`}><CalendarPlus className="size-4" aria-hidden /> Request appointment</Link>
           <Link className="btn-secondary" to={`/app/insurance?hospital=${encodeURIComponent(h.id)}`}><IndianRupee className="size-4" aria-hidden /> Estimate cost</Link>
         </div>

@@ -8,7 +8,7 @@ import { api, ApiError, type Appointment, type Hospital, type Incident } from '.
 import { cx, date, isDialable, km, minutes, tel, time } from '../../lib/format'
 import { getPosition, useApi, useEventStream, useMeta } from '../../lib/hooks'
 
-interface Offer { incidentId: string; distanceKm: number; offeredAt: string; createdAt: string; area: { lat: number; lng: number }; note: string | null }
+interface Offer { incidentId: string; distanceKm: number; offeredAt: string; createdAt: string; area: { lat: number; lng: number }; note: string | null; categoryLabel: string | null; alsPreferred: boolean }
 interface AmbulanceRow { id: string; vehicleNumber: string; kind: 'BLS' | 'ALS' | 'PTV'; driverName: string; driverPhone: string; status: 'available' | 'busy' | 'offline'; simulated: number }
 interface Dashboard {
   hospital: Hospital
@@ -140,7 +140,8 @@ function Live({ data, reload }: { data: Dashboard; reload: () => void }) {
 }
 
 function OfferCard({ offer, ambulances, onAccepted, reload }: { offer: Offer; ambulances: AmbulanceRow[]; onAccepted: (path: string) => void; reload: () => void }) {
-  const available = ambulances.filter((a) => a.status === 'available')
+  // Serious cases: offer the ALS ambulance first, but any ambulance can be sent.
+  const available = ambulances.filter((a) => a.status === 'available').sort((a, b) => (offer.alsPreferred ? Number(b.kind === 'ALS') - Number(a.kind === 'ALS') : 0))
   const [ambulanceId, setAmbulanceId] = useState(available[0]?.id ?? '')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -172,6 +173,12 @@ function OfferCard({ offer, ambulances, onAccepted, reload }: { offer: Offer; am
       <div className="flex-1">
         <p className="text-lg font-bold text-sos-dark">Emergency · {km(offer.distanceKm)} away</p>
         <p className="text-sm text-ink-2">Waiting {waited < 60 ? `${waited}s` : `${Math.floor(waited / 60)}m ${waited % 60}s`} · about {minutes(offer.distanceKm / 32 * 60)} drive</p>
+        {(offer.categoryLabel || offer.alsPreferred) && (
+          <p className="mt-1.5 flex flex-wrap gap-1.5">
+            {offer.categoryLabel && <span className="chip bg-sos-soft text-sos-dark">{offer.categoryLabel}</span>}
+            {offer.alsPreferred && <span className="chip bg-amber-soft text-amber">ALS ambulance preferred</span>}
+          </p>
+        )}
         {offer.note && <p className="mt-1 text-sm"><b>Patient says:</b> {offer.note}</p>}
         <p className="mt-1 flex items-center gap-1 text-xs text-ink-3"><MapPin className="size-3" aria-hidden /> Exact address and phone are shown after you accept.</p>
         {error && <p className="mt-2 text-sm font-medium text-sos-dark">{error}</p>}
@@ -226,6 +233,7 @@ function TripCard({ trip, onLink, reload }: { trip: Dashboard['trips'][number]; 
           <div>
             <p className="font-semibold">{trip.patient.name ?? 'Patient'} <span className="font-normal text-ink-3">· {trip.ambulance?.vehicleNumber}</span></p>
             <p className="text-sm capitalize text-ink-2">{trip.status.replace('_', ' ')}{trip.eta && ` · ${minutes(trip.eta.minutes)} (${km(trip.eta.distanceKm)})`}</p>
+            {trip.patient.categoryLabel && <p className="text-sm font-semibold">{trip.patient.categoryLabel}</p>}
             {trip.patient.note && <p className="text-sm">“{trip.patient.note}”</p>}
             {(trip.patient.bloodGroup || trip.patient.allergies) && (
               <p className="mt-1 text-sm text-sos-dark">{[trip.patient.bloodGroup && `Blood ${trip.patient.bloodGroup}`, trip.patient.allergies && `Allergies: ${trip.patient.allergies}`].filter(Boolean).join(' · ')}</p>

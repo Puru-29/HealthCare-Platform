@@ -24,6 +24,8 @@ export const config = {
     mode: (process.env.NOTIFY_MODE ?? 'console') as 'console' | 'webhook',
     webhookUrl: process.env.NOTIFY_WEBHOOK_URL ?? '',
   },
+  /** Where people open the app; used to build links sent by SMS. */
+  publicUrl: (process.env.PUBLIC_URL ?? 'http://127.0.0.1:5173').replace(/\/+$/, ''),
   sms: {
     mode: (process.env.SMS_MODE ?? 'console') as 'console' | 'webhook',
     webhookUrl: process.env.SMS_WEBHOOK_URL ?? '',
@@ -34,6 +36,10 @@ export const config = {
     waveRadiiKm: [8, 15, 30],
     waveTimeoutMs: Number(process.env.DISPATCH_WAVE_TIMEOUT_MS ?? 40_000),
     maxOffersPerWave: 6,
+    /** Serious cases: hospitals with an ALS ambulance get this long before BLS-only hospitals are alerted. */
+    alsHeadStartMs: Number(process.env.DISPATCH_ALS_HEAD_START_MS ?? 15_000),
+    /** Family tracking links stop working this long after the trip ends. */
+    trackLinkTtlMs: 12 * 60 * 60_000,
   },
   assistant: {
     model: 'claude-opus-5-5',

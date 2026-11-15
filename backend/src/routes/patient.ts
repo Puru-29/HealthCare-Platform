@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { z } from 'zod'
 import type { DB } from '../db.js'
+import { SOS_CATEGORY_KEYS, type SosCategory } from '../domain/sos.js'
 import { findPatient, getOrCreatePatient, rateLimit, type PatientRow } from '../lib/auth.js'
 import { HttpError, notFound, param, parse } from '../lib/http.js'
 import { newId, normalizeIndianMobile } from '../lib/security.js'
@@ -92,6 +93,7 @@ export function patientRoutes(db: DB, dispatcher: Dispatcher) {
       name: optionalText(80),
       phone,
       note: optionalText(280),
+      category: z.enum(SOS_CATEGORY_KEYS as [SosCategory, ...SosCategory[]]).nullable().optional(),
     }), req.body)
     const p = getOrCreatePatient(db, req, res)
     // Remember the number so the next SOS is one tap.
@@ -105,6 +107,7 @@ export function patientRoutes(db: DB, dispatcher: Dispatcher) {
       note: body.note ?? null,
       pickup: { lat: body.lat, lng: body.lng },
       accuracyM: body.accuracyM ?? null,
+      category: body.category ?? null,
     })
     res.status(201).json(dispatcher.view(id))
   })

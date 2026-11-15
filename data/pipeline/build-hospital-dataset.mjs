@@ -8,6 +8,7 @@
 //   data/raw/osm/sonipat_health_facilities.json              OpenStreetMap extract (ODbL)
 //   data/manual/pmjay_location_matches.json                  hand-reviewed roster -> location links
 //   data/raw/osm/nominatim_cache.json                        cached geocodes (created/extended by this script)
+//   data/manual/location_corrections.json                    hand-reviewed fixes to addresses and pins
 //
 // Usage: node data/pipeline/build-hospital-dataset.mjs [--offline]   (or: npm run data:build)
 //   --offline  never call Nominatim; uncached geocodes stay unresolved.
@@ -295,6 +296,17 @@ for (const r of primary) {
     sources: [`Haryana Health Dept facility list (${r.source_document}, ${r.source_date})`],
     notes: g ? 'Location is the village centre, not the building.' : null,
   })
+}
+
+// Hand-reviewed corrections (wrong addresses, pins that contradict their own address).
+const corrections = JSON.parse(readFileSync(p('data/manual/location_corrections.json'), 'utf8')).corrections
+for (const [id, fix] of Object.entries(corrections)) {
+  const f = facilities.find((x) => x.id === id)
+  if (!f) throw new Error(`location_corrections.json: no facility ${id}`)
+  if ('address' in fix) f.address = fix.address
+  if ('location' in fix) f.location = fix.location
+  if ('note' in fix) f.notes = fix.note
+  if (fix.location === null) issues.push(`${f.name}: pin removed by manual review — ${fix.reason}`)
 }
 
 writeFileSync(cachePath, JSON.stringify(cache, null, 1))

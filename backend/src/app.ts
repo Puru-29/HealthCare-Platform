@@ -10,6 +10,7 @@ import { consoleRoutes } from './routes/console.js'
 import { driverRoutes } from './routes/driver.js'
 import { patientRoutes } from './routes/patient.js'
 import { publicRoutes } from './routes/public.js'
+import { trackRoutes } from './routes/track.js'
 import type { Dispatcher } from './services/dispatch.js'
 
 export function createApp(db: DB, dispatcher: Dispatcher) {
@@ -33,6 +34,7 @@ export function createApp(db: DB, dispatcher: Dispatcher) {
   api.use('/auth', authRoutes(db))
   api.use('/console', consoleRoutes(db, dispatcher))
   api.use('/driver', driverRoutes(dispatcher))
+  api.use('/track', trackRoutes(dispatcher))
   api.use(() => { throw notFound('No such API route') })
   app.use('/api', api)
 

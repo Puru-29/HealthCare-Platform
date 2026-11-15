@@ -13,6 +13,7 @@ import { LoginPage } from './pages/LoginPage'
 import { LogoutPage } from './pages/LogoutPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { SosHubPage, SosPage } from './pages/SosPage'
+import { TrackPage } from './pages/TrackPage'
 
 // Hospital- and driver-side screens load on demand; patients never download them.
 const ConsoleDashboard = lazy(() => import('./pages/console/ConsoleDashboard').then((m) => ({ default: m.ConsoleDashboard })))
@@ -60,6 +61,7 @@ export function App() {
 
       <Route path="console" element={<Suspense fallback={<Spinner />}><ConsoleDashboard /></Suspense>} />
       <Route path="console/login" element={<Navigate to="/login?tab=staff" replace />} />
+      <Route path="track/:token" element={<TrackPage />} />
       <Route path="driver/:token" element={<Suspense fallback={<Spinner />}><DriverPage /></Suspense>} />
 
       <Route path="assistant" element={<MovedTo to="/app/guide" />} />

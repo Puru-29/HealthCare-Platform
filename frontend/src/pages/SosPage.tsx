@@ -1,4 +1,4 @@
-import { AlertTriangle, Check, CheckCircle2, Phone, Siren, TrafficCone, X } from 'lucide-react'
+import { AlertTriangle, Check, CheckCircle2, Info, Phone, Share2, Siren, TrafficCone, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router'
 import { HospitalRow } from '../components/HospitalCard'
@@ -93,6 +93,15 @@ export function SosPage() {
         )}
       </section>
 
+      {inc.status === 'searching' && inc.search.noAcceptanceYet && <Call108Now />}
+      {inc.advisories.map((a) => (
+        <p key={a.id} className="fu flex gap-3 rounded-[22px] border border-amber/30 bg-amber-soft p-4.5 text-[15px] font-semibold text-amber" role="note">
+          <Info className="mt-0.5 size-5 shrink-0" aria-hidden />{a.text}
+        </p>
+      ))}
+      {inc.familyTracking && ['searching', 'assigned', 'arrived', 'to_hospital'].includes(inc.status) && (
+        <p className="flex items-center gap-2 text-sm text-ink-2"><Share2 className="size-4 text-brand" aria-hidden />Your emergency contact has a live tracking link.</p>
+      )}
       {inc.status === 'no_response' && <NoResponse inc={inc} />}
       {(inc.status === 'completed' || inc.status === 'cancelled') && (
         <div className="flex gap-2.5"><Link to="/app" className="btn-primary">Back to dashboard</Link></div>
@@ -112,6 +121,19 @@ export function SosPage() {
         </div>
       )}
     </>
+  )
+}
+
+/** The first ring went unanswered: push the patient to 108 while we keep looking. */
+function Call108Now() {
+  return (
+    <section className="sos-surface pop rounded-[28px] p-6 sm:p-7" role="alert" aria-labelledby="call108-title">
+      <h2 id="call108-title" className="heading text-2xl sm:text-[28px]">No hospital accepted yet — call 108 now, we’re still searching</h2>
+      <p className="mt-2 text-[15px] text-white/90">108 is free and covers all of Haryana. If a CarePath hospital accepts first, you’ll see it here.</p>
+      <a href="tel:108" className="btn mt-5 min-h-16 w-full bg-white text-xl font-extrabold text-[#b4232c] shadow-[0_10px_30px_rgb(0_0_0/0.15)]">
+        <Phone className="size-6" aria-hidden /> Call 108
+      </a>
+    </section>
   )
 }
 

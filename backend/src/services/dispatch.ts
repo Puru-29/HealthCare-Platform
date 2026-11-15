@@ -1,10 +1,12 @@
 import { config } from '../config.js'
 import { tx, type DB } from '../db.js'
 import { estimateRoadKm, haversineKm, pointAlong, type LatLng } from '../domain/geo.js'
+import { advisoriesFor, prefersAls, SOS_CATEGORIES, isSosCategory, type SosCategory } from '../domain/sos.js'
 import { HttpError, notFound } from '../lib/http.js'
 import { notifyHospital } from '../lib/notify.js'
 import { getRoute, type Route } from '../lib/routing.js'
 import { hashToken, newId, newToken } from '../lib/security.js'
+import { sendSms, trackingMessage } from '../lib/sms.js'
 import { channels, publish } from '../lib/sse.js'
 
 export type IncidentStatus = 'searching' | 'assigned' | 'arrived' | 'to_hospital' | 'completed' | 'cancelled' | 'no_response'
@@ -28,6 +30,9 @@ interface IncidentRow {
   arrived_at: string | null
   completed_at: string | null
   cancelled_at: string | null
+  category: SosCategory | null
+  track_token_hash: string | null
+  ended_at: string | null
 }
 
 interface AmbulanceRow {
@@ -57,18 +62,54 @@ export interface DispatchOptions {
   waveTimeoutMs: number
   maxOffersPerWave: number
   simulate: boolean
+  /** Serious cases: ALS hospitals are alerted this long before BLS-only ones in the same ring. */
+  alsHeadStartMs?: number
+  /** Family tracking links stop working this long after the trip ends. */
+  trackLinkTtlMs?: number
+  /** Sends the family tracking SMS. Defaults to lib/sms sendSms; tests pass a fake. */
+  sendSms?: (phone: string, text: string) => Promise<void>
+  publicUrl?: string
 }
+
+interface Candidate { id: string; name: string; phone: string | null; lat: number; lng: number; km: number; hasAls: boolean }
 
 const now = () => new Date().toISOString()
 
 /** Rough "area" shown to hospitals before they accept — about 1 km precision. */
 const coarse = (n: number) => Math.round(n * 100) / 100
+const TERMINAL: IncidentStatus[] = ['completed', 'cancelled', 'no_response']
+
+/** Timeline entries the family may see, with wording that names nobody. */
+const TRACK_EVENTS = new Set(['created', 'wave', 'first_ring_missed', 'assigned', 'arrived', 'to_hospital', 'completed', 'cancelled', 'no_response'])
+const TRACK_MESSAGES: Record<string, string> = {
+  created: 'SOS sent. Finding the nearest available ambulance.',
+  // Wave messages can reveal ALS preference (i.e. how serious it is), so the family sees a neutral line.
+  wave: 'Alerting hospitals with an ambulance nearby.',
+  first_ring_missed: 'No hospital has accepted yet. Still searching, and the patient was told to call 108.',
+  assigned: 'A hospital accepted. The ambulance is on the way.',
+  arrived: 'The ambulance has reached the patient.',
+  to_hospital: 'On the way to the hospital.',
+  completed: 'Reached the hospital.',
+  cancelled: 'The request was cancelled.',
+  no_response: 'No partner ambulance accepted. The patient was told to call 108.',
+}
 
 export class Dispatcher {
   private waveTimers = new Map<string, NodeJS.Timeout>()
   private live = new Map<string, LiveTrip>()
+  /** BLS-only hospitals held back while ALS hospitals get their head start. */
+  private deferred = new Map<string, { wave: number; candidates: Candidate[]; timer: NodeJS.Timeout }>()
+  private opts: Required<DispatchOptions>
 
-  constructor(private db: DB, private opts: DispatchOptions = { ...config.dispatch, simulate: config.demoMode }) {}
+  constructor(private db: DB, opts: DispatchOptions = { ...config.dispatch, simulate: config.demoMode }) {
+    this.opts = {
+      alsHeadStartMs: config.dispatch.alsHeadStartMs,
+      trackLinkTtlMs: config.dispatch.trackLinkTtlMs,
+      sendSms,
+      publicUrl: config.publicUrl,
+      ...opts,
+    }
+  }
 
   // ---------- queries ----------
 
@@ -111,7 +152,14 @@ export class Dispatcher {
         contacted: offers.length,
         contactedThisWave: offers.filter((o) => o.wave === inc.wave).length,
         declined: offers.filter((o) => o.status === 'declined').length,
+        /** The first ring ended without anyone accepting; we keep searching but the patient should call 108 now. */
+        noAcceptanceYet: inc.status === 'searching' && inc.wave >= 2,
+        alsPreferred: prefersAls(inc.category),
       },
+      category: inc.category,
+      categoryLabel: inc.category ? SOS_CATEGORIES[inc.category].label : null,
+      advisories: advisoriesFor(inc.category),
+      familyTracking: !!inc.track_token_hash,
       hospital: hospital && {
         id: hospital.id,
         name: hospital.name,
@@ -145,6 +193,40 @@ export class Dispatcher {
 
   private publishIncident(id: string) {
     publish(channels.incident(id), 'incident', this.view(id))
+    publish(channels.track(id), 'incident', this.trackView(id))
+  }
+
+  /**
+   * What the family sees through the SMS link. Built field by field (never by
+   * filtering the patient view) so nothing new leaks by accident: no phone
+   * numbers, no names of the crew, no note, category or medical details.
+   */
+  trackView(id: string) {
+    const v = this.view(id)
+    const inc = this.incident(id)
+    return {
+      status: v.status,
+      createdAt: v.createdAt,
+      pickup: { lat: v.pickup.lat, lng: v.pickup.lng },
+      search: { wave: v.search.wave, totalWaves: v.search.totalWaves, radiusKm: v.search.radiusKm, contactedThisWave: v.search.contactedThisWave, noAcceptanceYet: v.search.noAcceptanceYet },
+      hospital: v.hospital && { name: v.hospital.name, location: v.hospital.location },
+      ambulance: v.ambulance && { vehicleNumber: v.ambulance.vehicleNumber, kind: v.ambulance.kind, location: v.ambulance.location, locationAt: v.ambulance.locationAt },
+      eta: v.eta,
+      traffic: v.traffic,
+      timeline: v.timeline.filter((e) => TRACK_EVENTS.has(e.type)).map((e) => ({ at: e.at, type: e.type, message: TRACK_MESSAGES[e.type] ?? e.message })),
+      endedAt: inc.ended_at,
+      expiresAt: inc.ended_at ? new Date(Date.parse(inc.ended_at) + this.opts.trackLinkTtlMs).toISOString() : null,
+    }
+  }
+
+  /** Family tracking link → incident id. 404 if unknown, 410 once expired. */
+  incidentForTrackToken(token: string): string {
+    const row = this.db.prepare('SELECT id, ended_at FROM incidents WHERE track_token_hash = ?').get(hashToken(token)) as { id: string; ended_at: string | null } | undefined
+    if (!row) throw notFound('This tracking link is not valid')
+    if (row.ended_at && Date.now() - Date.parse(row.ended_at) > this.opts.trackLinkTtlMs) {
+      throw new HttpError(410, 'This tracking link has expired', 'expired')
+    }
+    return row.id
   }
 
   private refreshHospitals(incidentId: string, reason: string) {
@@ -154,7 +236,7 @@ export class Dispatcher {
 
   // ---------- lifecycle ----------
 
-  create(input: { patientId: string | null; name: string | null; phone: string; note: string | null; pickup: LatLng; accuracyM: number | null }) {
+  create(input: { patientId: string | null; name: string | null; phone: string; note: string | null; pickup: LatLng; accuracyM: number | null; category?: SosCategory | null }) {
     const active = input.patientId
       ? (this.db.prepare(`SELECT id FROM incidents WHERE patient_id = ? AND status IN ('searching','assigned','arrived','to_hospital')`).get(input.patientId) as { id: string } | undefined)
       : undefined
@@ -162,12 +244,32 @@ export class Dispatcher {
 
     const id = newId()
     this.db.prepare(`
-      INSERT INTO incidents (id, patient_id, status, pickup_lat, pickup_lng, pickup_accuracy_m, patient_name, patient_phone, note, created_at)
-      VALUES (?, ?, 'searching', ?, ?, ?, ?, ?, ?, ?)
-    `).run(id, input.patientId, input.pickup.lat, input.pickup.lng, input.accuracyM, input.name, input.phone, input.note, now())
+      INSERT INTO incidents (id, patient_id, status, pickup_lat, pickup_lng, pickup_accuracy_m, patient_name, patient_phone, note, category, created_at)
+      VALUES (?, ?, 'searching', ?, ?, ?, ?, ?, ?, ?, ?)
+    `).run(id, input.patientId, input.pickup.lat, input.pickup.lng, input.accuracyM, input.name, input.phone, input.note,
+      isSosCategory(input.category) ? input.category : null, now())
     this.event(id, 'created', 'SOS received. Finding the nearest available ambulance.')
     this.nextWave(id)
+    void this.notifyEmergencyContact(id, input.patientId, input.name)
     return id
+  }
+
+  /** Text the patient's emergency contact a read-only live tracking link. Never blocks dispatch. */
+  private async notifyEmergencyContact(id: string, patientId: string | null, name: string | null) {
+    if (!patientId) return
+    const p = this.db.prepare('SELECT emergency_contact_phone FROM patients WHERE id = ?').get(patientId) as { emergency_contact_phone: string | null } | undefined
+    const contact = p?.emergency_contact_phone
+    if (!contact) return
+    const token = newToken()
+    this.db.prepare('UPDATE incidents SET track_token_hash = ? WHERE id = ?').run(hashToken(token), id)
+    try {
+      await this.opts.sendSms(contact, trackingMessage(name, `${this.opts.publicUrl}/track/${token}`))
+      this.event(id, 'contact_notified', 'Sent a live tracking link to your emergency contact.')
+    } catch (error) {
+      console.error(`[sos] emergency-contact SMS failed for ${id.slice(0, 8)}:`, (error as Error).message)
+      this.event(id, 'contact_failed', 'Could not text your emergency contact. Call them if you can.')
+    }
+    this.publishIncident(id)
   }
 
   private nextWave(id: string) {
@@ -181,34 +283,78 @@ export class Dispatcher {
       return
     }
     const pickup = { lat: inc.pickup_lat, lng: inc.pickup_lng }
-    const candidates = (this.db.prepare(`
-      SELECT h.id, h.name, h.phone, h.lat, h.lng
+    const wantsAls = prefersAls(inc.category)
+    const candidates: Candidate[] = (this.db.prepare(`
+      SELECT h.id, h.name, h.phone, h.lat, h.lng,
+        EXISTS (SELECT 1 FROM ambulances a WHERE a.hospital_id = h.id AND a.status = 'available' AND a.kind = 'ALS') AS has_als
       FROM hospitals h
       WHERE h.lat IS NOT NULL
         AND EXISTS (SELECT 1 FROM ambulances a WHERE a.hospital_id = h.id AND a.status = 'available')
         AND NOT EXISTS (SELECT 1 FROM incident_offers o WHERE o.incident_id = ? AND o.hospital_id = h.id)
-    `).all(id) as Array<{ id: string; name: string; phone: string | null; lat: number; lng: number }>)
-      .map((h) => ({ ...h, km: estimateRoadKm(pickup, h) }))
+    `).all(id) as Array<{ id: string; name: string; phone: string | null; lat: number; lng: number; has_als: number }>)
+      .map(({ has_als, ...h }) => ({ ...h, hasAls: !!has_als, km: estimateRoadKm(pickup, h) }))
       .filter((h) => h.km <= radius)
-      .sort((a, b) => a.km - b.km)
+      // Serious cases rank ALS hospitals first so the per-wave cap never drops them.
+      .sort((a, b) => (wantsAls ? Number(b.hasAls) - Number(a.hasAls) : 0) || a.km - b.km)
       .slice(0, this.opts.maxOffersPerWave)
 
     this.db.prepare('UPDATE incidents SET wave = ? WHERE id = ?').run(wave, id)
+    if (wave === 2) this.event(id, 'first_ring_missed', 'No hospital accepted in the first ring yet. Call 108 now — we are still searching.')
     if (candidates.length === 0) {
-      this.event(id, 'wave', `No ambulance partners within ${radius} km. Widening the search.`)
+      const alerted = (this.db.prepare('SELECT COUNT(*) AS n FROM incident_offers WHERE incident_id = ?').get(id) as { n: number }).n
+      if (alerted === 0) {
+        // Nobody alerted yet: widen straight away so someone hears about it fast.
+        this.event(id, 'wave', `No ambulance partners within ${radius} km. Widening the search.`)
+        this.publishIncident(id)
+        this.nextWave(id)
+        return
+      }
+      // Hospitals already alerted can still accept late, and ambulances free up: keep this ring open.
+      this.event(id, 'wave', `No more ambulance partners within ${radius} km yet. Still waiting for a hospital to accept.`)
       this.publishIncident(id)
-      this.nextWave(id)
+      this.waveTimers.set(id, setTimeout(() => this.expireWave(id, wave), this.opts.waveTimeoutMs))
       return
     }
-    const insert = this.db.prepare(`INSERT INTO incident_offers (incident_id, hospital_id, wave, distance_km, offered_at) VALUES (?, ?, ?, ?, ?)`)
+    const als = candidates.filter((c) => c.hasAls)
+    const others = candidates.filter((c) => !c.hasAls)
+    if (wantsAls && als.length > 0 && others.length > 0) {
+      // Head start, not a gate: BLS-only hospitals are alerted after a short delay, or at once if every ALS hospital says no.
+      this.offer(id, wave, als, `Alerted ${als.length} hospital${als.length === 1 ? '' : 's'} with an advanced (ALS) ambulance first, within ${radius} km.`)
+      this.deferred.set(id, { wave, candidates: others, timer: setTimeout(() => this.releaseDeferred(id, wave), this.opts.alsHeadStartMs) })
+    } else {
+      this.offer(id, wave, candidates, `Alerted ${candidates.length} hospital${candidates.length === 1 ? '' : 's'} within ${radius} km.`)
+    }
+    this.waveTimers.set(id, setTimeout(() => this.expireWave(id, wave), this.opts.waveTimeoutMs))
+  }
+
+  private offer(id: string, wave: number, candidates: Candidate[], message: string) {
+    const inc = this.incident(id)
+    const pickup = { lat: coarse(inc.pickup_lat), lng: coarse(inc.pickup_lng) }
+    const insert = this.db.prepare(`INSERT OR IGNORE INTO incident_offers (incident_id, hospital_id, wave, distance_km, offered_at) VALUES (?, ?, ?, ?, ?)`)
     tx(this.db, () => { for (const c of candidates) insert.run(id, c.id, wave, c.km, now()) })
-    this.event(id, 'wave', `Alerted ${candidates.length} hospital${candidates.length === 1 ? '' : 's'} within ${radius} km.`)
+    this.event(id, 'wave', message)
     for (const c of candidates) {
       publish(channels.hospital(c.id), 'offer', { incidentId: id })
-      void notifyHospital({ incidentId: id, hospitalId: c.id, hospitalName: c.name, hospitalPhone: c.phone, distanceKm: c.km, wave, pickup: { lat: coarse(pickup.lat), lng: coarse(pickup.lng) }, note: inc.note })
+      void notifyHospital({ incidentId: id, hospitalId: c.id, hospitalName: c.name, hospitalPhone: c.phone, distanceKm: c.km, wave, pickup, note: inc.note })
     }
     this.publishIncident(id)
-    this.waveTimers.set(id, setTimeout(() => this.expireWave(id, wave), this.opts.waveTimeoutMs))
+  }
+
+  /** Alert the BLS-only hospitals held back during the ALS head start. Returns true if any were alerted. */
+  private releaseDeferred(id: string, wave: number): boolean {
+    const held = this.deferred.get(id)
+    this.clearDeferred(id)
+    if (!held || held.wave !== wave) return false
+    const inc = this.incident(id)
+    if (inc.status !== 'searching' || inc.wave !== wave) return false
+    this.offer(id, wave, held.candidates, `Also alerted ${held.candidates.length} more hospital${held.candidates.length === 1 ? '' : 's'} nearby.`)
+    return true
+  }
+
+  private clearDeferred(id: string) {
+    const held = this.deferred.get(id)
+    if (held) clearTimeout(held.timer)
+    this.deferred.delete(id)
   }
 
   private expireWave(id: string, wave: number) {
@@ -221,7 +367,7 @@ export class Dispatcher {
   }
 
   private finishNoResponse(id: string) {
-    this.db.prepare(`UPDATE incidents SET status = 'no_response' WHERE id = ? AND status = 'searching'`).run(id)
+    this.db.prepare(`UPDATE incidents SET status = 'no_response', ended_at = ? WHERE id = ? AND status = 'searching'`).run(now(), id)
     this.db.prepare(`UPDATE incident_offers SET status = 'expired', responded_at = ? WHERE incident_id = ? AND status = 'pending'`).run(now(), id)
     this.event(id, 'no_response', 'No partner ambulance accepted. Call 108 now — it is free and covers all of Haryana.')
     this.refreshHospitals(id, 'expired')
@@ -232,6 +378,7 @@ export class Dispatcher {
     const t = this.waveTimers.get(id)
     if (t) clearTimeout(t)
     this.waveTimers.delete(id)
+    this.clearDeferred(id)
   }
 
   /** First explicit acceptance wins. Returns the driver link token (shown once). */
@@ -271,14 +418,16 @@ export class Dispatcher {
     const inc = this.incident(incidentId)
     const pending = this.db.prepare(`SELECT COUNT(*) AS n FROM incident_offers WHERE incident_id = ? AND wave = ? AND status = 'pending'`).get(incidentId, inc.wave) as { n: number }
     this.publishIncident(incidentId)
-    if (inc.status === 'searching' && pending.n === 0) this.nextWave(incidentId)
+    if (inc.status !== 'searching' || pending.n > 0) return
+    // Every alerted hospital said no: alert any held-back ones in this ring before widening.
+    if (!this.releaseDeferred(incidentId, inc.wave)) this.nextWave(incidentId)
   }
 
   cancel(incidentId: string, reason: string) {
     const inc = this.incident(incidentId)
     if (!ACTIVE.includes(inc.status)) throw new HttpError(409, 'This request is already closed', 'closed')
     tx(this.db, () => {
-      this.db.prepare(`UPDATE incidents SET status = 'cancelled', cancelled_at = ? WHERE id = ?`).run(now(), incidentId)
+      this.db.prepare(`UPDATE incidents SET status = 'cancelled', cancelled_at = ?, ended_at = ? WHERE id = ?`).run(now(), now(), incidentId)
       this.db.prepare(`UPDATE incident_offers SET status = 'withdrawn' WHERE incident_id = ? AND status = 'pending'`).run(incidentId)
       if (inc.ambulance_id) this.db.prepare(`UPDATE ambulances SET status = 'available' WHERE id = ?`).run(inc.ambulance_id)
     })
@@ -308,6 +457,7 @@ export class Dispatcher {
     const live = this.live.get(incidentId)
     if (live) { live.samples = []; live.route = null; live.routeAt = 0 }
     if (to === 'completed') {
+      this.db.prepare('UPDATE incidents SET ended_at = ? WHERE id = ?').run(now(), incidentId)
       if (inc.ambulance_id) this.db.prepare(`UPDATE ambulances SET status = 'available' WHERE id = ?`).run(inc.ambulance_id)
       this.stopLive(incidentId)
     } else if (to === 'to_hospital') void this.refreshRoute(incidentId, true)
@@ -438,6 +588,7 @@ export class Dispatcher {
 
   stop() {
     for (const t of this.waveTimers.values()) clearTimeout(t)
+    for (const id of [...this.deferred.keys()]) this.clearDeferred(id)
     for (const id of this.live.keys()) this.stopSimulation(id)
     this.waveTimers.clear()
   }
@@ -446,11 +597,11 @@ export class Dispatcher {
 
   offersFor(hospitalId: string) {
     return (this.db.prepare(`
-      SELECT o.incident_id, o.distance_km, o.offered_at, o.wave, i.pickup_lat, i.pickup_lng, i.note, i.created_at
+      SELECT o.incident_id, o.distance_km, o.offered_at, o.wave, i.pickup_lat, i.pickup_lng, i.note, i.category, i.created_at
       FROM incident_offers o JOIN incidents i ON i.id = o.incident_id
       WHERE o.hospital_id = ? AND o.status IN ('pending','expired') AND i.status = 'searching'
       ORDER BY o.offered_at
-    `).all(hospitalId) as Array<{ incident_id: string; distance_km: number; offered_at: string; wave: number; pickup_lat: number; pickup_lng: number; note: string | null; created_at: string }>)
+    `).all(hospitalId) as Array<{ incident_id: string; distance_km: number; offered_at: string; wave: number; pickup_lat: number; pickup_lng: number; note: string | null; category: SosCategory | null; created_at: string }>)
       .map((o) => ({
         incidentId: o.incident_id,
         distanceKm: Math.round(o.distance_km * 10) / 10,
@@ -458,6 +609,8 @@ export class Dispatcher {
         createdAt: o.created_at,
         area: { lat: coarse(o.pickup_lat), lng: coarse(o.pickup_lng) },
         note: o.note,
+        categoryLabel: o.category ? SOS_CATEGORIES[o.category].label : null,
+        alsPreferred: prefersAls(o.category),
       }))
   }
 
@@ -476,7 +629,7 @@ export class Dispatcher {
     const medical = inc.patient_id
       ? (this.db.prepare('SELECT blood_group, allergies FROM patients WHERE id = ?').get(inc.patient_id) as { blood_group: string | null; allergies: string | null } | undefined)
       : undefined
-    return { name: inc.patient_name, phone: inc.patient_phone, note: inc.note, bloodGroup: medical?.blood_group ?? null, allergies: medical?.allergies ?? null }
+    return { name: inc.patient_name, phone: inc.patient_phone, note: inc.note, categoryLabel: inc.category ? SOS_CATEGORIES[inc.category].label : null, bloodGroup: medical?.blood_group ?? null, allergies: medical?.allergies ?? null }
   }
 
   /** Driver link → incident. */

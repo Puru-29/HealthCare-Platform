@@ -1,0 +1,15 @@
+{
+  "description": "Hand-reviewed corrections applied after matching (scripts: data/pipeline/build-hospital-dataset.mjs). Keyed by facility id. 'address': null drops a wrong address; 'location': null removes a pin we cannot trust (the facility stays listed as 'location not confirmed' until the hospital sets its own pin in the console). Every entry says why.",
+  "reviewedAt": "2026-11-15",
+  "corrections": {
+    "pmjay-hosp6g03224": {
+      "address": null,
+      "reason": "OpenStreetMap addr:full for District Civil Hospital, Sonipat is 'Rohtak' — a wrong label. The pin (28.9908, 77.0362) is the hospital in Sonipat city."
+    },
+    "osm-node-7001287193": {
+      "location": null,
+      "note": "Map location not confirmed: the source address is in Ganaur but the map point was in Sonipat city. Call before travelling.",
+      "reason": "Sharma Hospital: OSM address 'Railway Road, Near Vishwakarma Mandir Ganaur' contradicts its pin in Sonipat city (~15 km apart). We cannot tell which is right, and a wrong pin could send someone to the wrong town."
+    }
+  }
+}
